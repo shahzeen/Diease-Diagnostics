@@ -1,0 +1,68 @@
+<div class="app-container app-login" style="font-family: 'Roboto', sans-serif; font-size: 14px; line-height: 1.42857143; color: #333;
+		background: url(images/login_background.png) no-repeat center center fixed;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;">
+  <div class="flex-center"> 
+    
+    <div class="app-body" style="border: 4px solid black; border-radius: 6px; top: -70px;">
+      <div class="app-block" style="background:rgba(255,255,255,0.5);">
+      <div class="app-form">
+      	<div class="form-headerbar" style="border-bottom-color: black; border-bottom-style: solid; border-bottom-width: 4px; border-radius: 1px;">
+	      	<img src="../images/logo.png" class="img-logo" alt="" style="position: absolute; left: 20px; top: 0px; padding: 10px;"/>
+	      	<img src="../images/logo.png" class="img-logo" alt="" style="position: absolute; right: 20px; top: 0px; padding: 10px;"/>
+      	</div>
+        <div class="form-header"><br><br>
+          <div class="app-brand" style="font-weight: bold; padding-top: 1rem; color: black;">Login to <br> Bill-Splitter Application</div>
+        </div>
+        <div class="appLoginMutedTextDiv"><p style="color: black;">Enter your credentials below</p></div>
+        <form  class="ng-pristine ng-valid ng-submitted" style="padding-left: 5rem;padding-right: 5rem;padding-bottom: 5rem;padding-top: 1rem;">
+            <div class="input-group">
+              <span class="input-group-addon">
+                <i class="icon-user" aria-hidden="true"></i></span>
+              <input type="text" name="username" class="form-control ng-pristine ng-untouched ng-valid ng-empty" placeholder="Username" ng-model="usernameModel" required="true">
+            </div>
+            <div class="input-group">
+              <span class="input-group-addon">
+                <i class="icon-lock" aria-hidden="true"></i></span>
+              <input type="password" name="password" class="form-control ng-pristine ng-untouched ng-valid ng-empty" placeholder="Password" ng-model="passwordModel" required="true">
+            </div>
+            <div class="text-center">
+                <button type="submit" class="btn btn-danger btn-submit" ng-click="loginBtnclicked()" style="color: black;font-weight: bold;">SIGN IN
+                <i class="fa fa-chevron-circle-right" aria-hidden="true"></i></button>
+            </div>
+        </form>
+      </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- <div class="bottompagebar" style="font-family: 'Roboto', sans-serif;">
+    <nav class="navbar navbar-default navbar-fixed-bottom" style="background-color: white;">
+        <div class="navbar-header pull-left">
+            <h2 class="navbar-brand"><img src="images/IBM_logo.png"></h2>
+        </div>        
+        <ul class="nav navbar-nav navbar-right">
+            <li class="page-scroll">
+                <a href="#">About</a>
+            </li>
+            <li class="page-scroll">
+                <a href="#">Terms</a>
+            </li>
+            <li class="page-scroll">
+                <a href="#">Contact</a>
+            </li>
+            <li class="page-scroll">
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            </li>
+            <li>
+                <img src="images/amex.png">
+            </li>
+            <li class="page-scroll">
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            </li>
+        </ul>
+    </nav>
+</div> -->

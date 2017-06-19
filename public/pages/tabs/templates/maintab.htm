@@ -1,0 +1,56 @@
+    <div class="maintabcontent" style="font-family: 'Roboto', sans-serif;">
+        <nav class="navbar navbar-default navbar-fixed-top customappbar">
+            <ul class="nav navbar-nav navbar-left" style="position: relative; left: 34px; top: 0px; font-size: large;">        
+                <li id = "menu_home"><a  ui-sref="maintab.home" class="fa fa-home" aria-hidden="true" style="color: white">&nbsp;&nbsp;DASHBOARD</a></li>
+                <li id = "menu_add"><a ui-sref="maintab.add" class="fa fa-plus-circle" aria-hidden="true" style="color: white">&nbsp;&nbsp;BILL ENTRY</a></li>
+                <!-- <li id = "menu_view"><a ui-sref="maintab.view" class="fa fa-list-alt" aria-hidden="true" style="color: white">&nbsp;&nbsp;VIEW</a></li> -->
+            </ul>
+            <ul class="nav navbar-nav navbar-center" style="position: relative; left: 550px; top: -8px; font-size: x-large; font-weight: bold;">
+            	<li class="tabHeaderTxt">Bill-Splitter</li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right pull-right" style="position: relative; right: 50px; font-size: x-large;">
+            	<li style="color:white">					  	
+					<div class="tabHeaderTxt pull-left">Room204C</div>								
+				</li>
+                <li class="dropdown">
+                	<a href="/" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" style="color: white"></a>
+                    <ul class="dropdown-menu text-right header-nav-dropdown">
+                    	<li><a ng-click="logoutBtnClick()" style="cursor: pointer;">Logout <span class="glyphicon glyphicon-off"></span></a></li>
+                    </ul>
+                </li>
+          </ul>
+        </nav>
+    </div> 
+
+    <div class="page-container">
+		<div class="tab-page-content" ui-view>
+		</div>
+	</div>
+
+<div class="bottompagebar" style="font-family: 'Roboto', sans-serif;">
+    <nav class="navbar navbar-default navbar-fixed-bottom" style="background-color: #ed1f24;">
+        <div class="navbar-header pull-left">
+            <h2 class="navbar-brand"><img src="../images/logo.png" class="img-logo" alt="" style="position: absolute; left: 20px; top: 0px; padding: 10px;"/></h2>
+        </div>        
+        <ul class="nav navbar-nav navbar-right" style="font-size: large; font-weight: bold;">
+            <!-- <li class="page-scroll">
+                <a href="">About</a>
+            </li>
+            <li class="page-scroll">
+                <a href="">Terms</a>
+            </li>
+            <li class="page-scroll">
+                <a href="">Contact</a>
+            </li>
+            <li class="page-scroll">
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            </li> -->
+            <!-- <li>
+                <img src="../images/logo.png" style="width: 75px; height: 53px; position: relative; top: 3px;">
+            </li> -->
+            <li class="page-scroll">
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            </li>
+        </ul>
+    </nav>
+</div>

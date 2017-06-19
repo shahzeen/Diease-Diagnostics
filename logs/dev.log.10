@@ -1,0 +1,400 @@
+[2017-06-16 22:03:21.847] [INFO] dev - { method: 'POST',
+  headers: 
+   { 'content-type': 'application/json',
+     accept: 'application/json' },
+  uri: 'https://fc564f71-b15c-4f53-9749-bbc4da9340b1-bluemix:de8b215714586d9824c4a27d08c53f3a58135204e8391571f3a3f183f4c70cc9@fc564f71-b15c-4f53-9749-bbc4da9340b1-bluemix.cloudant.com/bill_details',
+  body: '{"PAYER":"Arnab","BILLDATE":"2017-06-16","AMOUNT":"20","BILLDESC":"4 eggs"}' } undefined
+[2017-06-16 22:03:22.677] [INFO] dev - { err: null,
+  body: 
+   { ok: true,
+     id: 'ba916c1bb79ba69123fa422ee4e701f6',
+     rev: '1-460973ca7acee74abf577414b5d9086d' },
+  headers: 
+   { 'cache-control': 'must-revalidate',
+     connection: 'close',
+     'content-type': 'application/json',
+     date: 'Fri, 16 Jun 2017 16:33:22 GMT',
+     location: 'https://fc564f71-b15c-4f53-9749-bbc4da9340b1-bluemix.cloudant.com/fc564f71-b15c-4f53-9749-bbc4da9340b1-bluemix%2Fbill_details/ba916c1bb79ba69123fa422ee4e701f6',
+     'x-couch-request-id': 'f487e437f6',
+     'x-content-type-options': 'nosniff',
+     'x-cloudant-backend': 'bm-cc-dal-03',
+     via: '1.1 lb1.bm-cc-dal-03 (Glum/1.35.5)',
+     'strict-transport-security': 'max-age=31536000',
+     statusCode: 201,
+     uri: 'https://fc564f71-b15c-4f53-9749-bbc4da9340b1-bluemix:de8b215714586d9824c4a27d08c53f3a58135204e8391571f3a3f183f4c70cc9@fc564f71-b15c-4f53-9749-bbc4da9340b1-bluemix.cloudant.com/bill_details' } } undefined
+[2017-06-16 22:03:22.679] [INFO] dev - Cloudant API :utils.cloudantutils.insert_documentAdding record to database : bill_details , record :{"PAYER":"Arnab","BILLDATE":"2017-06-16","AMOUNT":"20","BILLDESC":"4 eggs"}
+[2017-06-16 22:03:22.679] [INFO] dev - Cloudant API :utils.cloudantutils.insert_document:{"cache-control":"must-revalidate","connection":"close","content-type":"application/json","date":"Fri, 16 Jun 2017 16:33:22 GMT","location":"https://fc564f71-b15c-4f53-9749-bbc4da9340b1-bluemix.cloudant.com/fc564f71-b15c-4f53-9749-bbc4da9340b1-bluemix%2Fbill_details/ba916c1bb79ba69123fa422ee4e701f6","x-couch-request-id":"f487e437f6","x-content-type-options":"nosniff","x-cloudant-backend":"bm-cc-dal-03","via":"1.1 lb1.bm-cc-dal-03 (Glum/1.35.5)","strict-transport-security":"max-age=31536000","statusCode":201,"uri":"https://fc564f71-b15c-4f53-9749-bbc4da9340b1-bluemix:de8b215714586d9824c4a27d08c53f3a58135204e8391571f3a3f183f4c70cc9@fc564f71-b15c-4f53-9749-bbc4da9340b1-bluemix.cloudant.com/bill_details"}
+[2017-06-16 22:03:22.680] [INFO] dev - Cloudant API :utils.cloudantutils.insert_document:{"ok":true,"id":"ba916c1bb79ba69123fa422ee4e701f6","rev":"1-460973ca7acee74abf577414b5d9086d"}
+[2017-06-16 22:03:22.680] [INFO] dev - BILL RECORD API :api.record.index.save_dataBill record saved [object Object]
+[2017-06-16 22:03:24.707] [INFO] dev - { method: 'GET',
+  headers: 
+   { 'content-type': 'application/json',
+     accept: 'application/json' },
+  uri: 'https://fc564f71-b15c-4f53-9749-bbc4da9340b1-bluemix:de8b215714586d9824c4a27d08c53f3a58135204e8391571f3a3f183f4c70cc9@fc564f71-b15c-4f53-9749-bbc4da9340b1-bluemix.cloudant.com/bill_details/_design/bills/_view/vw_all_bills',
+  qs: { include_docs: true } } undefined
+[2017-06-16 22:03:25.508] [INFO] dev - { err: null,
+  body: 
+   { total_rows: 10,
+     offset: 0,
+     rows: 
+      [ [Object],
+        [Object],
+        [Object],
+        [Object],
+        [Object],
+        [Object],
+        [Object],
+        [Object],
+        [Object],
+        [Object] ] },
+  headers: 
+   { 'cache-control': 'must-revalidate',
+     connection: 'close',
+     'content-type': 'application/json',
+     date: 'Fri, 16 Jun 2017 16:33:24 GMT',
+     'transfer-encoding': 'chunked',
+     'x-couch-request-id': '1db2304613',
+     'x-content-type-options': 'nosniff',
+     'x-cloudant-backend': 'bm-cc-dal-03',
+     via: '1.1 lb1.bm-cc-dal-03 (Glum/1.35.5)',
+     'strict-transport-security': 'max-age=31536000',
+     statusCode: 200,
+     uri: 'https://fc564f71-b15c-4f53-9749-bbc4da9340b1-bluemix:de8b215714586d9824c4a27d08c53f3a58135204e8391571f3a3f183f4c70cc9@fc564f71-b15c-4f53-9749-bbc4da9340b1-bluemix.cloudant.com/bill_details/_design/bills/_view/vw_all_bills' } } undefined
+[2017-06-16 22:04:51.892] [INFO] dev - { method: 'POST',
+  headers: 
+   { 'content-type': 'application/json',
+     accept: 'application/json' },
+  uri: 'https://fc564f71-b15c-4f53-9749-bbc4da9340b1-bluemix:de8b215714586d9824c4a27d08c53f3a58135204e8391571f3a3f183f4c70cc9@fc564f71-b15c-4f53-9749-bbc4da9340b1-bluemix.cloudant.com/bill_details',
+  body: '{"PAYER":"Tanmoy","BILLDATE":"2017-06-09","AMOUNT":"135","BILLDESC":"5 paratha, 1 full chicken, 1 half chicken"}' } undefined
+[2017-06-16 22:04:53.413] [INFO] dev - { err: null,
+  body: 
+   { ok: true,
+     id: 'c98ac79f171a62f22c11ad3353351175',
+     rev: '1-6cc160b75e88574e32ade1a0b959b297' },
+  headers: 
+   { 'cache-control': 'must-revalidate',
+     connection: 'close',
+     'content-type': 'application/json',
+     date: 'Fri, 16 Jun 2017 16:34:52 GMT',
+     location: 'https://fc564f71-b15c-4f53-9749-bbc4da9340b1-bluemix.cloudant.com/fc564f71-b15c-4f53-9749-bbc4da9340b1-bluemix%2Fbill_details/c98ac79f171a62f22c11ad3353351175',
+     'x-couch-request-id': '2fcd7bf74f',
+     'x-content-type-options': 'nosniff',
+     'x-cloudant-backend': 'bm-cc-dal-03',
+     via: '1.1 lb1.bm-cc-dal-03 (Glum/1.35.5)',
+     'strict-transport-security': 'max-age=31536000',
+     statusCode: 201,
+     uri: 'https://fc564f71-b15c-4f53-9749-bbc4da9340b1-bluemix:de8b215714586d9824c4a27d08c53f3a58135204e8391571f3a3f183f4c70cc9@fc564f71-b15c-4f53-9749-bbc4da9340b1-bluemix.cloudant.com/bill_details' } } undefined
+[2017-06-16 22:04:53.414] [INFO] dev - Cloudant API :utils.cloudantutils.insert_documentAdding record to database : bill_details , record :{"PAYER":"Tanmoy","BILLDATE":"2017-06-09","AMOUNT":"135","BILLDESC":"5 paratha, 1 full chicken, 1 half chicken"}
+[2017-06-16 22:04:53.414] [INFO] dev - Cloudant API :utils.cloudantutils.insert_document:{"cache-control":"must-revalidate","connection":"close","content-type":"application/json","date":"Fri, 16 Jun 2017 16:34:52 GMT","location":"https://fc564f71-b15c-4f53-9749-bbc4da9340b1-bluemix.cloudant.com/fc564f71-b15c-4f53-9749-bbc4da9340b1-bluemix%2Fbill_details/c98ac79f171a62f22c11ad3353351175","x-couch-request-id":"2fcd7bf74f","x-content-type-options":"nosniff","x-cloudant-backend":"bm-cc-dal-03","via":"1.1 lb1.bm-cc-dal-03 (Glum/1.35.5)","strict-transport-security":"max-age=31536000","statusCode":201,"uri":"https://fc564f71-b15c-4f53-9749-bbc4da9340b1-bluemix:de8b215714586d9824c4a27d08c53f3a58135204e8391571f3a3f183f4c70cc9@fc564f71-b15c-4f53-9749-bbc4da9340b1-bluemix.cloudant.com/bill_details"}
+[2017-06-16 22:04:53.414] [INFO] dev - Cloudant API :utils.cloudantutils.insert_document:{"ok":true,"id":"c98ac79f171a62f22c11ad3353351175","rev":"1-6cc160b75e88574e32ade1a0b959b297"}
+[2017-06-16 22:04:53.415] [INFO] dev - BILL RECORD API :api.record.index.save_dataBill record saved [object Object]
+[2017-06-16 22:04:55.361] [INFO] dev - { method: 'GET',
+  headers: 
+   { 'content-type': 'application/json',
+     accept: 'application/json' },
+  uri: 'https://fc564f71-b15c-4f53-9749-bbc4da9340b1-bluemix:de8b215714586d9824c4a27d08c53f3a58135204e8391571f3a3f183f4c70cc9@fc564f71-b15c-4f53-9749-bbc4da9340b1-bluemix.cloudant.com/bill_details/_design/bills/_view/vw_all_bills',
+  qs: { include_docs: true } } undefined
+[2017-06-16 22:04:56.192] [INFO] dev - { err: null,
+  body: 
+   { total_rows: 11,
+     offset: 0,
+     rows: 
+      [ [Object],
+        [Object],
+        [Object],
+        [Object],
+        [Object],
+        [Object],
+        [Object],
+        [Object],
+        [Object],
+        [Object],
+        [Object] ] },
+  headers: 
+   { 'cache-control': 'must-revalidate',
+     connection: 'close',
+     'content-type': 'application/json',
+     date: 'Fri, 16 Jun 2017 16:34:56 GMT',
+     'transfer-encoding': 'chunked',
+     'x-couch-request-id': 'd1a4b72782',
+     'x-content-type-options': 'nosniff',
+     'x-cloudant-backend': 'bm-cc-dal-03',
+     via: '1.1 lb1.bm-cc-dal-03 (Glum/1.35.5)',
+     'strict-transport-security': 'max-age=31536000',
+     statusCode: 200,
+     uri: 'https://fc564f71-b15c-4f53-9749-bbc4da9340b1-bluemix:de8b215714586d9824c4a27d08c53f3a58135204e8391571f3a3f183f4c70cc9@fc564f71-b15c-4f53-9749-bbc4da9340b1-bluemix.cloudant.com/bill_details/_design/bills/_view/vw_all_bills' } } undefined
+[2017-06-16 22:06:02.488] [INFO] dev - { method: 'GET',
+  headers: 
+   { 'content-type': 'application/json',
+     accept: 'application/json' },
+  uri: 'https://fc564f71-b15c-4f53-9749-bbc4da9340b1-bluemix:de8b215714586d9824c4a27d08c53f3a58135204e8391571f3a3f183f4c70cc9@fc564f71-b15c-4f53-9749-bbc4da9340b1-bluemix.cloudant.com/bill_details/_design/bills/_view/vw_all_bills',
+  qs: { include_docs: true } } undefined
+[2017-06-16 22:06:03.527] [INFO] dev - { err: null,
+  body: 
+   { total_rows: 11,
+     offset: 0,
+     rows: 
+      [ [Object],
+        [Object],
+        [Object],
+        [Object],
+        [Object],
+        [Object],
+        [Object],
+        [Object],
+        [Object],
+        [Object],
+        [Object] ] },
+  headers: 
+   { 'cache-control': 'must-revalidate',
+     connection: 'close',
+     'content-type': 'application/json',
+     date: 'Fri, 16 Jun 2017 16:36:02 GMT',
+     'transfer-encoding': 'chunked',
+     'x-couch-request-id': 'b4ed68dc6e',
+     'x-content-type-options': 'nosniff',
+     'x-cloudant-backend': 'bm-cc-dal-03',
+     via: '1.1 lb1.bm-cc-dal-03 (Glum/1.35.5)',
+     'strict-transport-security': 'max-age=31536000',
+     statusCode: 200,
+     uri: 'https://fc564f71-b15c-4f53-9749-bbc4da9340b1-bluemix:de8b215714586d9824c4a27d08c53f3a58135204e8391571f3a3f183f4c70cc9@fc564f71-b15c-4f53-9749-bbc4da9340b1-bluemix.cloudant.com/bill_details/_design/bills/_view/vw_all_bills' } } undefined
+[2017-06-16 22:06:43.830] [INFO] dev - { method: 'GET',
+  headers: 
+   { 'content-type': 'application/json',
+     accept: 'application/json' },
+  uri: 'https://fc564f71-b15c-4f53-9749-bbc4da9340b1-bluemix:de8b215714586d9824c4a27d08c53f3a58135204e8391571f3a3f183f4c70cc9@fc564f71-b15c-4f53-9749-bbc4da9340b1-bluemix.cloudant.com/bill_details/_design/bills/_view/vw_all_bills',
+  qs: { include_docs: true } } undefined
+[2017-06-16 22:06:48.019] [INFO] dev - { err: null,
+  body: 
+   { total_rows: 11,
+     offset: 0,
+     rows: 
+      [ [Object],
+        [Object],
+        [Object],
+        [Object],
+        [Object],
+        [Object],
+        [Object],
+        [Object],
+        [Object],
+        [Object],
+        [Object] ] },
+  headers: 
+   { 'cache-control': 'must-revalidate',
+     connection: 'close',
+     'content-type': 'application/json',
+     date: 'Fri, 16 Jun 2017 16:36:47 GMT',
+     'transfer-encoding': 'chunked',
+     'x-couch-request-id': '1bc953921d',
+     'x-content-type-options': 'nosniff',
+     'x-cloudant-backend': 'bm-cc-dal-03',
+     via: '1.1 lb1.bm-cc-dal-03 (Glum/1.35.5)',
+     'strict-transport-security': 'max-age=31536000',
+     statusCode: 200,
+     uri: 'https://fc564f71-b15c-4f53-9749-bbc4da9340b1-bluemix:de8b215714586d9824c4a27d08c53f3a58135204e8391571f3a3f183f4c70cc9@fc564f71-b15c-4f53-9749-bbc4da9340b1-bluemix.cloudant.com/bill_details/_design/bills/_view/vw_all_bills' } } undefined
+[2017-06-16 22:07:12.157] [INFO] dev - { method: 'GET',
+  headers: 
+   { 'content-type': 'application/json',
+     accept: 'application/json' },
+  uri: 'https://fc564f71-b15c-4f53-9749-bbc4da9340b1-bluemix:de8b215714586d9824c4a27d08c53f3a58135204e8391571f3a3f183f4c70cc9@fc564f71-b15c-4f53-9749-bbc4da9340b1-bluemix.cloudant.com/bill_details/_design/bills/_view/vw_all_bills',
+  qs: { include_docs: true } } undefined
+[2017-06-16 22:07:12.955] [INFO] dev - { err: null,
+  body: 
+   { total_rows: 11,
+     offset: 0,
+     rows: 
+      [ [Object],
+        [Object],
+        [Object],
+        [Object],
+        [Object],
+        [Object],
+        [Object],
+        [Object],
+        [Object],
+        [Object],
+        [Object] ] },
+  headers: 
+   { 'cache-control': 'must-revalidate',
+     connection: 'close',
+     'content-type': 'application/json',
+     date: 'Fri, 16 Jun 2017 16:37:12 GMT',
+     'transfer-encoding': 'chunked',
+     'x-couch-request-id': '28fa1b0da5',
+     'x-content-type-options': 'nosniff',
+     'x-cloudant-backend': 'bm-cc-dal-03',
+     via: '1.1 lb1.bm-cc-dal-03 (Glum/1.35.5)',
+     'strict-transport-security': 'max-age=31536000',
+     statusCode: 200,
+     uri: 'https://fc564f71-b15c-4f53-9749-bbc4da9340b1-bluemix:de8b215714586d9824c4a27d08c53f3a58135204e8391571f3a3f183f4c70cc9@fc564f71-b15c-4f53-9749-bbc4da9340b1-bluemix.cloudant.com/bill_details/_design/bills/_view/vw_all_bills' } } undefined
+[2017-06-16 22:07:20.683] [INFO] dev - { method: 'GET',
+  headers: 
+   { 'content-type': 'application/json',
+     accept: 'application/json' },
+  uri: 'https://fc564f71-b15c-4f53-9749-bbc4da9340b1-bluemix:de8b215714586d9824c4a27d08c53f3a58135204e8391571f3a3f183f4c70cc9@fc564f71-b15c-4f53-9749-bbc4da9340b1-bluemix.cloudant.com/bill_details/_design/bills/_view/vw_all_bills',
+  qs: { include_docs: true } } undefined
+[2017-06-16 22:07:21.699] [INFO] dev - { err: null,
+  body: 
+   { total_rows: 11,
+     offset: 0,
+     rows: 
+      [ [Object],
+        [Object],
+        [Object],
+        [Object],
+        [Object],
+        [Object],
+        [Object],
+        [Object],
+        [Object],
+        [Object],
+        [Object] ] },
+  headers: 
+   { 'cache-control': 'must-revalidate',
+     connection: 'close',
+     'content-type': 'application/json',
+     date: 'Fri, 16 Jun 2017 16:37:21 GMT',
+     'transfer-encoding': 'chunked',
+     'x-couch-request-id': '5a1dce8790',
+     'x-content-type-options': 'nosniff',
+     'x-cloudant-backend': 'bm-cc-dal-03',
+     via: '1.1 lb1.bm-cc-dal-03 (Glum/1.35.5)',
+     'strict-transport-security': 'max-age=31536000',
+     statusCode: 200,
+     uri: 'https://fc564f71-b15c-4f53-9749-bbc4da9340b1-bluemix:de8b215714586d9824c4a27d08c53f3a58135204e8391571f3a3f183f4c70cc9@fc564f71-b15c-4f53-9749-bbc4da9340b1-bluemix.cloudant.com/bill_details/_design/bills/_view/vw_all_bills' } } undefined
+[2017-06-16 22:17:07.321] [INFO] dev - utils.logger.default logging set to logs/dev
+[2017-06-16 22:17:07.333] [INFO] dev - utils.envutils.default env set to local
+[2017-06-16 22:17:08.125] [INFO] dev - Application settings load completed.
+[2017-06-16 22:17:08.129] [INFO] dev - Applicaiton info loaded
+[2017-06-16 22:17:16.167] [INFO] dev - { method: 'GET',
+  headers: 
+   { 'content-type': 'application/json',
+     accept: 'application/json' },
+  uri: 'https://fc564f71-b15c-4f53-9749-bbc4da9340b1-bluemix:de8b215714586d9824c4a27d08c53f3a58135204e8391571f3a3f183f4c70cc9@fc564f71-b15c-4f53-9749-bbc4da9340b1-bluemix.cloudant.com/bill_details/_design/bills/_view/vw_all_bills',
+  qs: { include_docs: true } } undefined
+[2017-06-16 22:17:18.877] [INFO] dev - { err: null,
+  body: 
+   { total_rows: 11,
+     offset: 0,
+     rows: 
+      [ [Object],
+        [Object],
+        [Object],
+        [Object],
+        [Object],
+        [Object],
+        [Object],
+        [Object],
+        [Object],
+        [Object],
+        [Object] ] },
+  headers: 
+   { 'cache-control': 'must-revalidate',
+     connection: 'close',
+     'content-type': 'application/json',
+     date: 'Fri, 16 Jun 2017 16:47:17 GMT',
+     'transfer-encoding': 'chunked',
+     'x-couch-request-id': 'fc7851b708',
+     'x-content-type-options': 'nosniff',
+     'x-cloudant-backend': 'bm-cc-dal-03',
+     via: '1.1 lb1.bm-cc-dal-03 (Glum/1.35.5)',
+     'strict-transport-security': 'max-age=31536000',
+     statusCode: 200,
+     uri: 'https://fc564f71-b15c-4f53-9749-bbc4da9340b1-bluemix:de8b215714586d9824c4a27d08c53f3a58135204e8391571f3a3f183f4c70cc9@fc564f71-b15c-4f53-9749-bbc4da9340b1-bluemix.cloudant.com/bill_details/_design/bills/_view/vw_all_bills' } } undefined
+[2017-06-16 22:17:41.552] [INFO] dev - { method: 'GET',
+  headers: 
+   { 'content-type': 'application/json',
+     accept: 'application/json' },
+  uri: 'https://fc564f71-b15c-4f53-9749-bbc4da9340b1-bluemix:de8b215714586d9824c4a27d08c53f3a58135204e8391571f3a3f183f4c70cc9@fc564f71-b15c-4f53-9749-bbc4da9340b1-bluemix.cloudant.com/bill_details/_design/bills/_view/vw_all_bills',
+  qs: { include_docs: true } } undefined
+[2017-06-16 22:17:42.429] [INFO] dev - { err: null,
+  body: 
+   { total_rows: 11,
+     offset: 0,
+     rows: 
+      [ [Object],
+        [Object],
+        [Object],
+        [Object],
+        [Object],
+        [Object],
+        [Object],
+        [Object],
+        [Object],
+        [Object],
+        [Object] ] },
+  headers: 
+   { 'cache-control': 'must-revalidate',
+     connection: 'close',
+     'content-type': 'application/json',
+     date: 'Fri, 16 Jun 2017 16:47:42 GMT',
+     'transfer-encoding': 'chunked',
+     'x-couch-request-id': '197557b020',
+     'x-content-type-options': 'nosniff',
+     'x-cloudant-backend': 'bm-cc-dal-03',
+     via: '1.1 lb1.bm-cc-dal-03 (Glum/1.35.5)',
+     'strict-transport-security': 'max-age=31536000',
+     statusCode: 200,
+     uri: 'https://fc564f71-b15c-4f53-9749-bbc4da9340b1-bluemix:de8b215714586d9824c4a27d08c53f3a58135204e8391571f3a3f183f4c70cc9@fc564f71-b15c-4f53-9749-bbc4da9340b1-bluemix.cloudant.com/bill_details/_design/bills/_view/vw_all_bills' } } undefined
+[2017-06-16 22:20:05.535] [INFO] dev - { method: 'GET',
+  headers: 
+   { 'content-type': 'application/json',
+     accept: 'application/json' },
+  uri: 'https://fc564f71-b15c-4f53-9749-bbc4da9340b1-bluemix:de8b215714586d9824c4a27d08c53f3a58135204e8391571f3a3f183f4c70cc9@fc564f71-b15c-4f53-9749-bbc4da9340b1-bluemix.cloudant.com/bill_details/_design/bills/_view/vw_all_bills',
+  qs: { include_docs: true } } undefined
+[2017-06-16 22:20:08.277] [INFO] dev - { err: null,
+  body: 
+   { total_rows: 11,
+     offset: 0,
+     rows: 
+      [ [Object],
+        [Object],
+        [Object],
+        [Object],
+        [Object],
+        [Object],
+        [Object],
+        [Object],
+        [Object],
+        [Object],
+        [Object] ] },
+  headers: 
+   { 'cache-control': 'must-revalidate',
+     connection: 'close',
+     'content-type': 'application/json',
+     date: 'Fri, 16 Jun 2017 16:50:07 GMT',
+     'transfer-encoding': 'chunked',
+     'x-couch-request-id': 'afc97231a1',
+     'x-content-type-options': 'nosniff',
+     'x-cloudant-backend': 'bm-cc-dal-03',
+     via: '1.1 lb1.bm-cc-dal-03 (Glum/1.35.5)',
+     'strict-transport-security': 'max-age=31536000',
+     statusCode: 200,
+     uri: 'https://fc564f71-b15c-4f53-9749-bbc4da9340b1-bluemix:de8b215714586d9824c4a27d08c53f3a58135204e8391571f3a3f183f4c70cc9@fc564f71-b15c-4f53-9749-bbc4da9340b1-bluemix.cloudant.com/bill_details/_design/bills/_view/vw_all_bills' } } undefined
+[2017-06-16 22:21:36.993] [INFO] dev - { method: 'POST',
+  headers: 
+   { 'content-type': 'application/json',
+     accept: 'application/json' },
+  uri: 'https://fc564f71-b15c-4f53-9749-bbc4da9340b1-bluemix:de8b215714586d9824c4a27d08c53f3a58135204e8391571f3a3f183f4c70cc9@fc564f71-b15c-4f53-9749-bbc4da9340b1-bluemix.cloudant.com/bill_details',
+  body: '{"PAYER":"Arnab","BILLDATE":"2017-03-23","AMOUNT":"1000","BILLDESC":"chat"}' } undefined
+[2017-06-16 22:21:38.096] [INFO] dev - { err: null,
+  body: 
+   { ok: true,
+     id: '2a0ffbd843896f3d58978ff8f1692ea9',
+     rev: '1-f11a6754f75d29b2435d4cacbea6fd0c' },
+  headers: 
+   { 'cache-control': 'must-revalidate',
+     connection: 'close',
+     'content-type': 'application/json',
+     date: 'Fri, 16 Jun 2017 16:51:37 GMT',
+     location: 'https://fc564f71-b15c-4f53-9749-bbc4da9340b1-bluemix.cloudant.com/fc564f71-b15c-4f53-9749-bbc4da9340b1-bluemix%2Fbill_details/2a0ffbd843896f3d58978ff8f1692ea9',
+     'x-couch-request-id': '62fb080ad8',
+     'x-content-type-options': 'nosniff',
+     'x-cloudant-backend': 'bm-cc-dal-03',
+     via: '1.1 lb1.bm-cc-dal-03 (Glum/1.35.5)',
+     'strict-transport-security': 'max-age=31536000',
+     statusCode: 201,
+     uri: 'https://fc564f71-b15c-4f53-9749-bbc4da9340b1-bluemix:de8b215714586d9824c4a27d08c53f3a58135204e8391571f3a3f183f4c70cc9@fc564f71-b15c-4f53-9749-bbc4da9340b1-bluemix.cloudant.com/bill_details' } } undefined
+[2017-06-16 22:21:38.098] [INFO] dev - Cloudant API :utils.cloudantutils.insert_documentAdding record to database : bill_details , record :{"PAYER":"Arnab","BILLDATE":"2017-03-23","AMOUNT":"1000","BILLDESC":"chat"}
+[2017-06-16 22:21:38.098] [INFO] dev - Cloudant API :utils.cloudantutils.insert_document:{"cache-control":"must-revalidate","connection":"close","content-type":"application/json","date":"Fri, 16 Jun 2017 16:51:37 GMT","location":"https://fc564f71-b15c-4f53-9749-bbc4da9340b1-bluemix.cloudant.com/fc564f71-b15c-4f53-9749-bbc4da9340b1-bluemix%2Fbill_details/2a0ffbd843896f3d58978ff8f1692ea9","x-couch-request-id":"62fb080ad8","x-content-type-options":"nosniff","x-cloudant-backend":"bm-cc-dal-03","via":"1.1 lb1.bm-cc-dal-03 (Glum/1.35.5)","strict-transport-security":"max-age=31536000","statusCode":201,"uri":"https://fc564f71-b15c-4f53-9749-bbc4da9340b1-bluemix:de8b215714586d9824c4a27d08c53f3a58135204e8391571f3a3f183f4c70cc9@fc564f71-b15c-4f53-9749-bbc4da9340b1-bluemix.cloudant.com/bill_details"}
