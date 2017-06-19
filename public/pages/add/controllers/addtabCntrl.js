@@ -25,7 +25,7 @@ billapp.controller('addtabController', function($scope,$http) {
                    		}
                    ];
 	
-	var billdetailsURLPOST = "http://localhost:8001/api/v1/record/add";
+	var billdetailsURLPOST = "/api/v1/record/add";
 	function recordSubmit(){
 		
 		console.log('submit button clicked');

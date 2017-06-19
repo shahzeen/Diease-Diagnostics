@@ -17,7 +17,7 @@ billapp.controller('hometabController', function($scope,$http) {
         $scope.reverseSort = !$scope.reverseSort; //if true make it false and vice versa
     }
 	
-	var billdetailsURLGET = "http://localhost:8001/api/v1/record/show";
+	var billdetailsURLGET = "/api/v1/record/show";
 	
 	/* http get call */
 	var getFuction = $http({
