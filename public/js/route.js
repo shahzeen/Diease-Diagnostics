@@ -67,20 +67,20 @@ var billapp = angular.module('billapp', ['ionic', 'ui.bootstrap', 'moment-picker
     templateUrl: './pages/tabs/templates/maintab.htm',
     controller: 'maintabController'
   })
-  .state('maintab.home', {
-    url: '/home',
-    templateUrl: './pages/home/templates/hometab.htm',
-    controller: 'hometabController'
+  .state('maintab.dashboard', {
+    url: '/dashboard',
+    templateUrl: './pages/dashboard/templates/dashboardtab.htm',
+    controller: 'dashboardtabController'
   })
-  .state('maintab.add', {
-    url: '/add',
-    templateUrl: './pages/add/templates/addtab.htm',
-    controller: 'addtabController'
+  .state('maintab.billentry', {
+    url: '/billentry',
+    templateUrl: './pages/billentry/templates/billentrytab.htm',
+    controller: 'billentrytabController'
   })
-  .state('maintab.view', {
-    url: '/view',
-    templateUrl: './pages/view/templates/viewtab.htm',
-    controller: 'viewtabController'
+  .state('maintab.billupdate', {
+    url: '/billupdate',
+    templateUrl: './pages/billupdate/templates/billupdatetab.htm',
+    controller: 'billupdatetabController'
   })
 
   $urlRouterProvider.otherwise('/login');

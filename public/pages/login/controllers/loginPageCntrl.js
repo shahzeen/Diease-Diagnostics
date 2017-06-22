@@ -5,7 +5,7 @@ billapp.controller('loginPageController', function($scope, $http, $state) {
 		console.log('on Login btn click');
 		if($scope.usernameModel == 'room204c' && $scope.passwordModel == 'welcome'){
 			console.log('success');
-			$state.go('maintab.home');
+			$state.go('maintab.dashboard');
 		}else{
 			console.log('err');
 			swal({

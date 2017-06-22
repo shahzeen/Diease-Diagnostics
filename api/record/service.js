@@ -10,6 +10,7 @@ const file = 'api.record.index';
 
 exports = module.exports = {
 		save_data:save_data,
+		update_bill:update_bill,
 		show_bill_data:show_bill_data
 }
 
@@ -32,6 +33,42 @@ function save_data(request_data,cb){
 });
 }
 
+function update_bill(doc_id,request_data,cb){
+	let func = ".update_bill"
+	cloudant.merge_document('bill_details',doc_id,request_data,function(err,data){
+		if(err){
+			//console.log('error saving doc'+JSON.stringify(err));
+			logger.error(api+file+func+"ERROR updating bill details "+err);
+			cb(err,null);
+		}
+		else{
+			//console.log('save doc success');
+			console.log(data);
+			let op = {'status':200,'message':'Bill Details Updated successfully','id':data.id};
+			logger.info(api+file+func+"Bill Details updated "+data);
+			cb(null,op);
+		}
+});
+}
+
+//function update_bill(request_data,cb){
+//	let func = ".update_bill"
+//	
+//	cloudant.insert_document(request_data,'bill_update',function(err,data){
+//		if(err){
+//			//console.log('error saving doc'+JSON.stringify(err));
+//			logger.error(api+file+func+"ERROR updating bill detials "+err);
+//			cb(err,null);
+//		}
+//		else{
+//			//console.log('save doc success = '+data);
+//			let op = {'status':200,'message':'bill details updated successfully','id':data.id};
+//			logger.info(api+file+func+"Bill record updated "+data);
+//			cb(null,op);
+//		}
+//});
+//}
+
 function show_bill_data(cb) {
     let func = '.show_bill_data';
     let err_resp ={};
@@ -42,6 +79,7 @@ function show_bill_data(cb) {
                     let json = {};
                     //console.log('bill = '+JSON.stringify(bill));
                     try{
+                        json['BILLID'] = bill.doc.BILLID;
                         json['PAYER'] = bill.doc.PAYER;
                         json['BILLDATE'] = bill.doc.BILLDATE;
                         json['AMOUNT'] = bill.doc.AMOUNT;

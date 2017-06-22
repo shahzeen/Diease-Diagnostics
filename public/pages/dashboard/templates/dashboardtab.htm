@@ -1,5 +1,5 @@
 <div class="row">
-	<div class="col-md-8" >
+	<div class="col-md-12" >
 		<div class="card">
 			<div class="card-block" style="font-size: large; font-weight: bold; background-color: antiquewhite;">
 				<div class="col-md-1">Filter:</div>
@@ -34,6 +34,7 @@
 				<table class="table table-hover table-outline m-b-0 hidden-sm-down">
 					<thead class="thead-default" style="font-size: large; font-weight: bold;">
 						<tr>
+							<th class="text-center">Bill ID</th>
 							<th class="text-center">Bill Payer</th>
 							<th class="text-center">Date of Payment</th>
 							<th class="text-center">Paid Amount</th>
@@ -43,20 +44,41 @@
 							<th class="text-center">Sayan</th>
 							<th class="text-center">Tanmoy</th>
 							<th>Description</th>
+							<th></th>
 						</tr>
 					</thead>
 					<tbody>
 						<tr dir-paginate="data in bills.data | orderBy:sortKey:reverseSort | filter:search | itemsPerPage:10" 
 							style="font-size: large; font-weight: bold;">
-							<td class="text-center">{{data.PAYER}}</td>
-							<td class="text-center">{{data.BILLDATE}}</td>
-							<td class="text-center">{{data.AMOUNT}}</td>
-							<td class="text-center">{{data.ARNAB}}</td>
-							<td class="text-center">{{data.BIPRA}}</td>
-							<td class="text-center">{{data.SAURAV}}</td>
-							<td class="text-center">{{data.SAYAN}}</td>
-							<td class="text-center">{{data.TANMOY}}</td>
-							<td>{{data.BILLDESC}}</td>
+							<!-- show-->
+							<td ng-hide="edited === $index" class="text-center">{{data.BILLID}}</td>
+							<td ng-hide="edited === $index" class="text-center">{{data.PAYER}}</td>
+							<td ng-hide="edited === $index" class="text-center">{{data.BILLDATE}}</td>
+							<td ng-hide="edited === $index" class="text-center">{{data.AMOUNT}}</td>
+							<td ng-hide="edited === $index" class="text-center">{{data.ARNAB}}</td>
+							<td ng-hide="edited === $index" class="text-center">{{data.BIPRA}}</td>
+							<td ng-hide="edited === $index" class="text-center">{{data.SAURAV}}</td>
+							<td ng-hide="edited === $index" class="text-center">{{data.SAYAN}}</td>
+							<td ng-hide="edited === $index" class="text-center">{{data.TANMOY}}</td>
+							<td ng-hide="edited === $index">{{data.BILLDESC}}</td>
+							<td ng-hide="edited === $index">
+								<button class="btn btn-primary" type="button" ng-click="edit($index)">Edit</button>
+							</td>
+							<!-- edit-->
+							<td ng-show="edited === $index" class="text-center">{{data.BILLID}}</td>
+							<td ng-show="edited === $index" class="text-center">{{data.PAYER}}</td>
+							<td ng-show="edited === $index" class="text-center">{{data.BILLDATE}}</td>
+							<td ng-show="edited === $index" class="text-center">{{data.AMOUNT}}</td>
+							<td ng-show="edited === $index" class="text-center"><input type="number"  ng-model="arnab1001" value="{{data.ARNAB}}"></td>
+							<td ng-show="edited === $index" class="text-center"><input type="number" ng-model="bipra1005" value="{{data.BIPRA}}"></td>
+							<td ng-show="edited === $index" class="text-center"><input type="number" ng-model="saurav1002" value="{{data.SAURAV}}"></td>
+							<td ng-show="edited === $index" class="text-center"><input type="number" ng-model="sayan1004" value="{{data.SAYAN}}"></td>
+							<td ng-show="edited === $index" class="text-center"><input type="number" ng-model="tanmoy1003" value="{{data.TANMOY}}"></td>
+							<td ng-show="edited === $index">{{data.BILLDESC}}</td>
+							<td ng-show="edited === $index">
+								<button class="btn btn-success" type="button" ng-click="updateEdit($index)">Save</button>
+								<button class="btn btn-danger" type="button" ng-click="close()">Cancel</button>
+							</td>
 						</tr>
 					</tbody>
 				</table>
@@ -143,16 +165,16 @@
 			</div>
 		</div>
 	</div>
-	<div class="col-md-4" >
+	<!-- <div class="col-md-4" >
 		<div class="card">
 			<div class="card-header" style="background-color: #ed1f24; text-align: center; color: whitesmoke;">
 				<span  style="font-size: x-large;">Widget</span>
 			</div>
 			<div class="card-block" style="background-color: antiquewhite;">
 				<ds-widget-clock theme="theme" digital-format="format"></ds-widget-clock>
-				<!-- <ds-widget-clock show-digital theme="blue-light" digital-format="'hh:mm:ss a'"></ds-widget-clock>
-				<ds-widget-clock show-analog theme="blue-light"></ds-widget-clock> -->
+				<ds-widget-clock show-digital theme="blue-light" digital-format="'hh:mm:ss a'"></ds-widget-clock>
+				<ds-widget-clock show-analog theme="blue-light"></ds-widget-clock>
 			</div>
 		</div>
-	</div>
+	</div> -->
 </div>

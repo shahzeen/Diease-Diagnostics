@@ -20,6 +20,7 @@ const file = 'utils.cloudantutils';
 exports = module.exports = {
     readAll:readAll,
     insert_document:insert_document,
+	merge_document:merge_document
 };
 
 //read all documents
@@ -59,7 +60,6 @@ function readAll(dbname,design_doc,view_name,options,callback) {
 };
 
 
-
 var set_error_response=function(status,err,message){
 	const func= '.set_error_response';
 	let err_resp = {};
@@ -72,6 +72,7 @@ var set_error_response=function(status,err,message){
 	}	
 	return err_resp;
 }
+
 
 var setStatus=function(status,err){
 	const func= '.setErr';
@@ -113,3 +114,62 @@ function insert_document(data,dbname,cb){
 	}
 
 }
+
+function merge_document(dbname,doc_id,data,cb){
+	let func = '.merge_document';
+	let err_resp={};
+	try{
+		let db = nano.db.use(dbname);
+		db.get(doc_id,function(err,http_body,http_headers){
+				if(err){
+					err_resp =  set_error_response(err,'ERR500','Error in update operation, please try after some time ');
+					logger.error(api+file+func+'Error in update operation '+err);
+					logger.error(api+file+func+'database :'+dbname+', record :'+JSON.stringify(data));
+					cb(err_resp,null);
+				}else{
+					var existing = http_body;
+					
+					record_merge(existing.data,data,function(err,changed,merged_data){
+					if(!err){
+						if(changed){
+							existing.data = merged_data;
+							db.insert(existing,existing._id,function (error,http_body,http_headers) {
+								if(error){
+									err_resp =  set_error_response(error,'ERR500','Error in update operation, please try after some time ');
+									logger.error(api+file+func+'Error in update operation '+error);
+									logger.error(api+file+func+' User ['+user+']: database :'+dbname+', record :'+JSON.stringify(data));
+									cb(err_resp,null);
+								}else{	
+									logger.info(api+file+func+' Editing record to database : '+dbname+' , record :'+JSON.stringify(data));
+									logger.info(api+file+func+':'+JSON.stringify(http_headers));
+									logger.info(api+file+func+':'+JSON.stringify(http_body));
+									cb(null,http_body);	
+								}
+							});
+							}
+						}
+
+					});
+				}
+			});	
+	}catch(error){
+		err_resp =  set_error_response(error,'ERR500','Error in update operation, please try after some time ');
+		logger.error(api+file+func+'Error in update operation '+error);
+		cb(err_resp,null);
+	}
+
+}
+
+
+var record_merge = function(olddoc,newdoc,callback){
+	let is_changed = false;
+	for (var key in olddoc) {
+			if (newdoc.hasOwnProperty(key)) {
+				if (olddoc[key] != newdoc[key]) {
+		        	olddoc[key] = newdoc[key];
+					is_changed = true;
+		        }
+		    }
+		}
+		callback(null,is_changed,olddoc);
+} 
