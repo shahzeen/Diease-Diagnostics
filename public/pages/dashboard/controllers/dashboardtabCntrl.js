@@ -18,16 +18,20 @@ billapp.controller('dashboardtabController', function($scope,$http) {
     }
 	
 	var billdetailsURLGET = "/api/v1/record/show";
-	
 	/* http get call */
-	var getFuction = $http({
+	$http({
 		url: billdetailsURLGET,
 		method: "GET"
 	}).success(function(response) {
 			console.log('List of bills - Success response recieved. '+ JSON.stringify(response)); /* printing API response on console - unit testing purpose*/
 			$scope.bills  = response;
 			
-			$scope.arnabRECEIVE = 0;
+			$scope.billCalculate(response);
+		});
+
+		/* individual bill calculation */
+		$scope.billCalculate = function (response) {
+            $scope.arnabRECEIVE = 0;
 			$scope.bipraRECEIVE = 0;
 			$scope.sauravRECEIVE = 0;
 			$scope.sayanRECEIVE = 0;
@@ -118,7 +122,7 @@ billapp.controller('dashboardtabController', function($scope,$http) {
 			$scope.sauravPAY = $scope.sauravDUE1+$scope.sauravDUE2+$scope.sauravDUE3+$scope.sauravDUE4+$scope.sauravDUE5;
 			$scope.sayanPAY = $scope.sayanDUE1+$scope.sayanDUE2+$scope.sayanDUE3+$scope.sayanDUE4+$scope.sayanDUE5;
 			$scope.tanmoyPAY = $scope.tanmoyDUE1+$scope.tanmoyDUE2+$scope.tanmoyDUE3+$scope.tanmoyDUE4+$scope.tanmoyDUE5;
-		});
+        };
 
 		// $scope.delete = function (index) {
 		// 	console.log('index = '+index);
@@ -130,6 +134,76 @@ billapp.controller('dashboardtabController', function($scope,$http) {
         $scope.edit = function (index) {
             $scope.edited = index;
         };
+
+		/* Save edited fields */
+		function updateEdit(data,billupdate) {
+
+			var billupdateURLPUT = "/api/v1/record/update/"+data.doc_id;
+
+			var billupdateJSON = {
+				"AMOUNT": billupdate.amount,
+				"ARNAB": billupdate.arnab,
+				"BIPRA": billupdate.bipra,
+				"SAURAV": billupdate.saurav,
+				"SAYAN": billupdate.sayan,
+				"TANMOY": billupdate.tanmoy
+			}
+			console.log('url = '+billupdateURLPUT);
+			console.log('billupdateJSON = '+JSON.stringify(billupdateJSON));
+		var postFunction = $http({
+			    url: billupdateURLPUT,
+			    dataType:"json",
+			    crossDomain: true,
+			    header : {"Access-Control-Allow-Headers " : "Content-Type "},
+			    header : {"X-Requested-With ": "Content-Type" },
+			    data: billupdateJSON,
+			    method: "PUT"
+			 })
+			.success(function(response) {//success handling
+					console.log('Success response recieved '+ JSON.stringify(response));
+					
+					if(response.status == "500"){
+						console.log('success if');
+						swal({
+							   title: response.message,
+							   type: "error" });					
+					}else{
+						console.log('success else');
+						
+						if(response.status == "200"){
+							swal({
+								   title: response.message,
+								   type: "success" });
+							/* http get call */
+							$http({
+								url: billdetailsURLGET,
+								method: "GET"
+							}).success(function(response) {
+									console.log('List of bills - Success response recieved. '+ JSON.stringify(response)); /* printing API response on console - unit testing purpose*/
+									$scope.bills  = response;
+									
+									$scope.billCalculate(response);
+								});	
+						}	
+						else if(response.status == "422"){
+							swal({
+								   title: response.message,
+								   type: "warning" });
+						}
+					}
+				})
+				.error(function(response) {//err handling
+					console.log('err');
+					console.log('Error response recieved '+ JSON.stringify(response));
+					swal({
+						   title: response.message,
+						   type: "error" });
+				});
+            $scope.edited = -1;
+
+        };
+		$scope.updateEdit = updateEdit;
+
 		$scope.close = function () {
 			$scope.edited = -1;
 		};

@@ -79,6 +79,7 @@ function show_bill_data(cb) {
                     let json = {};
                     //console.log('bill = '+JSON.stringify(bill));
                     try{
+                        json['doc_id'] = bill.doc._id;
                         json['BILLID'] = bill.doc.BILLID;
                         json['PAYER'] = bill.doc.PAYER;
                         json['BILLDATE'] = bill.doc.BILLDATE;

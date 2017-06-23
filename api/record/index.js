@@ -132,16 +132,19 @@ record.put('/update/:id', function(req, res) {
 	    try {
 	        var doc_id = req.params.id;
 	        if(doc_id ===''){
-	            res.status(422).json({'status':422,'data':'Missing or Unparsebale Entity'});           
+	            res.status(422).json({'status':422,'message':'Missing or Unparsebale Entity','data':[]});           
 	        }
 	        else{
                 if(req.body && Object.keys(req.body).length > 0) {
                     let request_ip = req.body;
+                    console.log('doc_id = '+doc_id);
+                    console.log('request_ip = '+JSON.stringify(request_ip));
     	            service.update_bill(doc_id,request_ip,function(err,data){
                         if(!err){
                             res.status(200).json(data);
                         }else{
-                            logger.error(api+file+func+' Internal Server Error in updating bill details :'+err);  
+                            logger.error(api+file+func+' Internal Server Error in updating bill details :'+err); 
+                            console.log('try err = '+JSON.stringify(err)); 
                             res.status(500).json({'status':500,'message':'API Response Error','data':[]});
                         }
                     });
@@ -150,7 +153,8 @@ record.put('/update/:id', function(req, res) {
                 }
             }
 	       }catch(err){
-                logger.error(api+file+func+' Internal Server Error in updating bill details :'+err);  
+                logger.error(api+file+func+' Internal Server Error in updating bill details :'+err);
+                console.log('catch err = '+JSON.stringify(err));  
                 res.status(500).json({'status':500,'message':'API Response Error','data':[]});
 	     }
 	});

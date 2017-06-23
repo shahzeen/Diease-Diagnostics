@@ -68,15 +68,15 @@
 							<td ng-show="edited === $index" class="text-center">{{data.BILLID}}</td>
 							<td ng-show="edited === $index" class="text-center">{{data.PAYER}}</td>
 							<td ng-show="edited === $index" class="text-center">{{data.BILLDATE}}</td>
-							<td ng-show="edited === $index" class="text-center">{{data.AMOUNT}}</td>
-							<td ng-show="edited === $index" class="text-center"><input type="number"  ng-model="arnab1001" value="{{data.ARNAB}}"></td>
-							<td ng-show="edited === $index" class="text-center"><input type="number" ng-model="bipra1005" value="{{data.BIPRA}}"></td>
-							<td ng-show="edited === $index" class="text-center"><input type="number" ng-model="saurav1002" value="{{data.SAURAV}}"></td>
-							<td ng-show="edited === $index" class="text-center"><input type="number" ng-model="sayan1004" value="{{data.SAYAN}}"></td>
-							<td ng-show="edited === $index" class="text-center"><input type="number" ng-model="tanmoy1003" value="{{data.TANMOY}}"></td>
+							<td ng-show="edited === $index" class="text-center"><input type="number" ng-model="billupdate.amount" value="{{data.AMOUNT}}"></td>
+							<td ng-show="edited === $index" class="text-center"><input type="number" ng-model="billupdate.arnab" value="{{data.ARNAB}}"></td>
+							<td ng-show="edited === $index" class="text-center"><input type="number" ng-model="billupdate.bipra" value="{{data.BIPRA}}"></td>
+							<td ng-show="edited === $index" class="text-center"><input type="number" ng-model="billupdate.saurav" value="{{data.SAURAV}}"></td>
+							<td ng-show="edited === $index" class="text-center"><input type="number" ng-model="billupdate.sayan" value="{{data.SAYAN}}"></td>
+							<td ng-show="edited === $index" class="text-center"><input type="number" ng-model="billupdate.tanmoy" value="{{data.TANMOY}}"></td>
 							<td ng-show="edited === $index">{{data.BILLDESC}}</td>
 							<td ng-show="edited === $index">
-								<button class="btn btn-success" type="button" ng-click="updateEdit($index)">Save</button>
+								<button class="btn btn-success" type="button" ng-click="updateEdit(data,billupdate)">Save</button>
 								<button class="btn btn-danger" type="button" ng-click="close()">Cancel</button>
 							</td>
 						</tr>
