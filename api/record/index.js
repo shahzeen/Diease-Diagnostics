@@ -94,7 +94,7 @@ record.post('/add',  function(req, res) {
         }
        }catch(err){
         logger.error(api+file+func+' Internal Server Error in saving bill details :'+err);
-        console.log('catch err = '+JSON.stringify(err));
+        //console.log('catch err = '+JSON.stringify(err));
         res.status(500).json({'status':500,'message':'API Response Error'});
  }
 });
@@ -137,14 +137,14 @@ record.put('/update/:id', function(req, res) {
 	        else{
                 if(req.body && Object.keys(req.body).length > 0) {
                     let request_ip = req.body;
-                    console.log('doc_id = '+doc_id);
-                    console.log('request_ip = '+JSON.stringify(request_ip));
+                    // console.log('doc_id = '+doc_id);
+                    // console.log('request_ip = '+JSON.stringify(request_ip));
     	            service.update_bill(doc_id,request_ip,function(err,data){
                         if(!err){
                             res.status(200).json(data);
                         }else{
                             logger.error(api+file+func+' Internal Server Error in updating bill details :'+err); 
-                            console.log('try err = '+JSON.stringify(err)); 
+                            //console.log('try err = '+JSON.stringify(err)); 
                             res.status(500).json({'status':500,'message':'API Response Error','data':[]});
                         }
                     });
@@ -154,7 +154,7 @@ record.put('/update/:id', function(req, res) {
             }
 	       }catch(err){
                 logger.error(api+file+func+' Internal Server Error in updating bill details :'+err);
-                console.log('catch err = '+JSON.stringify(err));  
+                //console.log('catch err = '+JSON.stringify(err));  
                 res.status(500).json({'status':500,'message':'API Response Error','data':[]});
 	     }
 	});

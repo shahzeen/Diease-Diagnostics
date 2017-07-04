@@ -95,8 +95,8 @@ function insert_document(data,dbname,cb){
 		//console.log('data = '+JSON.stringify(data));
 		let db = nano.db.use(dbname);
 		db.insert(data,function (error,http_body,http_headers) {
-				console.log('headers = '+JSON.stringify(http_headers));
-				console.log('http_body = '+JSON.stringify(http_body));
+				// console.log('headers = '+JSON.stringify(http_headers));
+				// console.log('http_body = '+JSON.stringify(http_body));
 				if(error){
 					err_resp =  set_error_response(error,'ERR500','Error in save operation, please try after some time ');
 					logger.error(api+file+func+'Error in save operation '+error);
@@ -130,7 +130,7 @@ function merge_document(dbname,doc_id,data,cb){
 					cb(err_resp,null);
 				}else{
 					var existing = http_body;
-					console.log('data = '+JSON.stringify(data));
+					//console.log('data = '+JSON.stringify(data));
 					record_merge(existing,data,function(err,changed,merged_data){
 					if(!err){
 						if(changed){

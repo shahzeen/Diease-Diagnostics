@@ -25,13 +25,14 @@ billapp.controller('billentrytabController', function($scope,$http) {
 				"BILLID": $scope.billid,
 				"PAYER": $scope.bill_payer.name,
 				"BILLDATE": $scope.bill_date,
-				"AMOUNT": $scope.bill_amount.toString(),
-				"ARNAB": $scope.arnab1001.toString(),
-				"BIPRA": $scope.bipra1005.toString(),
-				"SAURAV": $scope.saurav1002.toString(),
-				"SAYAN": $scope.sayan1004.toString(),
-				"TANMOY": $scope.tanmoy1003.toString(),
-				"BILLDESC": $scope.bill_desc
+				"AMOUNT": $scope.bill_amount,
+				"ARNAB": $scope.arnab1001,
+				"BIPRA": $scope.bipra1005,
+				"SAURAV": $scope.saurav1002,
+				"SAYAN": $scope.sayan1004,
+				"TANMOY": $scope.tanmoy1003,
+				"BILLDESC": $scope.bill_desc,
+  				"DELETED_DATE": null
 		}
 		
 		var postFunction = $http({

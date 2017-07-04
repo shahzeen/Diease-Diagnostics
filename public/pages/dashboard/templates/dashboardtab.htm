@@ -61,6 +61,7 @@
 							<td ng-hide="edited === $index">{{data.BILLDESC}}</td>
 							<td ng-hide="edited === $index">
 								<button class="btn btn-primary" type="button" ng-click="edit($index)">Edit</button>
+								<button class="btn btn-danger" type="button" ng-click="remove(data,$index)">Delete</button>
 							</td>
 							<!-- edit-->
 							<td ng-show="edited === $index" class="text-center">{{data.PAYER}}</td>
