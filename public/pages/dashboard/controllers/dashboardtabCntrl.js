@@ -205,7 +205,8 @@ billapp.controller('dashboardtabController', function($scope,$http) {
 				"BIPRA": billupdate.bipra,
 				"SAURAV": billupdate.saurav,
 				"SAYAN": billupdate.sayan,
-				"TANMOY": billupdate.tanmoy
+				"TANMOY": billupdate.tanmoy,
+				"BILLDESC": billupdate.desc
 			}
 			console.log('url = '+billupdateURLPUT);
 			console.log('billupdateJSON = '+JSON.stringify(billupdateJSON));

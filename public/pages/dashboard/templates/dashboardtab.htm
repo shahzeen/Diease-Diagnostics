@@ -8,8 +8,8 @@
 						<span class="fa fa-sort-alpha-asc" aria-hidden="true" ng-show="!reverseSort"></span>
 						<span class="fa fa-sort-alpha-desc" aria-hidden="true" ng-show="reverseSort"></span>&nbsp;
 						By Bill Payer
-						<span ng-show="!reverseSort">&nbsp;v</span>
-						<span ng-show="reverseSort">&nbsp;^</span>
+						<span class="fa fa-sort-desc" aria-hidden="true" ng-show="!reverseSort"></span>
+						<span class="fa fa-sort-asc" aria-hidden="true" ng-show="reverseSort"></span>
 					</a>
 				</div>
 				<div class="col-md-2" style="cursor: pointer;">
@@ -17,8 +17,8 @@
 						<span class="fa fa-calendar" aria-hidden="true" ng-show="!reverseSort"></span>
 						<span class="fa fa-calendar" aria-hidden="true" ng-show="reverseSort"></span>&nbsp;
 						By Date
-						<span ng-show="!reverseSort">&nbsp;v</span>
-						<span ng-show="reverseSort">&nbsp;^</span>
+						<span class="fa fa-sort-desc" aria-hidden="true" ng-show="!reverseSort"></span>
+						<span class="fa fa-sort-asc" aria-hidden="true" ng-show="reverseSort"></span>
 					</a>
 				</div>				
 				<div class="col-md-2"></div>
@@ -72,7 +72,7 @@
 							<td ng-show="edited === $index" class="text-center"><input type="number" ng-model="billupdate.saurav" value="{{data.SAURAV}}"></td>
 							<td ng-show="edited === $index" class="text-center"><input type="number" ng-model="billupdate.sayan" value="{{data.SAYAN}}"></td>
 							<td ng-show="edited === $index" class="text-center"><input type="number" ng-model="billupdate.tanmoy" value="{{data.TANMOY}}"></td>
-							<td ng-show="edited === $index">{{data.BILLDESC}}</td>
+							<td ng-show="edited === $index"><textarea ng-model="billupdate.desc" value="{{data.BILLDESC}}"></textarea></td>
 							<td ng-show="edited === $index">
 								<button class="btn btn-success" type="button" ng-click="updateEdit(data,billupdate)">Save</button>
 								<button class="btn btn-danger" type="button" ng-click="close()">Cancel</button>
