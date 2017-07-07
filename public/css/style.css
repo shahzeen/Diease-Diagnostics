@@ -1638,8 +1638,8 @@
  	background-color: #263238
  }
  .thead-default th {
- 	color: #607d8b;
- 	background-color: #cfd8dc
+ 	color: #000;
+ 	background-color: #20a8d8
  }
  .table-inverse {
  	color: #cfd8dc;

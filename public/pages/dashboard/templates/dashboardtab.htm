@@ -1,7 +1,7 @@
 <div class="row">
-	<div class="col-md-12" >
+	<div class="col-md-12">
 		<div class="card">
-			<div class="card-block" style="font-size: large; font-weight: bold; background-color: antiquewhite;">
+			<div class="card-block" style="font-size: large; font-weight: bold; color: #fff; background-color: #24b755;">
 				<div class="col-md-1">Filter:</div>
 				<div class="col-md-2" style="cursor: pointer;">
 					<a ng-click="sort('PAYER')">
@@ -29,7 +29,7 @@
 			</div>
 		</div>
 		<div class="card">
-			<div class="card-block" style="background-color: antiquewhite;">
+			<div class="card-block">
 			<div class="table-responsive">
 				<table class="table table-hover table-outline m-b-0 hidden-sm-down">
 					<thead class="thead-default" style="font-size: large; font-weight: bold;">
@@ -48,7 +48,7 @@
 					</thead>
 					<tbody>
 						<tr dir-paginate="data in bills.data | orderBy:sortKey:reverseSort | filter:search | itemsPerPage:10" 
-							style="font-size: large; font-weight: bold;">
+							style="font-size: large; font-weight: bold; color: #000;">
 							<!-- show-->
 							<td ng-hide="edited === $index" class="text-center">{{data.PAYER}}</td>
 							<td ng-hide="edited === $index" class="text-center">{{data.BILLDATE}}</td>
@@ -89,77 +89,104 @@
 			</div>
 		</div>
 		<div class="card">
-			<div class="card-header" style="background-color: #ed1f24; text-align: center; color: whitesmoke;">
+			<div class="card-header" style="font-weight: bold; background-color: #24b755; text-align: center; color: #fff;">
 				<span  style="font-size: x-large;">Individual Bill</span>
 			</div>
-			<div class="card-block" style="background-color: antiquewhite;"> <!-- height: 638px; -->
-				<!-- <div style="font-size: large; font-weight: bold;">+ : <span class="text-muted">receive amount</span> &nbsp;&nbsp;&nbsp;&nbsp; - : <span class="text-muted">pay amount</span></div><br> -->
-				<table class="table table-hover table-outline m-b-0 hidden-sm-down">
-					<thead class="thead-default" style="font-size: large; font-weight: bold;">
-						<tr>
-							<th class="text-center">Payee</th>
-							<th class="text-center">Receive</th>
-							<th class="text-center">Pay</th>
-							<th class="text-center">Arnab</th>
-							<th class="text-center">Bipra</th>
-							<th class="text-center">Saurav</th>
-							<th class="text-center">Sayan</th>
-							<th class="text-center">Tanmoy</th>
-						</tr>
-					</thead>
-					<tbody>
-						<tr style="font-size: large; font-weight: bold;">
-							<td class="text-center">Arnab</td>
-							<td class="text-center">{{arnabRECEIVE}}</td>
-							<td class="text-center">{{arnabPAY}}</td>
-							<td class="text-center">{{arnabDUE1}}</td>
-							<td class="text-center">{{bipraDUE1}}</td>
-							<td class="text-center">{{sauravDUE1}}</td>
-							<td class="text-center">{{sayanDUE1}}</td>
-							<td class="text-center">{{tanmoyDUE1}}</td>
-						</tr>
-						<tr style="font-size: large; font-weight: bold;">
-							<td class="text-center">Bipra</td>
-							<td class="text-center">{{bipraRECEIVE}}</td>
-							<td class="text-center">{{bipraPAY}}</td>
-							<td class="text-center">{{arnabDUE2}}</td>
-							<td class="text-center">{{bipraDUE2}}</td>
-							<td class="text-center">{{sauravDUE2}}</td>
-							<td class="text-center">{{sayanDUE2}}</td>
-							<td class="text-center">{{tanmoyDUE2}}</td>
-						</tr>
-						<tr style="font-size: large; font-weight: bold;">
-							<td class="text-center">Saurav</td>
-							<td class="text-center">{{sauravRECEIVE}}</td>
-							<td class="text-center">{{sauravPAY}}</td>
-							<td class="text-center">{{arnabDUE3}}</td>
-							<td class="text-center">{{bipraDUE3}}</td>
-							<td class="text-center">{{sauravDUE3}}</td>
-							<td class="text-center">{{sayanDUE3}}</td>
-							<td class="text-center">{{tanmoyDUE3}}</td>
-						</tr>
-						<tr style="font-size: large; font-weight: bold;">
-							<td class="text-center">Sayan</td>
-							<td class="text-center">{{sayanRECEIVE}}</td>
-							<td class="text-center">{{sayanPAY}}</td>
-							<td class="text-center">{{arnabDUE4}}</td>
-							<td class="text-center">{{bipraDUE4}}</td>
-							<td class="text-center">{{sauravDUE4}}</td>
-							<td class="text-center">{{sayanDUE4}}</td>
-							<td class="text-center">{{tanmoyDUE4}}</td>
-						</tr>
-						<tr style="font-size: large; font-weight: bold;">
-							<td class="text-center">Tanmoy</td>
-							<td class="text-center">{{tanmoyRECEIVE}}</td>
-							<td class="text-center">{{tanmoyPAY}}</td>
-							<td class="text-center">{{arnabDUE5}}</td>
-							<td class="text-center">{{bipraDUE5}}</td>
-							<td class="text-center">{{sauravDUE5}}</td>
-							<td class="text-center">{{sayanDUE5}}</td>
-							<td class="text-center">{{tanmoyDUE5}}</td>
-						</tr>
-					</tbody>
-				</table>
+			<div class="card-block">
+				<div class="col-md-4">
+					<table class="table table-hover table-bordered table-outline m-b-0 hidden-sm-down">
+						<thead class="thead-default" style="font-size: large; font-weight: bold;">
+							<tr>
+								<th class="text-center">Roommate</th>
+								<th class="text-center">Receive</th>
+								<th class="text-center">Pay</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr style="font-size: large; font-weight: bold; color: #000;">
+								<td class="text-center">Arnab</td>
+								<td class="text-center">{{arnabRECEIVE}}</td>
+								<td class="text-center">{{arnabPAY}}</td>
+							</tr>
+							<tr style="font-size: large; font-weight: bold; color: #000;">
+								<td class="text-center">Bipra</td>
+								<td class="text-center">{{bipraRECEIVE}}</td>
+								<td class="text-center">{{bipraPAY}}</td>
+							</tr>
+							<tr style="font-size: large; font-weight: bold; color: #000;">
+								<td class="text-center">Saurav</td>
+								<td class="text-center">{{sauravRECEIVE}}</td>
+								<td class="text-center">{{sauravPAY}}</td>
+							</tr>
+							<tr style="font-size: large; font-weight: bold; color: #000;">
+								<td class="text-center">Sayan</td>
+								<td class="text-center">{{sayanRECEIVE}}</td>
+								<td class="text-center">{{sayanPAY}}</td>
+							</tr>
+							<tr style="font-size: large; font-weight: bold; color: #000;">
+								<td class="text-center">Tanmoy</td>
+								<td class="text-center">{{tanmoyRECEIVE}}</td>
+								<td class="text-center">{{tanmoyPAY}}</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+				<div class="col-md-8">
+					<table class="table table-hover table-bordered table-outline m-b-0 hidden-sm-down">
+						<thead class="thead-default" style="font-size: large; font-weight: bold;">
+							<tr>
+								<th class="text-center">Payee</th>
+								<th class="text-center">Arnab</th>
+								<th class="text-center">Bipra</th>
+								<th class="text-center">Saurav</th>
+								<th class="text-center">Sayan</th>
+								<th class="text-center">Tanmoy</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr style="font-size: large; font-weight: bold; color: #000;">
+								<td class="text-center">Arnab</td>
+								<td class="text-center">{{arnabDUE1}}</td>
+								<td class="text-center">{{bipraDUE1}}</td>
+								<td class="text-center">{{sauravDUE1}}</td>
+								<td class="text-center">{{sayanDUE1}}</td>
+								<td class="text-center">{{tanmoyDUE1}}</td>
+							</tr>
+							<tr style="font-size: large; font-weight: bold; color: #000;">
+								<td class="text-center">Bipra</td>
+								<td class="text-center">{{arnabDUE2}}</td>
+								<td class="text-center">{{bipraDUE2}}</td>
+								<td class="text-center">{{sauravDUE2}}</td>
+								<td class="text-center">{{sayanDUE2}}</td>
+								<td class="text-center">{{tanmoyDUE2}}</td>
+							</tr>
+							<tr style="font-size: large; font-weight: bold; color: #000;">
+								<td class="text-center">Saurav</td>
+								<td class="text-center">{{arnabDUE3}}</td>
+								<td class="text-center">{{bipraDUE3}}</td>
+								<td class="text-center">{{sauravDUE3}}</td>
+								<td class="text-center">{{sayanDUE3}}</td>
+								<td class="text-center">{{tanmoyDUE3}}</td>
+							</tr>
+							<tr style="font-size: large; font-weight: bold; color: #000;">
+								<td class="text-center">Sayan</td>
+								<td class="text-center">{{arnabDUE4}}</td>
+								<td class="text-center">{{bipraDUE4}}</td>
+								<td class="text-center">{{sauravDUE4}}</td>
+								<td class="text-center">{{sayanDUE4}}</td>
+								<td class="text-center">{{tanmoyDUE4}}</td>
+							</tr>
+							<tr style="font-size: large; font-weight: bold; color: #000;">
+								<td class="text-center">Tanmoy</td>
+								<td class="text-center">{{arnabDUE5}}</td>
+								<td class="text-center">{{bipraDUE5}}</td>
+								<td class="text-center">{{sauravDUE5}}</td>
+								<td class="text-center">{{sayanDUE5}}</td>
+								<td class="text-center">{{tanmoyDUE5}}</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
 			</div>
 		</div>
 	</div>
