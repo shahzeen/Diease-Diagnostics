@@ -60,19 +60,19 @@
 							<td ng-hide="edited === $index" class="text-center">{{data.TANMOY}}</td>
 							<td ng-hide="edited === $index">{{data.BILLDESC}}</td>
 							<td ng-hide="edited === $index">
-								<button class="btn btn-primary" type="button" ng-click="edit($index)">Edit</button>
+								<button class="btn btn-primary" type="button" ng-click="edit(data,$index)">Edit</button>
 								<button class="btn btn-danger" type="button" ng-click="remove(data,$index)">Delete</button>
 							</td>
 							<!-- edit-->
 							<td ng-show="edited === $index" class="text-center">{{data.PAYER}}</td>
 							<td ng-show="edited === $index" class="text-center">{{data.BILLDATE}}</td>
-							<td ng-show="edited === $index" class="text-center"><input type="number" ng-model="billupdate.amount" value="{{data.AMOUNT}}"></td>
-							<td ng-show="edited === $index" class="text-center"><input type="number" ng-model="billupdate.arnab" value="{{data.ARNAB}}"></td>
-							<td ng-show="edited === $index" class="text-center"><input type="number" ng-model="billupdate.bipra" value="{{data.BIPRA}}"></td>
-							<td ng-show="edited === $index" class="text-center"><input type="number" ng-model="billupdate.saurav" value="{{data.SAURAV}}"></td>
-							<td ng-show="edited === $index" class="text-center"><input type="number" ng-model="billupdate.sayan" value="{{data.SAYAN}}"></td>
-							<td ng-show="edited === $index" class="text-center"><input type="number" ng-model="billupdate.tanmoy" value="{{data.TANMOY}}"></td>
-							<td ng-show="edited === $index">{{data.BILLDESC}}</td>
+							<td ng-show="edited === $index" class="text-center"><input type="number" class="form-control" ng-model="billupdate.amount" value="{{data.AMOUNT}}" style="color: #000;"></td>
+							<td ng-show="edited === $index" class="text-center"><input type="number" class="form-control" ng-model="billupdate.arnab" value="{{data.ARNAB}}" style="color: #000;"></td>
+							<td ng-show="edited === $index" class="text-center"><input type="number" class="form-control" ng-model="billupdate.bipra" value="{{data.BIPRA}}" style="color: #000;"></td>
+							<td ng-show="edited === $index" class="text-center"><input type="number" class="form-control" ng-model="billupdate.saurav" value="{{data.SAURAV}}" style="color: #000;"></td>
+							<td ng-show="edited === $index" class="text-center"><input type="number" class="form-control" ng-model="billupdate.sayan" value="{{data.SAYAN}}" style="color: #000;"></td>
+							<td ng-show="edited === $index" class="text-center"><input type="number" class="form-control" ng-model="billupdate.tanmoy" value="{{data.TANMOY}}" style="color: #000;"></td>
+							<td ng-show="edited === $index"><textarea class="form-control" id="desc" ng-model="billupdate.billdesc" rows="5" style="color: #000;"></textarea></td>
 							<td ng-show="edited === $index">
 								<button class="btn btn-success" type="button" ng-click="updateEdit(data,billupdate)">Save</button>
 								<button class="btn btn-danger" type="button" ng-click="close()">Cancel</button>

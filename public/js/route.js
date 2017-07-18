@@ -6,7 +6,7 @@
 // the 2nd parameter is an array of 'requires'
 // 'starter.services' is found in services.js
 // 'starter.controllers' is found in controllers.js
-var billapp = angular.module('billapp', ['ionic', 'ui.bootstrap', 'moment-picker', 'angularUtils.directives.dirPagination', 'ds.clock'])
+var billapp = angular.module('billapp', ['ionic', 'ui.bootstrap', 'moment-picker', '720kb.datepicker', 'angularUtils.directives.dirPagination', 'ds.clock'])
 .filter('unique', function() {
    // we will return a function which will take in a collection
    // and a keyname

@@ -1,4 +1,4 @@
-<div class="container" style="">
+<div class="container">
 	<div class="card">
 		<div class="card-block" style="background-color: #20a8d8; border: 2px solid #000; border-radius: 5px;">
 		<ng-form name="addrecord" novalidate>
@@ -6,7 +6,7 @@
 				<div class="col-sm-6 col-sm-offset-3">
 					<div class="form-group">
 						<label>Bill Payer:</label>
-						<select type="text" class="form-control" ng-options="bp.name for bp in billpayer | orderBy: 'name'" ng-model="bill_payer" ng-required="true">
+						<select type="text" class="form-control" ng-options="bp.name for bp in billpayer | orderBy: 'name'" ng-model="bill_payer" style="color: #000;" ng-required="true">
 							<option value="">--Select Bill Payer--</option>
 						</select>
 					</div>
@@ -17,50 +17,53 @@
 							<span class="input-group-addon">
 						        <i class="glyphicon glyphicon-calendar"></i>
 						    </span>
-						    <input class="form-control" placeholder="Select a date" ng-model="bill_date" ng-model-options="{ updateOn: 'blur' }">
+						    <input class="form-control" placeholder="Select a date" ng-model="bill_date" ng-model-options="{ updateOn: 'blur' }" style="color: #000;">
 						</div>
+						<!-- <datepicker date-format="yyyy-MM-dd">
+							<input placeholder="Date Picker" type="text"/>
+						</datepicker> -->
 					</div>
 					
 					<div class="form-group">
 						<label>Paid Amount:</label>
-						<input type="number" class="form-control" placeholder="Enter paid amount" ng-model="bill_amount" ng-required="true">
+						<input type="number" class="form-control" placeholder="Enter paid amount" ng-model="bill_amount" style="color: #000;" ng-required="true">
 					</div>
 					
 					<div class="col-xs-1"></div>
 					<div class="col-xs-2">
 						<div class="form-group">
 							<label>Arnab:</label>
-							<input type="number" class="form-control" ng-model="arnab1001" ng-init="arnab1001=0" ng-required="true">
+							<input type="number" class="form-control" ng-model="arnab1001" ng-init="arnab1001=0" style="color: #000;" ng-required="true">
 						</div>
 					</div>
 					<div class="col-xs-2">
 						<div class="form-group">
 							<label>Bipra:</label>
-							<input type="number" class="form-control" ng-model="bipra1005" ng-init="bipra1005=0" ng-required="true">
+							<input type="number" class="form-control" ng-model="bipra1005" ng-init="bipra1005=0" style="color: #000;" ng-required="true">
 						</div>
 					</div>
 					<div class="col-xs-2">
 						<div class="form-group">
 							<label>Saurav:</label>
-							<input type="number" class="form-control" ng-model="saurav1002" ng-init="saurav1002=0" ng-required="true">
+							<input type="number" class="form-control" ng-model="saurav1002" ng-init="saurav1002=0" style="color: #000;" ng-required="true">
 						</div>
 					</div>
 					<div class="col-xs-2">
 						<div class="form-group">
 							<label>Sayan:</label>
-							<input type="number" class="form-control" ng-model="sayan1004" ng-init="sayan1004=0" ng-required="true">
+							<input type="number" class="form-control" ng-model="sayan1004" ng-init="sayan1004=0" style="color: #000;" ng-required="true">
 						</div>
 					</div>
 					<div class="col-xs-2">
 						<div class="form-group">
 							<label>Tanmoy:</label>
-							<input type="number" class="form-control" ng-model="tanmoy1003" ng-init="tanmoy1003=0" ng-required="true">
+							<input type="number" class="form-control" ng-model="tanmoy1003" ng-init="tanmoy1003=0" style="color: #000;" ng-required="true">
 						</div>
 					</div>
 					
 					<div class="form-group">
 						<label>Description:</label>
-						<textarea class="form-control" placeholder="Enter bill description" ng-model="bill_desc" rows="10" ng-required="true"></textarea>
+						<textarea class="form-control" placeholder="Enter bill description" ng-model="bill_desc" rows="10" style="color: #000;" ng-required="true"></textarea>
 					</div>				
 				</div>
 				<div class="row">

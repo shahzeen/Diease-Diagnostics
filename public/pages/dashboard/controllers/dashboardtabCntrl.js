@@ -190,8 +190,9 @@ billapp.controller('dashboardtabController', function($scope,$http) {
 		
 		$scope.edited = -1;
 
-        $scope.edit = function (index) {
+        $scope.edit = function (data,index) {
             $scope.edited = index;
+			document.getElementById("desc").value = data.BILLDESC;
         };
 
 		/* Save edited fields */
@@ -206,7 +207,7 @@ billapp.controller('dashboardtabController', function($scope,$http) {
 				"SAURAV": billupdate.saurav,
 				"SAYAN": billupdate.sayan,
 				"TANMOY": billupdate.tanmoy,
-				//"BILLDESC": billupdate.desc
+				"BILLDESC": billupdate.billdesc
 			}
 			console.log('url = '+billupdateURLPUT);
 			console.log('billupdateJSON = '+JSON.stringify(billupdateJSON));
