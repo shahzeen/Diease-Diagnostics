@@ -193,6 +193,7 @@ billapp.controller('dashboardtabController', function($scope,$http) {
         $scope.edit = function (data,index) {
             $scope.edited = index;
 			document.getElementById("desc").value = data.BILLDESC;
+			//$scope.billupdate.billdesc = data.BILLDESC;
         };
 
 		/* Save edited fields */
@@ -239,12 +240,12 @@ billapp.controller('dashboardtabController', function($scope,$http) {
 							$http({
 								url: billdetailsURLGET,
 								method: "GET"
-							}).success(function(response) {
+								}).success(function(response) {
 									console.log('List of bills - Success response recieved. '+ JSON.stringify(response)); /* printing API response on console - unit testing purpose*/
 									$scope.bills  = response;
 									
 									$scope.billCalculate(response);
-								});	
+							});	
 						}	
 						else if(response.status == "422"){
 							swal({
@@ -267,5 +268,14 @@ billapp.controller('dashboardtabController', function($scope,$http) {
 
 		$scope.close = function () {
 			$scope.edited = -1;
+			/* http get call */
+			$http({
+				url: billdetailsURLGET,
+				method: "GET"
+				}).success(function(response) {
+					console.log('List of bills - Success response recieved. '+ JSON.stringify(response)); /* printing API response on console - unit testing purpose*/
+					$scope.bills  = response;
+					$scope.billCalculate(response);
+			});
 		};
 });
