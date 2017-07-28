@@ -193,6 +193,7 @@ billapp.controller('dashboardtabController', function($scope,$http) {
         $scope.edit = function (data,index) {
             $scope.edited = index;
 			document.getElementById("desc").value = data.BILLDESC;
+			console.log('bill desc: '+data.BILLDESC);
 			//$scope.billupdate.billdesc = data.BILLDESC;
         };
 

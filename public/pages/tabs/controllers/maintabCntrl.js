@@ -1,5 +1,5 @@
 'use strict'
-billapp.controller('maintabController', function($scope, $state) {
+billapp.controller('maintabController', function($scope, $state, $modal) {
 	console.log('Main tab controller called');
 	$scope.billpayer = [
                    		{ 	"id": "1001",
@@ -18,7 +18,15 @@ billapp.controller('maintabController', function($scope, $state) {
                    			"name": "Bipra"
                    		}
                    ];
-	
+
+	$scope.about = function () {
+		console.log('opening pop up');
+		var modalInstance = $modal.open({
+			templateUrl: './pages/about/templates/abouttab.htm',
+			controller: 'abouttabController',
+		});
+	}
+
 	$scope.logoutBtnClick = function(){
 		console.log('Logout button clicked');
 		$state.go('login');
