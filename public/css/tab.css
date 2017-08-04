@@ -88,3 +88,22 @@
     font-size: x-large;
     font-weight: bold;
 }
+
+.green {
+  color: rgb(71, 233, 75);
+  font-weight: 700;
+}
+
+.red {
+  color: red;
+  font-weight: 700;
+}
+
+.black {
+  color: rgb(68, 68, 68);
+  font-weight: 700;
+}
+
+.grey {
+    background-color: #f1f1f1;
+}

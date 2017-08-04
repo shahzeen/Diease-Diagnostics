@@ -200,6 +200,7 @@ billapp.controller('dashboardtabController', function($scope,$http) {
 			var billupdateURLPUT = "/api/v1/record/update/"+data.doc_id;
 
 			var billupdateJSON = {
+				"BILLDATE": billupdate.billdate,
 				"AMOUNT": billupdate.amount,
 				"ARNAB": billupdate.arnab,
 				"BIPRA": billupdate.bipra,

@@ -46,20 +46,19 @@
 							<th></th>
 						</tr>
 					</thead>
-					<tbody>
-						<tr dir-paginate="data in bills.data | orderBy:sortKey:reverseSort | filter:search | itemsPerPage:10" 
-							style="font-size: large; font-weight: bold; color: #000;">
+					<tbody  class="black">
+						<tr dir-paginate="data in bills.data | orderBy:sortKey:reverseSort | filter:search | itemsPerPage:10">
 							<!-- show-->
-							<td ng-hide="edited === $index" class="text-center">{{data.PAYER}}</td>
-							<td ng-hide="edited === $index" class="text-center">{{data.BILLDATE}}</td>
-							<td ng-hide="edited === $index" class="text-center">{{data.AMOUNT}}</td>
-							<td ng-hide="edited === $index" class="text-center">{{data.ARNAB}}</td>
-							<td ng-hide="edited === $index" class="text-center">{{data.BIPRA}}</td>
-							<td ng-hide="edited === $index" class="text-center">{{data.SAURAV}}</td>
-							<td ng-hide="edited === $index" class="text-center">{{data.SAYAN}}</td>
-							<td ng-hide="edited === $index" class="text-center">{{data.TANMOY}}</td>
-							<td ng-hide="edited === $index">{{data.BILLDESC}}</td>
-							<td ng-hide="edited === $index">
+							<td ng-hide="edited === $index" class="text-center" ng-class="{'grey' : $odd}">{{data.PAYER}}</td>
+							<td ng-hide="edited === $index" class="text-center" ng-class="{'grey' : $odd}">{{data.BILLDATE}}</td>
+							<td ng-hide="edited === $index" class="text-center" ng-class="{'grey' : $odd}">₹ {{data.AMOUNT}}</td>
+							<td ng-hide="edited === $index" class="text-center" ng-class="{'grey' : $odd}">₹ {{data.ARNAB}}</td>
+							<td ng-hide="edited === $index" class="text-center" ng-class="{'grey' : $odd}">₹ {{data.BIPRA}}</td>
+							<td ng-hide="edited === $index" class="text-center" ng-class="{'grey' : $odd}">₹ {{data.SAURAV}}</td>
+							<td ng-hide="edited === $index" class="text-center" ng-class="{'grey' : $odd}">₹ {{data.SAYAN}}</td>
+							<td ng-hide="edited === $index" class="text-center" ng-class="{'grey' : $odd}">₹ {{data.TANMOY}}</td>
+							<td ng-hide="edited === $index" ng-class="{'grey' : $odd}">{{data.BILLDESC}}</td>
+							<td ng-hide="edited === $index" ng-class="{'grey' : $odd}">
 								<button class="btn btn-primary" type="button" ng-click="edit($index)">Edit</button>
 								<button class="btn btn-danger" type="button" ng-click="remove(data,$index)">Delete</button>
 							</td>
@@ -72,7 +71,7 @@
 							<td ng-show="edited === $index" class="text-center"><input type="number" class="form-control" ng-model="billupdate.saurav" value="{{data.SAURAV}}" style="color: #000;"></td>
 							<td ng-show="edited === $index" class="text-center"><input type="number" class="form-control" ng-model="billupdate.sayan" value="{{data.SAYAN}}" style="color: #000;"></td>
 							<td ng-show="edited === $index" class="text-center"><input type="number" class="form-control" ng-model="billupdate.tanmoy" value="{{data.TANMOY}}" style="color: #000;"></td>
-							<td ng-show="edited === $index"><textarea class="form-control" id="desc" ng-model="billupdate.billdesc" rows="5" ng-init="billupdate.billdesc=data.BILLDESC" style="color: #000;"></textarea></td>
+							<td ng-show="edited === $index"><textarea class="form-control" id="desc" ng-model="billupdate.billdesc" rows="3" ng-init="billupdate.billdesc=data.BILLDESC" style="color: #000;"></textarea></td>
 							<td ng-show="edited === $index">
 								<button class="btn btn-success" type="button" ng-click="updateEdit(data,billupdate)">Save</button>
 								<button class="btn btn-danger" type="button" ng-click="close()">Cancel</button>
@@ -102,31 +101,31 @@
 								<th class="text-center">Pay</th>
 							</tr>
 						</thead>
-						<tbody>
-							<tr style="font-size: large; font-weight: bold; color: #000;">
+						<tbody class="black">
+							<tr>
 								<td class="text-center">Arnab</td>
-								<td class="text-center">{{arnabRECEIVE}}</td>
-								<td class="text-center">{{arnabPAY}}</td>
+								<td class="text-center" style="color: rgb(71, 233, 75);">₹ {{arnabRECEIVE}}</td>
+								<td class="text-center" style="color: red">₹ {{arnabPAY}}</td>
 							</tr>
-							<tr style="font-size: large; font-weight: bold; color: #000;">
+							<tr>
 								<td class="text-center">Bipra</td>
-								<td class="text-center">{{bipraRECEIVE}}</td>
-								<td class="text-center">{{bipraPAY}}</td>
+								<td class="text-center" style="color: rgb(71, 233, 75);">₹ {{bipraRECEIVE}}</td>
+								<td class="text-center" style="color: red">₹ {{bipraPAY}}</td>
 							</tr>
-							<tr style="font-size: large; font-weight: bold; color: #000;">
+							<tr>
 								<td class="text-center">Saurav</td>
-								<td class="text-center">{{sauravRECEIVE}}</td>
-								<td class="text-center">{{sauravPAY}}</td>
+								<td class="text-center" style="color: rgb(71, 233, 75);">₹ {{sauravRECEIVE}}</td>
+								<td class="text-center" style="color: red">₹ {{sauravPAY}}</td>
 							</tr>
-							<tr style="font-size: large; font-weight: bold; color: #000;">
+							<tr>
 								<td class="text-center">Sayan</td>
-								<td class="text-center">{{sayanRECEIVE}}</td>
-								<td class="text-center">{{sayanPAY}}</td>
+								<td class="text-center" style="color: rgb(71, 233, 75);">₹ {{sayanRECEIVE}}</td>
+								<td class="text-center" style="color: red">₹ {{sayanPAY}}</td>
 							</tr>
-							<tr style="font-size: large; font-weight: bold; color: #000;">
+							<tr>
 								<td class="text-center">Tanmoy</td>
-								<td class="text-center">{{tanmoyRECEIVE}}</td>
-								<td class="text-center">{{tanmoyPAY}}</td>
+								<td class="text-center" style="color: rgb(71, 233, 75);">₹ {{tanmoyRECEIVE}}</td>
+								<td class="text-center" style="color: red">₹ {{tanmoyPAY}}</td>
 							</tr>
 						</tbody>
 					</table>
@@ -143,46 +142,46 @@
 								<th class="text-center">Tanmoy</th>
 							</tr>
 						</thead>
-						<tbody>
-							<tr style="font-size: large; font-weight: bold; color: #000;">
+						<tbody class="black">
+							<tr>
 								<td class="text-center">Arnab</td>
-								<td class="text-center">{{arnabDUE1}}</td>
-								<td class="text-center">{{bipraDUE1}}</td>
-								<td class="text-center">{{sauravDUE1}}</td>
-								<td class="text-center">{{sayanDUE1}}</td>
-								<td class="text-center">{{tanmoyDUE1}}</td>
+								<td class="text-center">₹ {{arnabDUE1}}</td>
+								<td class="text-center">₹ {{bipraDUE1}}</td>
+								<td class="text-center">₹ {{sauravDUE1}}</td>
+								<td class="text-center">₹ {{sayanDUE1}}</td>
+								<td class="text-center">₹ {{tanmoyDUE1}}</td>
 							</tr>
-							<tr style="font-size: large; font-weight: bold; color: #000;">
+							<tr>
 								<td class="text-center">Bipra</td>
-								<td class="text-center">{{arnabDUE2}}</td>
-								<td class="text-center">{{bipraDUE2}}</td>
-								<td class="text-center">{{sauravDUE2}}</td>
-								<td class="text-center">{{sayanDUE2}}</td>
-								<td class="text-center">{{tanmoyDUE2}}</td>
+								<td class="text-center">₹ {{arnabDUE2}}</td>
+								<td class="text-center">₹ {{bipraDUE2}}</td>
+								<td class="text-center">₹ {{sauravDUE2}}</td>
+								<td class="text-center">₹ {{sayanDUE2}}</td>
+								<td class="text-center">₹ {{tanmoyDUE2}}</td>
 							</tr>
-							<tr style="font-size: large; font-weight: bold; color: #000;">
+							<tr>
 								<td class="text-center">Saurav</td>
-								<td class="text-center">{{arnabDUE3}}</td>
-								<td class="text-center">{{bipraDUE3}}</td>
-								<td class="text-center">{{sauravDUE3}}</td>
-								<td class="text-center">{{sayanDUE3}}</td>
-								<td class="text-center">{{tanmoyDUE3}}</td>
+								<td class="text-center">₹ {{arnabDUE3}}</td>
+								<td class="text-center">₹ {{bipraDUE3}}</td>
+								<td class="text-center">₹ {{sauravDUE3}}</td>
+								<td class="text-center">₹ {{sayanDUE3}}</td>
+								<td class="text-center">₹ {{tanmoyDUE3}}</td>
 							</tr>
-							<tr style="font-size: large; font-weight: bold; color: #000;">
+							<tr>
 								<td class="text-center">Sayan</td>
-								<td class="text-center">{{arnabDUE4}}</td>
-								<td class="text-center">{{bipraDUE4}}</td>
-								<td class="text-center">{{sauravDUE4}}</td>
-								<td class="text-center">{{sayanDUE4}}</td>
-								<td class="text-center">{{tanmoyDUE4}}</td>
+								<td class="text-center">₹ {{arnabDUE4}}</td>
+								<td class="text-center">₹ {{bipraDUE4}}</td>
+								<td class="text-center">₹ {{sauravDUE4}}</td>
+								<td class="text-center">₹ {{sayanDUE4}}</td>
+								<td class="text-center">₹ {{tanmoyDUE4}}</td>
 							</tr>
-							<tr style="font-size: large; font-weight: bold; color: #000;">
+							<tr>
 								<td class="text-center">Tanmoy</td>
-								<td class="text-center">{{arnabDUE5}}</td>
-								<td class="text-center">{{bipraDUE5}}</td>
-								<td class="text-center">{{sauravDUE5}}</td>
-								<td class="text-center">{{sayanDUE5}}</td>
-								<td class="text-center">{{tanmoyDUE5}}</td>
+								<td class="text-center">₹ {{arnabDUE5}}</td>
+								<td class="text-center">₹ {{bipraDUE5}}</td>
+								<td class="text-center">₹ {{sauravDUE5}}</td>
+								<td class="text-center">₹ {{sayanDUE5}}</td>
+								<td class="text-center">₹ {{tanmoyDUE5}}</td>
 							</tr>
 						</tbody>
 					</table>
