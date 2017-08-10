@@ -49,16 +49,55 @@
 					<tbody  class="black">
 						<tr dir-paginate="data in bills.data | orderBy:sortKey:reverseSort | filter:search | itemsPerPage:10">
 							<!-- show-->
-							<td ng-hide="edited === $index" class="text-center" ng-class="{'grey' : $odd}">{{data.PAYER}}</td>
-							<td ng-hide="edited === $index" class="text-center" ng-class="{'grey' : $odd}">{{data.BILLDATE}}</td>
-							<td ng-hide="edited === $index" class="text-center" ng-class="{'grey' : $odd}">₹ {{data.AMOUNT}}</td>
-							<td ng-hide="edited === $index" class="text-center" ng-class="{'grey' : $odd}">₹ {{data.ARNAB}}</td>
-							<td ng-hide="edited === $index" class="text-center" ng-class="{'grey' : $odd}">₹ {{data.BIPRA}}</td>
-							<td ng-hide="edited === $index" class="text-center" ng-class="{'grey' : $odd}">₹ {{data.SAURAV}}</td>
-							<td ng-hide="edited === $index" class="text-center" ng-class="{'grey' : $odd}">₹ {{data.SAYAN}}</td>
-							<td ng-hide="edited === $index" class="text-center" ng-class="{'grey' : $odd}">₹ {{data.TANMOY}}</td>
-							<td ng-hide="edited === $index" ng-class="{'grey' : $odd}">{{data.BILLDESC}}</td>
-							<td ng-hide="edited === $index" ng-class="{'grey' : $odd}">
+							<td ng-hide="edited === $index" class="text-center" 
+								ng-class="{'arnab' : data.PAYER == 'Arnab', 'bipra' : data.PAYER == 'Bipra',
+										   'saurav' : data.PAYER == 'Saurav', 'sayan' : data.PAYER == 'Sayan',
+										   'tanmoy' : data.PAYER == 'Tanmoy'}">{{data.PAYER}}
+							</td>
+							<td ng-hide="edited === $index" class="text-center" 
+								ng-class="{'arnab' : data.PAYER == 'Arnab', 'bipra' : data.PAYER == 'Bipra',
+										   'saurav' : data.PAYER == 'Saurav', 'sayan' : data.PAYER == 'Sayan',
+										   'tanmoy' : data.PAYER == 'Tanmoy'}">{{data.BILLDATE}}
+							</td>
+							<td ng-hide="edited === $index" class="text-center" 
+								ng-class="{'arnab' : data.PAYER == 'Arnab', 'bipra' : data.PAYER == 'Bipra',
+										   'saurav' : data.PAYER == 'Saurav', 'sayan' : data.PAYER == 'Sayan',
+										   'tanmoy' : data.PAYER == 'Tanmoy'}">₹ {{data.AMOUNT}}
+							</td>
+							<td ng-hide="edited === $index" class="text-center" 
+								ng-class="{'arnab' : data.PAYER == 'Arnab', 'bipra' : data.PAYER == 'Bipra',
+										   'saurav' : data.PAYER == 'Saurav', 'sayan' : data.PAYER == 'Sayan',
+										   'tanmoy' : data.PAYER == 'Tanmoy'}">₹ {{data.ARNAB}}
+							</td>
+							<td ng-hide="edited === $index" class="text-center" 
+								ng-class="{'arnab' : data.PAYER == 'Arnab', 'bipra' : data.PAYER == 'Bipra',
+										   'saurav' : data.PAYER == 'Saurav', 'sayan' : data.PAYER == 'Sayan',
+										   'tanmoy' : data.PAYER == 'Tanmoy'}">₹ {{data.BIPRA}}
+							</td>
+							<td ng-hide="edited === $index" class="text-center" 
+								ng-class="{'arnab' : data.PAYER == 'Arnab', 'bipra' : data.PAYER == 'Bipra',
+										   'saurav' : data.PAYER == 'Saurav', 'sayan' : data.PAYER == 'Sayan',
+										   'tanmoy' : data.PAYER == 'Tanmoy'}">₹ {{data.SAURAV}}
+							</td>
+							<td ng-hide="edited === $index" class="text-center" 
+								ng-class="{'arnab' : data.PAYER == 'Arnab', 'bipra' : data.PAYER == 'Bipra',
+										   'saurav' : data.PAYER == 'Saurav', 'sayan' : data.PAYER == 'Sayan',
+										   'tanmoy' : data.PAYER == 'Tanmoy'}">₹ {{data.SAYAN}}
+							</td>
+							<td ng-hide="edited === $index" class="text-center" 
+								ng-class="{'arnab' : data.PAYER == 'Arnab', 'bipra' : data.PAYER == 'Bipra',
+										   'saurav' : data.PAYER == 'Saurav', 'sayan' : data.PAYER == 'Sayan',
+										   'tanmoy' : data.PAYER == 'Tanmoy'}">₹ {{data.TANMOY}}
+							</td>
+							<td ng-hide="edited === $index" 
+								ng-class="{'arnab' : data.PAYER == 'Arnab', 'bipra' : data.PAYER == 'Bipra',
+										   'saurav' : data.PAYER == 'Saurav', 'sayan' : data.PAYER == 'Sayan',
+										   'tanmoy' : data.PAYER == 'Tanmoy'}">{{data.BILLDESC}}
+							</td>
+							<td ng-hide="edited === $index" 
+								ng-class="{'arnab' : data.PAYER == 'Arnab', 'bipra' : data.PAYER == 'Bipra',
+										   'saurav' : data.PAYER == 'Saurav', 'sayan' : data.PAYER == 'Sayan',
+										   'tanmoy' : data.PAYER == 'Tanmoy'}">
 								<button class="btn btn-primary" type="button" ng-click="edit($index)">Edit</button>
 								<button class="btn btn-danger" type="button" ng-click="remove(data,$index)">Delete</button>
 							</td>

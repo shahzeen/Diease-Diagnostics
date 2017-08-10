@@ -7,6 +7,8 @@ billapp.controller('dashboardtabController', function($scope,$http) {
 	$("#menu_billentry").attr("class","");
 	$("#menu_billupdate").attr("class","");
 	
+	$scope.curdt = new Date().getMonth();
+	
 	/* angular clock feature */
 	$scope.format = 'EEEE MMMM d,yyyy';//EEEE MMMM d,yyyy hh:mm:ss a Z, dd-MMM-yyyy hh:mm:ss a, EEEE MMMM d,yyyy hh:mm:ss a
 	$scope.theme = 'blue-light';//also use dark for dark theme
@@ -198,6 +200,8 @@ billapp.controller('dashboardtabController', function($scope,$http) {
 		function updateEdit(data,billupdate) {
 
 			var billupdateURLPUT = "/api/v1/record/update/"+data.doc_id;
+			// $scope.diff = $scope.curdt - Date.parse(data.BILLDATE);
+			// console.log('diff = '+Date.parse(data.BILLDATE));
 
 			var billupdateJSON = {
 				"BILLDATE": billupdate.billdate,
