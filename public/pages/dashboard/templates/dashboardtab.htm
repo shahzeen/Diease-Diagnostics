@@ -51,9 +51,8 @@
 						<tr dir-paginate="data in bills.data | orderBy:sortKey:reverseSort | filter:search | itemsPerPage:10">
 							<!-- show-->
 							<td ng-hide="edited === $index" class="text-center" ng-class="black">{{data.PAYER}}</td>
-							<td ng-hide="edited === $index" class="text-center" ng-class="black">{{data.BILLDATE | date : "dd-MM-yyyy"}}</td>
-							<td ng-hide="edited === $index" class="text-center" ng-init="dt=data.BILLDATE">
-								<span class="label label-success" style="font-size: inherit;">{{data.BILLDATE | date : 'MMM'}}</span>
+							<td ng-hide="edited === $index" class="text-center">
+								<span class="label label-primary" style="font-size: inherit;">{{data.BILLDATE | date : "dd-MMM-yyyy"}}</span>
 							</td>
 							<td ng-hide="edited === $index" class="text-center" ng-class="black">₹ {{data.AMOUNT}}</td>
 							<td ng-hide="edited === $index" class="text-center" ng-class="black">₹ {{data.ARNAB}}</td>
@@ -61,7 +60,7 @@
 							<td ng-hide="edited === $index" class="text-center" ng-class="black">₹ {{data.SAURAV}}</td>
 							<td ng-hide="edited === $index" class="text-center" ng-class="black">₹ {{data.SAYAN}}</td>
 							<td ng-hide="edited === $index" class="text-center" ng-class="black">₹ {{data.TANMOY}}</td>
-							<td ng-hide="edited === $index" ng-class="black">{{data.BILLDESC}}</td>
+							<td ng-hide="edited === $index" class="orange">{{data.BILLDESC}}</td>
 							<td ng-hide="edited === $index" ng-class="black">
 								<button class="btn btn-primary" type="button" ng-click="edit($index)">Edit</button>
 								<button class="btn btn-danger" type="button" ng-click="remove(data,$index)">Delete</button>
@@ -73,7 +72,7 @@
 									<span class="input-group-addon">
 										<i class="glyphicon glyphicon-calendar"></i>
 									</span>
-									<input class="form-control" placeholder="{{data.BILLDATE | date : 'dd-MM-yyyy'}}" ng-model="billupdate.billdate" ng-model-options="{ updateOn: 'blur' }" style="color: #000;">
+									<input class="form-control" placeholder="{{data.BILLDATE | date : 'dd-MMM-yyyy'}}" ng-model="billupdate.billdate" ng-model-options="{ updateOn: 'blur' }" style="color: #000;">
 								</div>
 							</td>
 							<td ng-show="edited === $index" class="text-center">{{data.BILLDATE | date : 'MMM'}}</td>
