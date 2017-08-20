@@ -200,11 +200,12 @@ billapp.controller('dashboardtabController', function($scope,$http) {
 		function updateEdit(data,billupdate) {
 
 			var billupdateURLPUT = "/api/v1/record/update/"+data.doc_id;
+			$scope.dt = billupdate.billdate?new Date(billupdate.billdate):data.BILLDATE;
 			// $scope.diff = $scope.curdt - Date.parse(data.BILLDATE);
 			// console.log('diff = '+Date.parse(data.BILLDATE));
-
+			
 			var billupdateJSON = {
-				"BILLDATE": billupdate.billdate,
+				"BILLDATE": $scope.dt,
 				"AMOUNT": billupdate.amount,
 				"ARNAB": billupdate.arnab,
 				"BIPRA": billupdate.bipra,
@@ -213,8 +214,7 @@ billapp.controller('dashboardtabController', function($scope,$http) {
 				"TANMOY": billupdate.tanmoy,
 				"BILLDESC": billupdate.billdesc
 			}
-			console.log('url = '+billupdateURLPUT);
-			console.log('billupdateJSON = '+JSON.stringify(billupdateJSON));
+			//console.log('billupdateJSON = '+JSON.stringify(billupdateJSON));
 		var postFunction = $http({
 			    url: billupdateURLPUT,
 			    dataType:"json",

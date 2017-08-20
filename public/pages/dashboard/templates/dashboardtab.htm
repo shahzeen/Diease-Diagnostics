@@ -36,6 +36,7 @@
 						<tr>
 							<th class="text-center">Bill Payer</th>
 							<th class="text-center">Date of Payment</th>
+							<th class="text-center">Month</th>
 							<th class="text-center">Paid Amount</th>
 							<th class="text-center">Arnab</th>
 							<th class="text-center">Bipra</th>
@@ -49,61 +50,31 @@
 					<tbody  class="black">
 						<tr dir-paginate="data in bills.data | orderBy:sortKey:reverseSort | filter:search | itemsPerPage:10">
 							<!-- show-->
-							<td ng-hide="edited === $index" class="text-center" 
-								ng-class="{'arnab' : data.PAYER == 'Arnab', 'bipra' : data.PAYER == 'Bipra',
-										   'saurav' : data.PAYER == 'Saurav', 'sayan' : data.PAYER == 'Sayan',
-										   'tanmoy' : data.PAYER == 'Tanmoy'}">{{data.PAYER}}
-							</td>
-							<td ng-hide="edited === $index" class="text-center" 
-								ng-class="{'arnab' : data.PAYER == 'Arnab', 'bipra' : data.PAYER == 'Bipra',
-										   'saurav' : data.PAYER == 'Saurav', 'sayan' : data.PAYER == 'Sayan',
-										   'tanmoy' : data.PAYER == 'Tanmoy'}">{{data.BILLDATE}}
-							</td>
-							<td ng-hide="edited === $index" class="text-center" 
-								ng-class="{'arnab' : data.PAYER == 'Arnab', 'bipra' : data.PAYER == 'Bipra',
-										   'saurav' : data.PAYER == 'Saurav', 'sayan' : data.PAYER == 'Sayan',
-										   'tanmoy' : data.PAYER == 'Tanmoy'}">₹ {{data.AMOUNT}}
-							</td>
-							<td ng-hide="edited === $index" class="text-center" 
-								ng-class="{'arnab' : data.PAYER == 'Arnab', 'bipra' : data.PAYER == 'Bipra',
-										   'saurav' : data.PAYER == 'Saurav', 'sayan' : data.PAYER == 'Sayan',
-										   'tanmoy' : data.PAYER == 'Tanmoy'}">₹ {{data.ARNAB}}
-							</td>
-							<td ng-hide="edited === $index" class="text-center" 
-								ng-class="{'arnab' : data.PAYER == 'Arnab', 'bipra' : data.PAYER == 'Bipra',
-										   'saurav' : data.PAYER == 'Saurav', 'sayan' : data.PAYER == 'Sayan',
-										   'tanmoy' : data.PAYER == 'Tanmoy'}">₹ {{data.BIPRA}}
-							</td>
-							<td ng-hide="edited === $index" class="text-center" 
-								ng-class="{'arnab' : data.PAYER == 'Arnab', 'bipra' : data.PAYER == 'Bipra',
-										   'saurav' : data.PAYER == 'Saurav', 'sayan' : data.PAYER == 'Sayan',
-										   'tanmoy' : data.PAYER == 'Tanmoy'}">₹ {{data.SAURAV}}
-							</td>
-							<td ng-hide="edited === $index" class="text-center" 
-								ng-class="{'arnab' : data.PAYER == 'Arnab', 'bipra' : data.PAYER == 'Bipra',
-										   'saurav' : data.PAYER == 'Saurav', 'sayan' : data.PAYER == 'Sayan',
-										   'tanmoy' : data.PAYER == 'Tanmoy'}">₹ {{data.SAYAN}}
-							</td>
-							<td ng-hide="edited === $index" class="text-center" 
-								ng-class="{'arnab' : data.PAYER == 'Arnab', 'bipra' : data.PAYER == 'Bipra',
-										   'saurav' : data.PAYER == 'Saurav', 'sayan' : data.PAYER == 'Sayan',
-										   'tanmoy' : data.PAYER == 'Tanmoy'}">₹ {{data.TANMOY}}
-							</td>
-							<td ng-hide="edited === $index" 
-								ng-class="{'arnab' : data.PAYER == 'Arnab', 'bipra' : data.PAYER == 'Bipra',
-										   'saurav' : data.PAYER == 'Saurav', 'sayan' : data.PAYER == 'Sayan',
-										   'tanmoy' : data.PAYER == 'Tanmoy'}">{{data.BILLDESC}}
-							</td>
-							<td ng-hide="edited === $index" 
-								ng-class="{'arnab' : data.PAYER == 'Arnab', 'bipra' : data.PAYER == 'Bipra',
-										   'saurav' : data.PAYER == 'Saurav', 'sayan' : data.PAYER == 'Sayan',
-										   'tanmoy' : data.PAYER == 'Tanmoy'}">
+							<td ng-hide="edited === $index" class="text-center" ng-class="black">{{data.PAYER}}</td>
+							<td ng-hide="edited === $index" class="text-center" ng-class="black">{{data.BILLDATE | date : "dd-MM-yyyy"}}</td>
+							<td ng-hide="edited === $index" class="text-center" ng-class="black">{{data.BILLDATE | date : 'MMM'}}</td>
+							<td ng-hide="edited === $index" class="text-center" ng-class="black">₹ {{data.AMOUNT}}</td>
+							<td ng-hide="edited === $index" class="text-center" ng-class="black">₹ {{data.ARNAB}}</td>
+							<td ng-hide="edited === $index" class="text-center" ng-class="black">₹ {{data.BIPRA}}</td>
+							<td ng-hide="edited === $index" class="text-center" ng-class="black">₹ {{data.SAURAV}}</td>
+							<td ng-hide="edited === $index" class="text-center" ng-class="black">₹ {{data.SAYAN}}</td>
+							<td ng-hide="edited === $index" class="text-center" ng-class="black">₹ {{data.TANMOY}}</td>
+							<td ng-hide="edited === $index" ng-class="black">{{data.BILLDESC}}</td>
+							<td ng-hide="edited === $index" ng-class="black">
 								<button class="btn btn-primary" type="button" ng-click="edit($index)">Edit</button>
 								<button class="btn btn-danger" type="button" ng-click="remove(data,$index)">Delete</button>
 							</td>
 							<!-- edit-->
 							<td ng-show="edited === $index" class="text-center">{{data.PAYER}}</td>
-							<td ng-show="edited === $index" class="text-center">{{data.BILLDATE}}</td>
+							<td ng-show="edited === $index" class="text-center">
+								<div class="input-group" moment-picker="billupdate.billdate" format="YYYY-MM-DD" start-view="day">
+									<span class="input-group-addon">
+										<i class="glyphicon glyphicon-calendar"></i>
+									</span>
+									<input class="form-control" placeholder="{{data.BILLDATE | date : 'dd-MM-yyyy'}}" ng-model="billupdate.billdate" ng-model-options="{ updateOn: 'blur' }" style="color: #000;">
+								</div>
+							</td>
+							<td ng-show="edited === $index" class="text-center">{{data.BILLDATE | date : 'MMM'}}</td>
 							<td ng-show="edited === $index" class="text-center"><input type="number" class="form-control" ng-model="billupdate.amount" value="{{data.AMOUNT}}" style="color: #000;"></td>
 							<td ng-show="edited === $index" class="text-center"><input type="number" class="form-control" ng-model="billupdate.arnab" value="{{data.ARNAB}}" style="color: #000;"></td>
 							<td ng-show="edited === $index" class="text-center"><input type="number" class="form-control" ng-model="billupdate.bipra" value="{{data.BIPRA}}" style="color: #000;"></td>

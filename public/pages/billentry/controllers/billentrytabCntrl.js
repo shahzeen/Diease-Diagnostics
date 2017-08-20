@@ -1,5 +1,5 @@
 'use strict'
-billapp.controller('billentrytabController', function($scope,$http) {
+billapp.controller('billentrytabController', function($scope,$http,$filter) {
 
 	console.log('On billentrytabController');
 	
@@ -14,6 +14,7 @@ billapp.controller('billentrytabController', function($scope,$http) {
 
 		$scope.num = (Math.floor(Math.random() * 1000000));
 		$scope.billid=$scope.bill_payer.id+$scope.num;
+		$scope.dt = new Date($scope.bill_date);
 
 		/*console.log('bill-id = '+$scope.billid);
 		console.log('payer = '+$scope.bill_payer.name);
@@ -24,7 +25,7 @@ billapp.controller('billentrytabController', function($scope,$http) {
 		var billdetailsJSON = {
 				"BILLID": $scope.billid,
 				"PAYER": $scope.bill_payer.name,
-				"BILLDATE": $scope.bill_date,
+				"BILLDATE": $scope.dt,
 				"AMOUNT": $scope.bill_amount,
 				"ARNAB": $scope.arnab1001,
 				"BIPRA": $scope.bipra1005,
@@ -34,7 +35,7 @@ billapp.controller('billentrytabController', function($scope,$http) {
 				"BILLDESC": $scope.bill_desc,
   				"DELETED_DATE": null
 		}
-		
+		//console.log('billdetailsJSON = '+JSON.stringify(billdetailsJSON));
 		var postFunction = $http({
 			    url: billdetailsURLPOST,
 			    dataType:"json",
