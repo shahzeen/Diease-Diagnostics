@@ -52,7 +52,9 @@
 							<!-- show-->
 							<td ng-hide="edited === $index" class="text-center" ng-class="black">{{data.PAYER}}</td>
 							<td ng-hide="edited === $index" class="text-center" ng-class="black">{{data.BILLDATE | date : "dd-MM-yyyy"}}</td>
-							<td ng-hide="edited === $index" class="text-center" ng-class="black">{{data.BILLDATE | date : 'MMM'}}</td>
+							<td ng-hide="edited === $index" class="text-center" ng-init="dt=data.BILLDATE">
+								<span class="label label-success" style="font-size: inherit;">{{data.BILLDATE | date : 'MMM'}}</span>
+							</td>
 							<td ng-hide="edited === $index" class="text-center" ng-class="black">₹ {{data.AMOUNT}}</td>
 							<td ng-hide="edited === $index" class="text-center" ng-class="black">₹ {{data.ARNAB}}</td>
 							<td ng-hide="edited === $index" class="text-center" ng-class="black">₹ {{data.BIPRA}}</td>
