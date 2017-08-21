@@ -67,14 +67,14 @@
 							<!-- edit-->
 							<td ng-show="edited === $index" class="text-center">{{data.PAYER}}</td>
 							<td ng-show="edited === $index" class="text-center">
-								<div class="input-group" moment-picker="billupdate.billdate" format="YYYY-MM-DD" start-view="day">
+								<span class="label label-primary" style="font-size: inherit;">{{data.BILLDATE | date : "dd-MMM-yyyy"}}</span>
+								<!--<div class="input-group" moment-picker="billupdate.billdate" format="YYYY-MM-DD" start-view="day">
 									<span class="input-group-addon">
 										<i class="glyphicon glyphicon-calendar"></i>
 									</span>
 									<input class="form-control" placeholder="{{data.BILLDATE | date : 'dd-MMM-yyyy'}}" ng-model="billupdate.billdate" ng-model-options="{ updateOn: 'blur' }" style="color: #000;">
-								</div>
+								</div>-->
 							</td>
-							<td ng-show="edited === $index" class="text-center">{{data.BILLDATE | date : 'MMM'}}</td>
 							<td ng-show="edited === $index" class="text-center"><input type="number" class="form-control" ng-model="billupdate.amount" value="{{data.AMOUNT}}" style="color: #000;"></td>
 							<td ng-show="edited === $index" class="text-center"><input type="number" class="form-control" ng-model="billupdate.arnab" value="{{data.ARNAB}}" style="color: #000;"></td>
 							<td ng-show="edited === $index" class="text-center"><input type="number" class="form-control" ng-model="billupdate.bipra" value="{{data.BIPRA}}" style="color: #000;"></td>
