@@ -13,6 +13,16 @@ var bodyParser = require('body-parser');
 //http://expressjs.com/api#app-settings for more details.
 app.enable('trust proxy');
 
+app.use(function (req, res, next) {
+  if (req.secure) {
+    // request was via https, so do no special handling
+    next();
+  }else{
+    // request was via http, so redirect to https
+    res.redirect('https://' + req.headers.host + req.url);
+  }
+});
+
 global.local_file = function(name) {
 	return (__dirname + '/' + name);
 };
@@ -49,8 +59,7 @@ var swaggerDefinition = {
     license: {
       name: 'IBM License',
       url: 'https://www-01.ibm.com/software/passportadvantage/licensing.html'
-    },
-    version: '1.0.0'
+    }
   },
   host: 'bill-splitter.mybluemix.net',
   //host: 'localhost:8001',
