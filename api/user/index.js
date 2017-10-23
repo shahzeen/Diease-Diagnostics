@@ -1,0 +1,104 @@
+/**
+ * Login API 
+ */
+'use strict';
+const express = require('express');
+const service = global.local_require('api/user/service');
+const logger = global.local_require('/utils/logger');
+
+const api = 'USER API :';
+const file = 'api.user.index';
+
+const login= express();
+
+/**
+ * @swagger
+ * definitions:
+ *    REGISTRATION:
+ *     properties:
+ *       TYPE:
+ *         type: string
+ *         example: USER_MASTER
+ *       User_Id:
+ *         type: string
+ *         example: 1111
+ *       First_Name:
+ *         type: string
+ *         example: "Peter"
+ *       Last_Name:
+ *         type: string
+ *         example: "Parkar"
+ *       Password:
+ *         type: string
+ *         example: "welcome"
+ *       User_Type:
+ *         type: string
+ *         example: "Individual"
+ *       Created_by:
+ *         type: string
+ *         example: "admin"
+ *       Created_date:
+ *         type: string
+ *         example: "2017-10-09T15:31:44.852Z"
+ *       Modified_by:
+ *         type: string
+ *         example: "admin"
+ *       Modified_date:
+ *         type: string
+ *         example: "2017-10-09T17:19:40.038Z"
+ **/
+
+/**
+ * @swagger
+ *  /api/v1/user/registration:
+ *   post:
+ *     tags:
+ *       - User
+ *     summary: create account
+ *     description: create a new account
+ *     produces:
+ *       - application/json
+ *     parameters:
+ *       - name: body
+ *         description: user input that needs to be saved into the database
+ *         in: body
+ *         required: true
+ *         schema:
+ *           $ref: '#/definitions/REGISTRATION'
+ *     responses:
+ *       200:
+ *         description: successful operation
+ */
+
+login.post('/registration',  function(req, res) {
+	const func = '.post';
+	//console.log('req = '+JSON.stringify(req.body));
+	try {
+	   //console.log('req.body = '+JSON.stringify(req));
+        if(req.body && Object.keys(req.body).length > 0) {
+	        let request_ip = req.body;
+	        //console.log('inside req.body = '+JSON.stringify(req.body));
+            service.save_data(request_ip,function(err,data){
+                if(!err){
+                    res.status(200).json(data);     
+                }else{
+                    //console.log('err = '+JSON.stringify(err));
+               		let status = err.status;
+                    let error = err.error;
+                    let message = err.message;
+                    let response_message = {'status':status,'message':message};
+                    logger.error(api+file+func+' Internal Server Error in saving new user details :'+err);  
+                    res.status(status).json(response_message);
+                }
+            });            
+        }else{
+             res.status(422).json({'status':422,'message':'Missing or Unparsebale Entity','data':[]});
+        }
+       }catch(err){
+        logger.error(api+file+func+' Internal Server Error in saving new user details :'+err);
+        //console.log('catch err = '+JSON.stringify(err));
+        res.status(500).json({'status':500,'message':'API Response Error'});
+ }
+});
+
+module.exports = login;

@@ -72,7 +72,7 @@ var options = {
   swaggerDefinition: swaggerDefinition,
   // path to the API docs
   //apis: ['./api/routes/*.js','./api/routes/auth/*.js'],
-  apis: ['./api/record/*.js', './api/appinfo.js']
+  apis: ['./api/record/*.js', './api/user/*.js', './api/appinfo.js']
 };
 
 
