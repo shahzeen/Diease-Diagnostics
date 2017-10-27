@@ -50,3 +50,16 @@ canvas.absCanvas{
 .tick line {
   display: none;
 }
+
+.regHeader {
+	font-size: 22px;
+    color: rgb(68, 68, 68);
+    line-height: 1.2;
+    position: absolute;
+}
+.colMarginBotton {
+	margin-bottom: 15px;
+}
+.registerModalWindow .modal-dialog {
+    margin-top: 159px;
+}

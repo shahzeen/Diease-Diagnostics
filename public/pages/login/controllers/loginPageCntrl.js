@@ -1,5 +1,5 @@
 'use strict'
-billapp.controller('loginPageController', function($scope, $http, $state) {
+billapp.controller('loginPageController', function($scope, $http, $state, $modal) {
 	
 	$scope.loginBtnclicked = function(){
 		console.log('on Login btn click');
@@ -12,6 +12,16 @@ billapp.controller('loginPageController', function($scope, $http, $state) {
 				   title: "Wrong Username or Password",
 				   type: "error" });
 		}
+	}
+
+	$scope.registerUser = function(){
+		var modalInstance = $modal.open({
+			backdrop: 'static',
+			keyboard: false,
+			templateUrl: './pages/login/templates/register.htm',
+			controller: 'registerPageController',
+			windowClass: 'registerModalWindow'
+		});
 	}
 	
 });

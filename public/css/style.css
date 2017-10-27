@@ -1982,7 +1982,7 @@
  input[type=submit].btn-block {
  	width: 100%
  }
- .btn {
+ /*.btn {
  	display: inline-block;
  	line-height: 1.25;
  	text-align: center;
@@ -1993,7 +1993,7 @@
  	padding: .5rem 1rem;
  	font-size: .875rem;
  	transition: all .2s ease-in-out
- }
+ }*/
  .btn.active.focus,
  .btn.active:focus,
  .btn.focus,
