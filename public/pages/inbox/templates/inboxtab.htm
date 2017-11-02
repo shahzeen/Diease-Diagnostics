@@ -29,6 +29,9 @@
 					<label >Search:</label>&nbsp;&nbsp;&nbsp;&nbsp;
             		<input type="text" ng-model="search" class="" placeholder=" Search">
 				</div>
+				<div class="col-md-2">
+					<button class="btn btn-primary buttonStyle" type="button" ng-click="openAddBillModal()">Add Bill</button>
+				</div>
 			</div>
 		</div>
 		<div class="card">
@@ -54,8 +57,8 @@
 							<td ng-hide="edited === $index" class="text-center" ng-class="black">₹ {{data.AMOUNT}}</td>
 							<td ng-hide="edited === $index" class="orange">{{data.BILLDESC}}</td>
 							<td ng-hide="edited === $index" ng-class="black">
-								<button class="btn btn-primary" type="button" ng-click="edit($index)">Details</button>
-								<button class="btn btn-danger" type="button" ng-click="remove(data,$index)">Delete</button>
+								<button class="btn btn-primary buttonStyle" type="button" ng-click="edit($index)">Details</button>
+								<button class="btn btn-danger buttonStyle" type="button" ng-click="remove(data,$index)">Delete</button>
 							</td>
 						</tr>
 					</tbody>

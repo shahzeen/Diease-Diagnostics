@@ -1,5 +1,5 @@
 'use strict'
-billapp.controller('inboxtabController', function($scope,$http) {
+billapp.controller('inboxtabController', function($scope,$http, $modal) {
 
 	console.log('On inboxtabController');
 	
@@ -23,8 +23,6 @@ billapp.controller('inboxtabController', function($scope,$http) {
 	}).success(function(response) {
 			console.log('inbox - Success response recieved. '+ JSON.stringify(response)); /* printing API response on console - unit testing purpose*/
 			$scope.inboxData  = response;
-			
-			$scope.billCalculate(response);
 		});
 
 		 $scope.remove = function (data,index) {
@@ -90,4 +88,13 @@ billapp.controller('inboxtabController', function($scope,$http) {
 						   type: "error" });
 				});
          };
+	$scope.openAddBillModal = function () {
+		var modalInstance = $modal.open({
+			backdrop: 'static',
+			keyboard: false,
+			templateUrl: './pages/inbox/templates/addBillDetailsModal.htm',
+			controller: 'addBillDetailsModalController',
+			windowClass: 'registerModalWindow'
+		});
+	}
 });
