@@ -1,0 +1,72 @@
+<div class="row" ng-if="typeof(inboxData.data) === 'string'">
+
+</div>
+<div class="row" ng-if="inboxData.data.length>0">
+	<div class="col-md-12">
+		<div class="card">
+			<div class="card-block" style="font-size: large; font-weight: bold; color: #fff; background-color: #24b755;">
+				<div class="col-md-1">Filter:</div>
+				<div class="col-md-2" style="cursor: pointer;">
+					<a ng-click="sort('PAYER')">
+						<span class="fa fa-sort-alpha-asc" aria-hidden="true" ng-show="!reverseSort"></span>
+						<span class="fa fa-sort-alpha-desc" aria-hidden="true" ng-show="reverseSort"></span>&nbsp;
+						By Bill Payer
+						<span class="fa fa-sort-desc" aria-hidden="true" ng-show="!reverseSort"></span>
+						<span class="fa fa-sort-asc" aria-hidden="true" ng-show="reverseSort"></span>
+					</a>
+				</div>
+				<div class="col-md-2" style="cursor: pointer;">
+					<a ng-click="sort('BILLDATE')">
+						<span class="fa fa-calendar" aria-hidden="true" ng-show="!reverseSort"></span>
+						<span class="fa fa-calendar" aria-hidden="true" ng-show="reverseSort"></span>&nbsp;
+						By Date
+						<span class="fa fa-sort-desc" aria-hidden="true" ng-show="!reverseSort"></span>
+						<span class="fa fa-sort-asc" aria-hidden="true" ng-show="reverseSort"></span>
+					</a>
+				</div>				
+				<div class="col-md-2"></div>
+				<div class="col-md-3" style="color: black;">
+					<label >Search:</label>&nbsp;&nbsp;&nbsp;&nbsp;
+            		<input type="text" ng-model="search" class="" placeholder=" Search">
+				</div>
+			</div>
+		</div>
+		<div class="card">
+			<div class="card-block">
+			<div class="table-responsive">
+				<table class="table table-hover table-outline m-b-0 hidden-sm-down">
+					<thead class="thead-default" style="font-size: large; font-weight: bold;">
+						<tr>
+							<th class="text-center">Bill Payer</th>
+							<th class="text-center">Date of Payment</th>
+							<th class="text-center">Paid Amount</th>
+							<th>Description</th>
+							<th></th>
+						</tr>
+					</thead>
+					<tbody  class="black">
+						<tr dir-paginate="data in inboxData.data | orderBy:sortKey:reverseSort | filter:search | itemsPerPage:10">
+							<!-- show-->
+							<td ng-hide="edited === $index" class="text-center" ng-class="black">{{data.First_Name}}</td>
+							<td ng-hide="edited === $index" class="text-center">
+								<span class="label label-primary" style="font-size: inherit;">{{data.BILLDATE | date : "dd-MMM-yyyy"}}</span>
+							</td>
+							<td ng-hide="edited === $index" class="text-center" ng-class="black">₹ {{data.AMOUNT}}</td>
+							<td ng-hide="edited === $index" class="orange">{{data.BILLDESC}}</td>
+							<td ng-hide="edited === $index" ng-class="black">
+								<button class="btn btn-primary" type="button" ng-click="edit($index)">Details</button>
+								<button class="btn btn-danger" type="button" ng-click="remove(data,$index)">Delete</button>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+				<dir-pagination-controls
+			       max-size="10"
+			       direction-links="true"
+			       boundary-links="true" >
+			    </dir-pagination-controls>
+			</div>
+			</div>
+		</div>
+	</div>
+</div>

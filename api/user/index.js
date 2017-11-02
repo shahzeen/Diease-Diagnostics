@@ -101,4 +101,44 @@ login.post('/registration',  function(req, res) {
  }
 });
 
+/**
+ * @swagger
+ * /api/v1/user/inbox/id/{id}:
+ *   get:
+ *     tags:
+ *       - User
+ *     summary: Show user inbox
+ *     description: Returns user inbox details
+ *     parameters:
+ *       - name: id
+ *         description: user id
+ *         in: path
+ *         required: true
+ *         type: string
+ *     produces:
+ *       - application/json
+ *     responses:
+ *       200:
+ *         description: Returns user inbox details from database
+ */
+
+login.get('/inbox/id/:id',  function(req, res) {
+	const func = '.get';
+	    try {
+            var id = req.params.id;
+	        service.get_inbox_data(id, function(err,result){
+	            if(!err){
+                    console.log('result = '+JSON.stringify(result));
+	                res.status(200).json({'status':'ok','message':'success','data':result});
+	            }else{
+	                logger.error(api+file+func+' Internal Server Error in retriving all bills from database :'+err);  
+	                res.status(500).json({'status':500,'message':'API Response Error','data':[]});
+	            }
+	        });
+	     }catch(err){
+	        logger.error(api+file+func+' Internal Server Error in retriving bills from database :'+err);  
+	        res.status(500).json({'status':500,'message':'API Response Error','data':[]});
+	    }
+	});
+
 module.exports = login;

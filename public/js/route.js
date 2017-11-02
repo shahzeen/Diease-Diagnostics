@@ -82,6 +82,16 @@ var billapp = angular.module('billapp', ['ionic', 'ui.bootstrap', 'moment-picker
     templateUrl: './pages/billupdate/templates/billupdatetab.htm',
     controller: 'billupdatetabController'
   })
+  .state('tab', {
+    url: '/tab',
+    templateUrl: './pages/tabs/templates/inboxMaintab.htm',
+    controller: 'maintabController'
+  })
+  .state('tab.inbox', {
+    url: '/inbox',
+    templateUrl: './pages/inbox/templates/inboxtab.htm',
+    controller: 'inboxtabController'
+  })
 
   $urlRouterProvider.otherwise('/login');
 
