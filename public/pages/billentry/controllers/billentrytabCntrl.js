@@ -23,6 +23,7 @@ billapp.controller('billentrytabController', function($scope,$http,$filter) {
 		console.log('desc = '+$scope.bill_desc);*/
 		
 		var billdetailsJSON = {
+				"TYPE": "USER_GROUP",
 				"BILLID": $scope.billid,
 				"PAYER": $scope.bill_payer.name,
 				"BILLDATE": $scope.dt,
