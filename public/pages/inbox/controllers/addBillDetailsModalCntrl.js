@@ -1,10 +1,92 @@
 'use strict'
-billapp.controller('addBillDetailsModalController', function($scope, $http, $modal, $modalInstance) {
+billapp.controller('addBillDetailsModalController', function($scope, $http, $uibModal, $uibModalInstance) {
 	console.log('Add Bill button click');
 	/*close modal view */
     $scope.close = function () {
-        $modalInstance.dismiss('cancel');
+        $uibModalInstance.dismiss('cancel');
     }
+    $scope.openModal= function(titleName, message){
+        var modalInstance= $uibModal.open({
+        backdrop: 'static',
+        keyboard: false,
+        templateUrl: './pages/common/templates/commonModalView.htm',
+            controller: 'commonModalViewController',
+            resolve:{
+                titleNameVal: function(){
+                    return titleName;
+                },
+                messageVal: function(){
+                    return message;
+                }
+            },
+            windowClass: 'smallModalWindow'
+        })
+    }
+
+    /*submit button function */
+    $scope.submitBillDetails = function() {
+        var billdetailsURLPOST = "/api/v1/record/add";
+        var weekID = 'Y'+moment($scope.fromDate).year()+'W'+moment($scope.fromDate).isoWeek();
+        
+        var billdetailsJSON = {
+				"TYPE": "USER",
+                "User_Id": "1111",
+                "WEEKID": weekID,
+                "First_Name": "Tanmoy",
+                "Last_Name": "Chaudhury",
+				"BILLDATE": moment($scope.fromDate),
+				"AMOUNT": $scope.bill_amount,
+				"BILLDESC": $scope.bill_desc,
+  				"CREATED_DATE": moment().toISOString(),
+                "MODIFIED_DATE": null,
+  				"DELETED_DATE": null
+		}
+		
+		var postFunction = $http({
+			    url: billdetailsURLPOST,
+			    dataType:"json",
+			    crossDomain: true,
+			    header : {"Access-Control-Allow-Headers " : "Content-Type "},
+			    header : {"X-Requested-With ": "Content-Type" },
+			    data: billdetailsJSON,
+			    method: "POST"
+			 })
+			.success(function(response) {//success handling
+					console.log('Success response recieved '+ JSON.stringify(response));
+					$uibModalInstance.dismiss('cancel');
+					if(response.status == "500"){
+						console.log('success if');
+                        $scope.openModal(response.message);
+						// swal({
+						// 	   title: response.message,
+						// 	   type: "error" });					
+					}else{
+						console.log('success else');
+						
+						if(response.status == "200"){
+                            $scope.openModal("Add Bill", response.message);
+							// swal({
+							// 	   title: response.message,
+							// 	   type: "success" });	
+						}	
+						else if(response.status == "422"){
+                            $scope.openModal(response.message);
+							// swal({
+							// 	   title: response.message,
+							// 	   type: "warning" });
+						}
+					}
+				})
+				.error(function(response) {//err handling
+					console.log('Error response recieved '+ JSON.stringify(response));
+                    $uibModalInstance.dismiss('cancel');
+                    $scope.openModal(response.message);
+					// swal({
+					// 	   title: response.message,
+					// 	   type: "error" });
+				});
+
+    };
 
     /*angular date picker */
     $scope.today = function() {
@@ -28,7 +110,7 @@ billapp.controller('addBillDetailsModalController', function($scope, $http, $mod
         minDate: new Date(),
         startingDay: 1,
         today: false,
-        showWeeks: false
+        showWeeks: true
     };
 
     // Disable weekend selection
@@ -45,12 +127,8 @@ billapp.controller('addBillDetailsModalController', function($scope, $http, $mod
 
     $scope.toggleMin();
 
-    $scope.open = function ($event) {
-        console.log('open '+$scope.popup.opened);
-        $event.preventDefault();
-        $event.stopPropagation();
+    $scope.open = function () {
         $scope.popup.opened = true;
-        console.log('clicked '+$scope.popup.opened);
     };
 
     $scope.setDate = function (year, month, day) {

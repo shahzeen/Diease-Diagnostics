@@ -1,5 +1,5 @@
 'use strict'
-billapp.controller('maintabController', function($scope, $state, $modal) {
+billapp.controller('maintabController', function($scope, $state, $uibModal) {
 	console.log('Main tab controller called');
 	$scope.billpayer = [
                    		{ 	"id": "1001",
@@ -21,7 +21,7 @@ billapp.controller('maintabController', function($scope, $state, $modal) {
 
 	$scope.about = function () {
 		console.log('opening pop up');
-		var modalInstance = $modal.open({
+		var modalInstance = $uibModal.open({
 			templateUrl: './pages/about/templates/abouttab.htm',
 			controller: 'abouttabController',
 		});

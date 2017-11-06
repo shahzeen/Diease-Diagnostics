@@ -1,5 +1,5 @@
 'use strict'
-billapp.controller('loginPageController', function($scope, $http, $state, $modal) {
+billapp.controller('loginPageController', function($scope, $http, $state, $uibModal) {
 	
 	$scope.loginBtnclicked = function(){
 		console.log('on Login btn click');
@@ -17,7 +17,7 @@ billapp.controller('loginPageController', function($scope, $http, $state, $modal
 	}
 
 	$scope.registerUser = function(){
-		var modalInstance = $modal.open({
+		var modalInstance = $uibModal.open({
 			backdrop: 'static',
 			keyboard: false,
 			templateUrl: './pages/login/templates/register.htm',

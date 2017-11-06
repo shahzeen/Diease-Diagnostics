@@ -1,28 +1,28 @@
 {
-	"name": "billsplitter",
-	"version": "0.0.1",
-	"private": true,
-	"scripts": {
-		"start": "node app.js"
-	},
-	"dependencies": {
-		"express": "4.13.x",
-		"cfenv": "1.0.x",
-	    "ibmiotf":"*",
-	    "http":"*",
-		"log4js": "0.6.x",
-		"hashmap": "2.0.x",
-		"async":"*",
-		"nano":"*",
-		"lodash.isempty":"4.4.0",
-		"swagger-jsdoc": "1.8.3",
-		"moment":"*",
-		"node-rest-client":"*",
-		"body-parser": "1.15.2"
-
-	},
-	"repository": {},
-	"engines": {
-		"node": "4.x"
-	} 
+  "name": "billsplitter",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "start": "node app.js"
+  },
+  "dependencies": {
+    "async": "*",
+    "body-parser": "1.15.2",
+    "bower-json": "^0.8.1",
+    "cfenv": "1.0.x",
+    "express": "4.13.x",
+    "hashmap": "2.0.x",
+    "http": "*",
+    "ibmiotf": "*",
+    "lodash.isempty": "4.4.0",
+    "log4js": "0.6.x",
+    "moment": "*",
+    "nano": "*",
+    "node-rest-client": "*",
+    "swagger-jsdoc": "1.8.3"
+  },
+  "repository": {},
+  "engines": {
+    "node": "4.x"
+  }
 }

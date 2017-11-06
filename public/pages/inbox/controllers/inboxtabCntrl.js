@@ -1,5 +1,5 @@
 'use strict'
-billapp.controller('inboxtabController', function($scope,$http, $modal) {
+billapp.controller('inboxtabController', function($scope,$http, $uibModal) {
 
 	console.log('On inboxtabController');
 	
@@ -89,7 +89,7 @@ billapp.controller('inboxtabController', function($scope,$http, $modal) {
 				});
          };
 	$scope.openAddBillModal = function () {
-		var modalInstance = $modal.open({
+		var modalInstance = $uibModal.open({
 			backdrop: 'static',
 			keyboard: false,
 			templateUrl: './pages/inbox/templates/addBillDetailsModal.htm',

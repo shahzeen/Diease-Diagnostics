@@ -1,10 +1,10 @@
 'use strict'; 
-billapp.controller('abouttabController', ['$scope','$modalInstance', function ($scope, $modalInstance) {
+billapp.controller('abouttabController', ['$scope','$uibModalInstance', function ($scope, $uibModalInstance) {
 	
 	console.log('On abouttabController');
 	
 	$scope.close = function () {
-		$modalInstance.dismiss('cancel');
+		$uibModalInstance.dismiss('cancel');
 	};
 	
 }]);

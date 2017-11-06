@@ -86,3 +86,21 @@ canvas.absCanvas{
     display: table;
     border-collapse: separate;
 }
+/*.moment-picker {
+	z-index: 1060 !important;
+}*/
+.closeIcon{
+	max-width: 25px;
+	max-height: 25px;
+	margin-bottom: 14px;
+	margin-top: 0px;
+	margin-right: 10px;
+}
+.requiredField {
+    color: red;
+    font-weight: bold;
+}
+.smallModalWindow .modal-dialog{
+	width: 50px;
+	min-width: 379px;
+}
