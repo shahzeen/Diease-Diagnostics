@@ -56,7 +56,7 @@ billapp.controller('addBillDetailsModalController', function($scope, $http, $uib
 					$uibModalInstance.dismiss('cancel');
 					if(response.status == "500"){
 						console.log('success if');
-                        $scope.openModal(response.message);
+                        $scope.openModal("Add Bill", response.message);
 						// swal({
 						// 	   title: response.message,
 						// 	   type: "error" });					
@@ -70,7 +70,7 @@ billapp.controller('addBillDetailsModalController', function($scope, $http, $uib
 							// 	   type: "success" });	
 						}	
 						else if(response.status == "422"){
-                            $scope.openModal(response.message);
+                            $scope.openModal("Add Bill", response.message);
 							// swal({
 							// 	   title: response.message,
 							// 	   type: "warning" });
@@ -80,7 +80,7 @@ billapp.controller('addBillDetailsModalController', function($scope, $http, $uib
 				.error(function(response) {//err handling
 					console.log('Error response recieved '+ JSON.stringify(response));
                     $uibModalInstance.dismiss('cancel');
-                    $scope.openModal(response.message);
+                    $scope.openModal("Add Bill", response.message);
 					// swal({
 					// 	   title: response.message,
 					// 	   type: "error" });

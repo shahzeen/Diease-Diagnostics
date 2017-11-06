@@ -25,8 +25,25 @@ billapp.controller('inboxtabController', function($scope,$http, $uibModal) {
 			$scope.inboxData  = response;
 		});
 
+		$scope.openModal= function(titleName, message){
+			var modalInstance= $uibModal.open({
+			backdrop: 'static',
+			keyboard: false,
+			templateUrl: './pages/common/templates/commonModalView.htm',
+				controller: 'commonModalViewController',
+				resolve:{
+					titleNameVal: function(){
+						return titleName;
+					},
+					messageVal: function(){
+						return message;
+					}
+				},
+				windowClass: 'smallModalWindow'
+			})
+		}
 		 $scope.remove = function (data,index) {
-			var billdeleteURLPUT = "/api/v1/record/update/"+data.doc_id;
+			var billdeleteURLPUT = "/api/v1/record/update/"+data._id;
 			$scope.dt = new Date();
 
 			var billdeleteJSON = {
@@ -49,43 +66,37 @@ billapp.controller('inboxtabController', function($scope,$http, $uibModal) {
 					
 					if(response.status == "500"){
 						console.log('success if');
-						swal({
-							   title: "Please Try Again",
-							   text: "Internal Server Error",
-							   type: "error" });					
+						$scope.openModal("Delete Bill", "Please Try Again later");
+						// swal({
+						// 	   title: "Please Try Again",
+						// 	   text: "Internal Server Error",
+						// 	   type: "error" });					
 					}else{
 						console.log('success else');
 						
 						if(response.status == "200"){
-							swal({
-								   title: "Success",
-								   text: "Bill details deleted successfully",
-								   type: "success" });
-							/* http get call */
-							$http({
-								url: billdetailsURLGET,
-								method: "GET"
-							}).success(function(response) {
-									console.log('List of bills - Success response recieved. '+ JSON.stringify(response)); /* printing API response on console - unit testing purpose*/
-									$scope.bills  = response;
-									
-									$scope.billCalculate(response);
-								});	
+							$scope.openModal("Delete Bill", "Bill details deleted successfully");
+							// swal({
+							// 	   title: "Success",
+							// 	   text: "Bill details deleted successfully",
+							// 	   type: "success" });	
 						}	
 						else if(response.status == "422"){
-							swal({
-								   title: "Please Try Again",
-								   text: "Internal Server Error",
-								   type: "warning" });
+							$scope.openModal("Delete Bill", "Please Try Again later");
+							// swal({
+							// 	   title: "Please Try Again",
+							// 	   text: "Internal Server Error",
+							// 	   type: "warning" });
 						}
 					}
 				})
 				.error(function(response) {//err handling
 					console.log('err');
 					console.log('Error response recieved '+ JSON.stringify(response));
-					swal({
-						   title: "Internal Server Error",
-						   type: "error" });
+					$scope.openModal("Delete Bill", "Please Try Again later");
+					// swal({
+					// 	   title: "Internal Server Error",
+					// 	   type: "error" });
 				});
          };
 	$scope.openAddBillModal = function () {
