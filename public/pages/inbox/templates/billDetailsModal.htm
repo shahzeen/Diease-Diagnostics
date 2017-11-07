@@ -5,7 +5,7 @@
     </span>
     <div class="row" style="margin-bottom: 30px;">
         <div style="margin-bottom: 18px;">
-            <span class="regHeader">WEEK {{rowData.week_no}} ({{rowData.first_day | date : "dd"}} - {{rowData.last_day | date : "dd MMM"}}) DETAILS</span>
+            <span class="regHeader">WEEK {{rowData.week_no}} ({{rowData.first_day | date : "dd MMM"}} - {{rowData.last_day | date : "dd MMM"}}) DETAILS</span>
         </div>
     </div>
     <div class="row">
@@ -20,15 +20,28 @@
                     </tr>
                 </thead>
                 <tbody  class="black">
-                    <tr ng-repeat="data in inboxDetails | orderBy:data.BILLDATE">
+                    <tr ng-repeat="data in inboxDetails | orderBy: 'BILLDATE'">
+                        <!-- show-->
                         <td ng-hide="edited === $index" class="text-center">
-							<span class="label label-primary" style="font-size: inherit;">{{data.BILLDATE | date : "dd-MMM-yyyy"}}</span>
+							<span class="label label-primary" style="font-size: inherit;">{{data.BILLDATE | date : "EEE, MMM dd"}}</span>
 						</td>
                         <td ng-hide="edited === $index" class="text-center" ng-class="black">₹ {{data.AMOUNT}}</td>
 						<td ng-hide="edited === $index" class="orange">{{data.BILLDESC}}</td>
                         <td ng-hide="edited === $index" ng-class="black">
-							<button class="btn btn-primary buttonStyle" type="button" ng-click="openBillDetailsModal(data)">EDIT</button>
+							<button class="btn btn-primary buttonStyle" type="button" ng-click="edit($index)">EDIT</button>
 							<button class="btn btn-danger buttonStyle" type="button" ng-click="remove(data,$index)">DELETE</button>
+						</td>
+                        <!-- edit-->
+                        <td ng-show="edited === $index" class="text-center">
+							<span class="label label-primary" style="font-size: inherit;">{{data.BILLDATE | date : "EEE, MMM dd"}}</span>
+						</td>
+                        <td ng-show="edited === $index" class="text-center"><input type="number" class="form-control" ng-model="billupdate.amount" value="{{data.AMOUNT}}" style="color: #000;"></td>
+                        <td ng-show="edited === $index">
+                            <textarea class="form-control" id="desc" ng-model="billupdate.billdesc" rows="3" ng-init="billupdate.billdesc=data.BILLDESC" style="color: #000;"></textarea>
+                        </td>
+                        <td ng-show="edited === $index" ng-class="black">
+							<button class="btn btn-success buttonStyle" type="button" ng-click="updateEdit(data,billupdate)">SAVE</button>
+							<button class="btn btn-warning buttonStyle" type="button" ng-click="cancel()">CANCEL</button>
 						</td>
                     </tr>
                 </tbody>

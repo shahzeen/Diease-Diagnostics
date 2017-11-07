@@ -86,4 +86,14 @@ billapp.controller('billDetailsModalController', function($scope, $http, $uibMod
 				});
          };
 
+    /* Edit button functionality  */     
+    $scope.edited = -1;
+
+    $scope.edit = function (index) {
+        $scope.edited = index;
+    };
+
+    $scope.cancel = function () {
+		$scope.edited = -1;
+    }
 });
