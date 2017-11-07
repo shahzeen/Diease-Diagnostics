@@ -62,14 +62,15 @@ function get_inbox_data(id, cb) {
 						
 						if(json[weekid].length){
 							inboxDetails.push(json);
+							inboxDataSubJson.week_no = i;
 							inboxDataSubJson.total_amount = 0;
 							inboxDataSubJson.week_id = weekid;
 							json[weekid].forEach(function(bill){
-								var mon = moment(bill.doc.BILLDATE).startOf('week').isoWeekday(1);
-								var sun = moment(bill.doc.BILLDATE).startOf('week').isoWeekday(7);
+								var mon = moment(bill.doc.BILLDATE).startOf('week').isoWeekday(8);
+								var sun = moment(bill.doc.BILLDATE).startOf('week').isoWeekday(14);
 								inboxDataSubJson.user_id = bill.doc.User_Id;
 								inboxDataSubJson.bill_date = bill.doc.BILLDATE;
-								inboxDataSubJson.week_no = moment(bill.doc.BILLDATE).isoWeek();
+								// inboxDataSubJson.week_no = moment(bill.doc.BILLDATE).isoWeek();
 								inboxDataSubJson.first_day = moment(mon).toISOString();
 								inboxDataSubJson.last_day = moment(sun).toISOString();
 								inboxDataSubJson.total_amount = inboxDataSubJson.total_amount + bill.doc.AMOUNT;
