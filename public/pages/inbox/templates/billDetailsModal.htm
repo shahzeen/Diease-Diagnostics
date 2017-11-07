@@ -1,0 +1,38 @@
+<div class="modal-body" style="margin-left: 27px;">
+    <span class="pull-right">
+       <a href="javascript:void(0)">
+           <img class="closeIcon" src="images/CloseIcon.png" style="max-width:15px;max-height:15px;margin-top:-7px;" ng-click="close()"></a>
+    </span>
+    <div class="row" style="margin-bottom: 30px;">
+        <div style="margin-bottom: 18px;">
+            <span class="regHeader">WEEK {{rowData.week_no}} ({{rowData.first_day | date : "dd"}} - {{rowData.last_day | date : "dd MMM"}}) DETAILS</span>
+        </div>
+    </div>
+    <div class="row">
+        <div class="table-responsive">
+            <table class="table table-hover table-outline m-b-0 hidden-sm-down">
+                <thead class="thead-default" style="font-size: large; font-weight: bold;">
+                    <tr>
+                        <th class="text-center">Date</th>
+                        <th class="text-center">Amount</th>
+                        <th class="text-center">Description</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody  class="black">
+                    <tr ng-repeat="data in inboxDetails | orderBy:data.BILLDATE">
+                        <td ng-hide="edited === $index" class="text-center">
+							<span class="label label-primary" style="font-size: inherit;">{{data.BILLDATE | date : "dd-MMM-yyyy"}}</span>
+						</td>
+                        <td ng-hide="edited === $index" class="text-center" ng-class="black">₹ {{data.AMOUNT}}</td>
+						<td ng-hide="edited === $index" class="orange">{{data.BILLDESC}}</td>
+                        <td ng-hide="edited === $index" ng-class="black">
+							<button class="btn btn-primary buttonStyle" type="button" ng-click="openBillDetailsModal(data)">EDIT</button>
+							<button class="btn btn-danger buttonStyle" type="button" ng-click="remove(data,$index)">DELETE</button>
+						</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

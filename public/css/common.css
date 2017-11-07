@@ -104,3 +104,7 @@ canvas.absCanvas{
 	width: 50px;
 	min-width: 379px;
 }
+.mediumModalWindow .modal-dialog{
+	margin-top: 159px;
+	max-width: 1000px;
+}

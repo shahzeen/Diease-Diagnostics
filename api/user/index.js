@@ -103,6 +103,52 @@ login.post('/registration',  function(req, res) {
 
 /**
  * @swagger
+ * /api/v1/user/inbox/id/{id}/weekid/{weekid}:
+ *   get:
+ *     tags:
+ *       - User
+ *     summary: Show inbox details
+ *     description: Returns inbox details
+ *     parameters:
+ *       - name: id
+ *         description: user id
+ *         in: path
+ *         required: true
+ *         type: string
+ *       - name: weekid
+ *         description: week id
+ *         in: path
+ *         required: true
+ *         type: string
+ *     produces:
+ *       - application/json
+ *     responses:
+ *       200:
+ *         description: Returns inbox details from database
+ */
+
+login.get('/inbox/id/:id/weekid/:weekid',  function(req, res) {
+	const func = '.get';
+	    try {
+            var id = req.params.id;
+            var weekid = req.params.weekid;
+	        service.get_inbox_details_data(id, weekid, function(err,result){
+	            if(!err){
+                    console.log('result = '+JSON.stringify(result));
+	                res.status(200).json({'status':'ok','message':'success','data':result});
+	            }else{
+	                logger.error(api+file+func+' Internal Server Error in retriving all bills from database :'+err);  
+	                res.status(500).json({'status':500,'message':'API Response Error','data':[]});
+	            }
+	        });
+	     }catch(err){
+	        logger.error(api+file+func+' Internal Server Error in retriving bills from database :'+err);  
+	        res.status(500).json({'status':500,'message':'API Response Error','data':[]});
+	    }
+	});
+
+/**
+ * @swagger
  * /api/v1/user/inbox/id/{id}:
  *   get:
  *     tags:

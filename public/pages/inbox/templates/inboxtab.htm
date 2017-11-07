@@ -42,7 +42,7 @@
 						<tr dir-paginate="data in inboxData.data | orderBy:sortKey:reverseSort | filter:search | itemsPerPage:10">
 							<!-- show-->
 							<td ng-hide="edited === $index" class="text-center">
-								<span class="orange" style="font-size: inherit;">{{data.first_day | date : "dd"}} - {{data.last_day | date : "dd MMM"}}</span>
+								<span class="orange" style="font-size: inherit;">{{data.week_no}}</span>
 							</td>
 							<td ng-hide="edited === $index" class="text-center">
 								<span class="label label-primary" style="font-size: inherit;">{{data.bill_date | date : "MMM, yyyy"}}</span>
@@ -50,7 +50,7 @@
 							<td ng-hide="edited === $index" class="text-center" ng-class="black">₹ {{data.total_amount}}</td>
 							<!--<td ng-hide="edited === $index" class="orange">{{data.BILLDESC}}</td>-->
 							<td ng-hide="edited === $index" ng-class="black">
-								<button class="btn btn-primary buttonStyle" type="button" ng-click="edit($index)">Details</button>
+								<button class="btn btn-primary buttonStyle" type="button" ng-click="openBillDetailsModal(data)">Details</button>
 								<!--<button class="btn btn-danger buttonStyle" type="button" ng-click="remove(data,$index)">Delete</button>-->
 							</td>
 						</tr>

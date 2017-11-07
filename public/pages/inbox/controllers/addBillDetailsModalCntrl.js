@@ -7,9 +7,9 @@ billapp.controller('addBillDetailsModalController', function($scope, $http, $uib
     }
     $scope.openModal= function(titleName, message){
         var modalInstance= $uibModal.open({
-        backdrop: 'static',
-        keyboard: false,
-        templateUrl: './pages/common/templates/commonModalView.htm',
+            backdrop: 'static',
+            keyboard: false,
+            templateUrl: './pages/common/templates/commonModalView.htm',
             controller: 'commonModalViewController',
             resolve:{
                 titleNameVal: function(){

@@ -120,4 +120,31 @@ billapp.controller('inboxtabController', function($scope,$http, $uibModal) {
 			windowClass: 'registerModalWindow'
 		});
 	}
+
+	$scope.openBillDetailsModal = function (data) {
+		// console.log('data = '+JSON.stringify(data));
+		var inboxDetailsURLGET = '/api/v1/user/inbox/id/'+data.user_id+'/weekid/'+data.week_id;
+		$http({
+			url: inboxDetailsURLGET,
+			method: "GET"
+		}).success(function(response) {
+				// console.log('inbox ddetails = '+ JSON.stringify(response));
+				$scope.inboxDetails  = response.data;
+				var modalInstance = $uibModal.open({
+					backdrop: 'static',
+					keyboard: false,
+					templateUrl: './pages/inbox/templates/billDetailsModal.htm',
+					controller: 'billDetailsModalController',
+					resolve:{
+						rowData: function(){
+							return data;
+						},
+						inboxDetails: function(){
+							return $scope.inboxDetails;
+						}
+					},
+					windowClass: 'mediumModalWindow'
+				});
+			});
+	}
 });
