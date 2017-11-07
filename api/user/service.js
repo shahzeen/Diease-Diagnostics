@@ -41,23 +41,59 @@ function get_inbox_data(id, cb) {
         cloudant.readAll('bill_details','inbox','vw_inbox',opts,function(err,data){
              if(!err){
 				 if(data.rows.length){
-					 async.map(data.rows,function(inboxData,cb){
+					let inbox  = [];
+					let inboxDetails  = [];
+					for(var i=1; i<53; i++){
+						let filteredArr = [];
+						let weekid = "Y2017W"+i;
+						data.rows.filter(function (bill){
+							//console.log('bill = '+JSON.stringify(bill));
+							return bill.doc.WEEKID === weekid;
+						}, this)
+						.forEach(function(filteredData){
+							
+							filteredArr.push(filteredData);
+							//console.log('filteredData = '+JSON.stringify(filteredData));
+						});
 						let json = {};
-						try{
-							json = inboxData.doc;
-						}catch(err){
-							console.log(err);
+						let inboxDataSubJson = {};
+						json[weekid] = filteredArr;
+						
+						if(json[weekid].length){
+							inboxDetails.push(json);
+							inboxDataSubJson.total_amount = 0;
+							inboxDataSubJson.week_id = weekid;
+							json[weekid].forEach(function(bill){
+								var mon = moment(bill.doc.BILLDATE).startOf('week').isoWeekday(1);
+								var sun = moment(bill.doc.BILLDATE).startOf('week').isoWeekday(7);
+								inboxDataSubJson.user_id = bill.doc.User_Id;
+								inboxDataSubJson.bill_date = bill.doc.BILLDATE;
+								inboxDataSubJson.week_no = moment(bill.doc.BILLDATE).isoWeek();
+								inboxDataSubJson.first_day = moment(mon).toISOString();
+								inboxDataSubJson.last_day = moment(sun).toISOString();
+								inboxDataSubJson.total_amount = inboxDataSubJson.total_amount + bill.doc.AMOUNT;
+							});
+							inbox.push(inboxDataSubJson);
 						}
-						cb(null,json);
-					},function(err,data){
-						if(err){
-							err_resp =  c_utils.set_error_response(500,'ERR500','Internal Server Error '+err);
-							logger.error(api+file+func+' Internal Server Error :'+err);  
-							cb(err_resp,null);
-						}else{
-							cb(null,data);
-						}
-					});
+					}
+					cb(null,inbox);
+					//  async.map(data.rows,function(inboxData,cb){
+					// 	let json = {};
+					// 	try{
+					// 		json = inboxData.doc;
+					// 	}catch(err){
+					// 		console.log(err);
+					// 	}
+					// 	cb(null,json);
+					// },function(err,data){
+					// 	if(err){
+					// 		err_resp =  c_utils.set_error_response(500,'ERR500','Internal Server Error '+err);
+					// 		logger.error(api+file+func+' Internal Server Error :'+err);  
+					// 		cb(err_resp,null);
+					// 	}else{
+					// 		cb(null,data);
+					// 	}
+					// });
 				 }else{
 					 cb(null,"No bill added yet");
 				 }

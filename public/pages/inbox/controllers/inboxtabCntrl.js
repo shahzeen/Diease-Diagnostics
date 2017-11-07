@@ -14,6 +14,18 @@ billapp.controller('inboxtabController', function($scope,$http, $uibModal) {
         $scope.sortKey = keyname;   //set the sortKey to the param passed
         $scope.reverseSort = !$scope.reverseSort; //if true make it false and vice versa
     }
+	// $scope.weekNumberfilter = function(response,w_no){
+	// 	$scope.filteredArr = [];
+	// 	response.data.filter(function (bill){
+	// 		$scope.weekid = "Y2017W"+w_no;
+	// 		console.log('weekid = '+$scope.weekid+", bill.WEEKID = "+bill.WEEKID);
+	// 		return bill.WEEKID === $scope.weekid;
+	// 	}, this)
+	// 	.forEach(function(filteredData){
+	// 		$scope.filteredArr.push(filteredData);
+	// 		console.log('filteredArr = '+JSON.stringify($scope.filteredArr));
+	// 	});
+	// }
 	var id = 1111;
 	var inboxURLGET = "/api/v1/user/inbox/id/"+id;
 	/* http get call */
