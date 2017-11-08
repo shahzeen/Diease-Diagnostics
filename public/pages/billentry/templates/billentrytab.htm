@@ -12,13 +12,21 @@
 					</div>
 					
 					<div class="form-group">
-						<label>Date of Payment:</label>
-						<div class="input-group" moment-picker="bill_date" format="YYYY-MM-DD" start-view="day">
+						<label for="bill_date">Date of Payment:</label>
+						<!--<div class="input-group" moment-picker="bill_date" format="YYYY-MM-DD" start-view="day">
 							<span class="input-group-addon">
 						        <i class="glyphicon glyphicon-calendar"></i>
 						    </span>
 						    <input class="form-control" placeholder="Select a date" ng-model="bill_date" ng-model-options="{ updateOn: 'blur' }" style="color: #000;">
-						</div>
+						</div>-->
+						<p class="input-group-add-bill" id="bill_date">
+							<span class="input-group-btn">
+								<button type="button" class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+							</span>
+							<input type="text" class="form-control" uib-datepicker-popup="{{format}}" placeholder="Select bill date"
+								ng-model="bill_date" is-open="popup.opened" datepicker-options="dateOptions"ng-required="true"
+								close-text="Close" alt-input-formats="altInputFormats" show-button-bar="true"/>
+						</p>
 						<!-- <datepicker date-format="yyyy-MM-dd">
 							<input placeholder="Date Picker" type="text"/>
 						</datepicker> -->
@@ -68,8 +76,8 @@
 				</div>
 				<div class="row">
 			    	<div class="col-xs-4 col-xs-offset-3">
-			        	<button type="submit" class="btn btn-success" ng-disabled="addrecord.$invalid" ng-click="recordSubmit()">Submit</button>
-			        	<button type="button" class="btn btn-danger" ng-click="recordReset()">Reset</button>
+			        	<button type="submit" class="btn btn-success buttonStyle" ng-disabled="addrecord.$invalid" ng-click="recordSubmit()">Submit</button>
+			        	<button type="button" class="btn btn-danger buttonStyle" ng-click="recordReset()">Reset</button>
 			        </div>
 			    </div>
 			</div>

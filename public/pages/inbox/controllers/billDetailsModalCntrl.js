@@ -102,7 +102,8 @@ billapp.controller('billDetailsModalController', function($scope, $http, $uibMod
 		var billupdateURLPUT = "/api/v1/record/update/"+data._id;	
 		var billupdateJSON = {
 			"AMOUNT": billupdate.amount,
-			"BILLDESC": billupdate.billdesc
+			"BILLDESC": billupdate.billdesc,
+            "MODIFIED_DATE": moment().toISOString()
 		}
 		//console.log('billupdateJSON = '+JSON.stringify(billupdateJSON));
 		var postFunction = $http({
