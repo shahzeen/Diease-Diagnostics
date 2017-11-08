@@ -26,7 +26,7 @@ function save_data(request_data,cb){
 		}
 		else{
 			//console.log('save doc success = '+data);
-			let op = {'status':200,'message':'bill details saved successfully','id':data.id};
+			let op = {'status':200,'message':'Bill Details ADDED successfully','id':data.id};
 			logger.info(api+file+func+"Bill record saved "+data);
 			cb(null,op);
 		}
@@ -44,7 +44,7 @@ function update_bill(doc_id,request_data,cb){
 		else{
 			//console.log('save doc success');
 			console.log(data);
-			let op = {'status':200,'message':'Bill Details Updated successfully','id':data.id};
+			let op = {'status':200,'message':'Bill Details UPDATED successfully','id':data.id};
 			logger.info(api+file+func+"Bill Details updated "+data);
 			cb(null,op);
 		}

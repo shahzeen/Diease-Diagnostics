@@ -61,7 +61,7 @@ billapp.controller('billDetailsModalController', function($scope, $http, $uibMod
 						console.log('success else');
 						
 						if(response.status == "200"){
-							$scope.openModal("Delete Bill", "Bill details deleted successfully");
+							$scope.openModal("Delete Bill", "Bill Details DELETED successfully");
 							// swal({
 							// 	   title: "Success",
 							// 	   text: "Bill details deleted successfully",
@@ -96,4 +96,41 @@ billapp.controller('billDetailsModalController', function($scope, $http, $uibMod
     $scope.cancel = function () {
 		$scope.edited = -1;
     }
+
+    /* Save edited fields */
+	$scope.updateEdit =	function (data,billupdate) {
+		var billupdateURLPUT = "/api/v1/record/update/"+data._id;	
+		var billupdateJSON = {
+			"AMOUNT": billupdate.amount,
+			"BILLDESC": billupdate.billdesc
+		}
+		//console.log('billupdateJSON = '+JSON.stringify(billupdateJSON));
+		var postFunction = $http({
+			url: billupdateURLPUT,
+			dataType:"json",
+			crossDomain: true,
+			header : {"Access-Control-Allow-Headers " : "Content-Type "},
+			header : {"X-Requested-With ": "Content-Type" },
+			data: billupdateJSON,
+			method: "PUT"
+		})
+		.success(function(response) {//success handling
+			console.log('Success response recieved '+ JSON.stringify(response));
+					
+			if(response.status == "500"){
+                $scope.openModal("Save Bill", response.message);					
+			}else{
+				if(response.status == "200"){
+                    $scope.openModal("Save Bill", response.message);
+				}else if(response.status == "422"){
+                    $scope.openModal("Save Bill", response.message);
+				}
+			}
+		})
+		.error(function(response) {//err handling
+			$scope.openModal("Save Bill", response.message);
+		});
+        $scope.edited = -1;
+
+    };
 });
