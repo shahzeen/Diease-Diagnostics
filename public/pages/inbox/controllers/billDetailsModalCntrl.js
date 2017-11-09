@@ -29,6 +29,8 @@ billapp.controller('billDetailsModalController', function($scope, $http, $uibMod
 
     /*delete button function */
     $scope.remove = function (data,index) {
+			$uibModalInstance.dismiss('cancel');
+			$('.loader, .overlay').show();
 			var billdeleteURLPUT = "/api/v1/record/update/"+data._id;
 			$scope.dt = new Date();
 
@@ -49,7 +51,8 @@ billapp.controller('billDetailsModalController', function($scope, $http, $uibMod
 				})
 				.success(function(response) {//success handling
 					console.log('Success response recieved '+ JSON.stringify(response));
-					
+					$uibModalInstance.dismiss('cancel');
+					$('.loader, .overlay').hide();
 					if(response.status == "500"){
 						console.log('success if');
 						$scope.openModal("Delete Bill", "Please Try Again later");
@@ -99,6 +102,8 @@ billapp.controller('billDetailsModalController', function($scope, $http, $uibMod
 
     /* Save edited fields */
 	$scope.updateEdit =	function (data,billupdate) {
+		$uibModalInstance.dismiss('cancel');
+		$('.loader, .overlay').show();
 		var billupdateURLPUT = "/api/v1/record/update/"+data._id;	
 		var billupdateJSON = {
 			"AMOUNT": billupdate.amount,
@@ -117,7 +122,7 @@ billapp.controller('billDetailsModalController', function($scope, $http, $uibMod
 		})
 		.success(function(response) {//success handling
 			console.log('Success response recieved '+ JSON.stringify(response));
-					
+			$('.loader, .overlay').hide();
 			if(response.status == "500"){
                 $scope.openModal("Save Bill", response.message);					
 			}else{

@@ -18,10 +18,12 @@ billapp.controller('inboxtabController', function($scope,$http, $uibModal) {
 	var id = 1111;
 	var inboxURLGET = "/api/v1/user/inbox/id/"+id;
 	/* http get call */
+	$('.loader, .overlay').show();
 	$http({
 		url: inboxURLGET,
 		method: "GET"
 	}).success(function(response) {
+			$('.loader, .overlay').hide();
 			console.log('inbox - Success response recieved. '+ JSON.stringify(response)); /* printing API response on console - unit testing purpose*/
 			$scope.inboxData  = response;
 		});
@@ -55,11 +57,13 @@ billapp.controller('inboxtabController', function($scope,$http, $uibModal) {
 
 	$scope.openBillDetailsModal = function (data) {
 		// console.log('data = '+JSON.stringify(data));
+		$('.loader, .overlay').show();
 		var inboxDetailsURLGET = '/api/v1/user/inbox/id/'+data.user_id+'/weekid/'+data.week_id;
 		$http({
 			url: inboxDetailsURLGET,
 			method: "GET"
 		}).success(function(response) {
+				$('.loader, .overlay').hide();
 				// console.log('inbox ddetails = '+ JSON.stringify(response));
 				$scope.inboxDetails  = response.data;
 				var modalInstance = $uibModal.open({

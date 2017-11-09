@@ -1,7 +1,7 @@
-<div class="row" ng-if="typeof(inboxData.data) === 'string'">
+<div class="row" style="margin-top: 10px;" ng-if="typeof(inboxData.data) === 'string'">
 	No bill added yet...
 </div>
-<div class="row" ng-if="inboxData.data.length>0">
+<div class="row" style="margin-top: 10px;" ng-if="inboxData.data.length>0">
 	<div class="col-md-12">
 		<div class="card">
 			<div class="card-block" style="font-size: large; font-weight: bold; color: #fff; background-color: #24b755;">
@@ -65,4 +65,7 @@
 			</div>
 		</div>
 	</div>
+</div>
+<div class="overlay">
+	<div class="loader"></div>
 </div>

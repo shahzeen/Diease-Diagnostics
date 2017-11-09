@@ -25,6 +25,7 @@ billapp.controller('addBillDetailsModalController', function($scope, $http, $uib
 
     /*submit button function */
     $scope.submitBillDetails = function() {
+        $('.loader, .overlay').show();
         var billdetailsURLPOST = "/api/v1/record/add";
         var weekID = 'Y'+moment($scope.fromDate).year()+'W'+moment($scope.fromDate).isoWeek();
         
@@ -54,6 +55,7 @@ billapp.controller('addBillDetailsModalController', function($scope, $http, $uib
 			.success(function(response) {//success handling
 					console.log('Success response recieved '+ JSON.stringify(response));
 					$uibModalInstance.dismiss('cancel');
+                    $('.loader, .overlay').hide();
 					if(response.status == "500"){
 						console.log('success if');
                         $scope.openModal("Add Bill", response.message);
