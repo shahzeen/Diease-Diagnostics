@@ -123,3 +123,11 @@
 .orange {
   color: #FF5733;
 }
+
+.logoutButtonStyle {
+  color: white;
+  font-size: 20px;
+  border-radius: 0;
+  background-color: #2d0de2;
+  border-color: #2d0de2;
+}

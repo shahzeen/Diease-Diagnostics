@@ -4,7 +4,7 @@
                 <li id = "menu_inbox"><a ui-sref="tab.inbox" class="fa fa-home" aria-hidden="true" style="color: white"><span style="font-family: 'Raleway',sans-serif;">&nbsp;&nbsp;INBOX</span></a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right pull-right" style="position: relative; right: 50px; font-size: x-large;">
-            	<li style="color:white">					  	
+            	<!--<li style="color:white">					  	
 					<div class="tabHeaderTxt pull-left">Tanmoy</div>								
 				</li>
                 <li class="dropdown">
@@ -12,7 +12,14 @@
                     <ul class="dropdown-menu text-right header-nav-dropdown">
                     	<li><a ng-click="logoutBtnClick()" style="cursor: pointer;">Logout <span class="glyphicon glyphicon-off"></span></a></li>
                     </ul>
-                </li>
+                </li>-->
+                <div class="dropdown">
+                    <button class="btn btn-primary logoutButtonStyle" type="button" data-toggle="dropdown">Tanmoy
+                    <span class="caret"></span></button>
+                    <ul class="dropdown-menu dropdown-menu-right">
+                        <li><a ng-click="logoutBtnClick()" style="cursor: pointer;">Logout <span class="glyphicon glyphicon-off"></span></a></li>
+                    </ul>
+                </div>
           </ul>
         </nav>
     </div> 
