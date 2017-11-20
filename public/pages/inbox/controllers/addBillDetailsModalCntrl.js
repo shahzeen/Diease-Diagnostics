@@ -36,6 +36,8 @@ billapp.controller('addBillDetailsModalController', function($scope, $http, $uib
                 "First_Name": "Tanmoy",
                 "Last_Name": "Chaudhury",
 				"BILLDATE": moment($scope.fromDate),
+                "YEAR": moment($scope.fromDate).year(),
+                "MONTH": moment($scope.fromDate).format('MMM'),
 				"AMOUNT": $scope.bill_amount,
 				"BILLDESC": $scope.bill_desc,
   				"CREATED_DATE": moment().toISOString(),
