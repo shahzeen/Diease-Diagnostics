@@ -54,6 +54,15 @@ billapp.controller('inboxtabController', function($scope,$http, $uibModal) {
 			windowClass: 'registerModalWindow'
 		});
 	}
+	$scope.openMonthlyBillModal = function () {
+		var modalInstance = $uibModal.open({
+			backdrop: 'static',
+			keyboard: false,
+			templateUrl: './pages/inbox/templates/monthlyBillDetailsModal.htm',
+			controller: 'monthlyBillDetailsModalController',
+			windowClass: 'registerModalWindow'
+		});
+	}
 
 	$scope.openBillDetailsModal = function (data) {
 		// console.log('data = '+JSON.stringify(data));
