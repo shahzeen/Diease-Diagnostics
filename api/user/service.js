@@ -47,7 +47,7 @@ function get_inbox_data(id, year, cb) {
 					let inboxDetails  = [];
 					for(var i=1; i<53; i++){
 						let filteredArr = [];
-						let weekid = "Y2017W"+i;
+						let weekid = "Y"+year+"W"+i;
 						data.rows.filter(function (bill){
 							//console.log('bill = '+JSON.stringify(bill));
 							return bill.doc.WEEKID === weekid;

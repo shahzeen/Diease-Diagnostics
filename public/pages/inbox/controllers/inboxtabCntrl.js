@@ -9,7 +9,7 @@ billapp.controller('inboxtabController', function($scope,$http, $uibModal) {
 	
 	$scope.curYear = moment().year();
 	$scope.yearoptions = [2017, 2018, 2019, 2020];
-	
+	userinboxData($scope.curYear);
 	/* sort feature */
 	$scope.sort = function(keyname){
         $scope.sortKey = keyname;   //set the sortKey to the param passed
@@ -17,20 +17,23 @@ billapp.controller('inboxtabController', function($scope,$http, $uibModal) {
     }
 	$scope.yearwiseInboxData = function(bill_year){
 		console.log('selected year = '+bill_year);
+		userinboxData(bill_year);
 	}
 	
-	var id = 1111;
-	var inboxURLGET = "/api/v1/user/inbox/id/"+id+"/year/"+$scope.curYear;
-	/* http get call */
-	$('.loader, .overlay').show();
-	$http({
-		url: inboxURLGET,
-		method: "GET"
-	}).success(function(response) {
+	function userinboxData(year){
+		var id = 1111;
+		var inboxURLGET = "/api/v1/user/inbox/id/"+id+"/year/"+year;
+		/* http get call */
+		$('.loader, .overlay').show();
+		$http({
+			url: inboxURLGET,
+			method: "GET"
+		}).success(function(response) {
 			$('.loader, .overlay').hide();
 			console.log('inbox - Success response recieved. '+ JSON.stringify(response)); /* printing API response on console - unit testing purpose*/
 			$scope.inboxData  = response;
 		});
+	}
 
 		$scope.openModal= function(titleName, message){
 			var modalInstance= $uibModal.open({
