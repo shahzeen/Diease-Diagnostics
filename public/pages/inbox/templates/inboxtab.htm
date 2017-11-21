@@ -6,7 +6,7 @@
 		<div class="card">
 			<div class="card-block" style="font-size: large; font-weight: bold; color: #fff; background-color: #24b755;">
 				<div class="col-md-1">Filter:</div>
-				<div class="col-md-2" style="cursor: pointer;">
+				<div class="col-md-3" style="cursor: pointer;">
 					<a ng-click="sort('week_no')">
 						<span class="fa fa-calendar" aria-hidden="true" ng-show="!reverseSort"></span>
 						<span class="fa fa-calendar" aria-hidden="true" ng-show="reverseSort"></span>&nbsp;
@@ -15,7 +15,11 @@
 						<span class="fa fa-sort-asc" aria-hidden="true" ng-show="reverseSort"></span>
 					</a>
 				</div>				
-				<div class="col-md-3"></div>
+				<div class="col-md-2">
+					<select type="text" ng-change="yearwiseInboxData(bill_year)" class="form-control" ng-options="year for year in yearoptions" ng-init="bill_year = curYear" ng-model="bill_year" ng-required="true" style="height: 34px;">
+						<!--<option value=""></option>-->
+					</select>
+				</div>
 				<div class="col-md-2" style="color: black;">
 					<span class="search-icon"><img src="images/Search icon.png" class="small-img" ></span>
             		<input type="text" ng-model="search" class="form-control" placeholder="Search..." style="color: black; padding-left: 32px;">

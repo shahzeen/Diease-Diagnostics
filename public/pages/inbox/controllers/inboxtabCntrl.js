@@ -7,16 +7,20 @@ billapp.controller('inboxtabController', function($scope,$http, $uibModal) {
 	// $("#menu_billentry").attr("class","");
 	// $("#menu_billupdate").attr("class","");
 	
-	$scope.curdt = new Date().getMonth();
+	$scope.curYear = moment().year();
+	$scope.yearoptions = [2017, 2018, 2019, 2020];
 	
 	/* sort feature */
 	$scope.sort = function(keyname){
         $scope.sortKey = keyname;   //set the sortKey to the param passed
         $scope.reverseSort = !$scope.reverseSort; //if true make it false and vice versa
     }
+	$scope.yearwiseInboxData = function(bill_year){
+		console.log('selected year = '+bill_year);
+	}
 	
 	var id = 1111;
-	var inboxURLGET = "/api/v1/user/inbox/id/"+id;
+	var inboxURLGET = "/api/v1/user/inbox/id/"+id+"/year/"+$scope.curYear;
 	/* http get call */
 	$('.loader, .overlay').show();
 	$http({
