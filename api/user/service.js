@@ -34,11 +34,12 @@ function save_data(request_data,cb){
     });
 }
 
-function get_inbox_data(id, cb) {
+function get_inbox_data(id, year, cb) {
     let func = '.get_inbox_data';
     let err_resp ={};
     try{
-		let opts ={'include_docs': true,'key': id};
+		let opts ={'include_docs': true,'key': [id,parseInt(year)]};
+		console.log('opts = '+JSON.stringify(opts));
         cloudant.readAll('bill_details','inbox','vw_inbox',opts,function(err,data){
              if(!err){
 				 if(data.rows.length){

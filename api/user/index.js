@@ -149,7 +149,7 @@ login.get('/inbox/id/:id/weekid/:weekid',  function(req, res) {
 
 /**
  * @swagger
- * /api/v1/user/inbox/id/{id}:
+ * /api/v1/user/inbox/id/{id}/year/{year}:
  *   get:
  *     tags:
  *       - User
@@ -161,6 +161,11 @@ login.get('/inbox/id/:id/weekid/:weekid',  function(req, res) {
  *         in: path
  *         required: true
  *         type: string
+ *       - name: year
+ *         description: year
+ *         in: path
+ *         required: true
+ *         type: string
  *     produces:
  *       - application/json
  *     responses:
@@ -168,11 +173,12 @@ login.get('/inbox/id/:id/weekid/:weekid',  function(req, res) {
  *         description: Returns user inbox details from database
  */
 
-login.get('/inbox/id/:id',  function(req, res) {
+login.get('/inbox/id/:id/year/:year',  function(req, res) {
 	const func = '.get';
 	    try {
             var id = req.params.id;
-	        service.get_inbox_data(id, function(err,result){
+			var year = req.params.year;
+	        service.get_inbox_data(id, year, function(err,result){
 	            if(!err){
                     console.log('result = '+JSON.stringify(result));
 	                res.status(200).json({'status':'ok','message':'success','data':result});
