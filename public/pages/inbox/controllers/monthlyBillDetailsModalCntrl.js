@@ -22,6 +22,6 @@ billapp.controller('monthlyBillDetailsModalController', function($scope, $http, 
 		$scope.labels = ["JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC"];
 		$scope.series = ['Expense'];
 
-		$scope.data = response.data;// for one color use [response.data]
+		$scope.data = [response.data];// for diff color use response.data
 	});
 });
