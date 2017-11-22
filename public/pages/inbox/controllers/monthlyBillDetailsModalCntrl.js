@@ -5,7 +5,7 @@ billapp.controller('monthlyBillDetailsModalController', function($scope, $http, 
     $scope.close = function () {
         $uibModalInstance.dismiss('cancel');
     }
-
+	$scope.year = billingyear;
 	/* monthly details API GET call */
 	var id = 1111;
 	var monthlyDetailsURLGET = "/api/v1/user/monthlydetails/id/"+id+"/year/"+billingyear;
