@@ -2,10 +2,8 @@
 billapp.controller('inboxtabController', function($scope,$http, $uibModal) {
 
 	console.log('On inboxtabController');
-	
+	// console.log('weeks In Year = '+moment().isoWeeksInYear());
 	$("#menu_inbox").attr("class","active");
-	// $("#menu_billentry").attr("class","");
-	// $("#menu_billupdate").attr("class","");
 	
 	$scope.curYear = moment().year();
 	$scope.yearoptions = [2017, 2018, 2019, 2020];
@@ -30,7 +28,7 @@ billapp.controller('inboxtabController', function($scope,$http, $uibModal) {
 			method: "GET"
 		}).success(function(response) {
 			$('.loader, .overlay').hide();
-			console.log('inbox - Success response recieved. '+ JSON.stringify(response)); /* printing API response on console - unit testing purpose*/
+			console.log('inbox - Success response recieved. '+ JSON.stringify(response));
 			$scope.inboxData  = response;
 			$scope.responseType = typeof response.data;
 		});

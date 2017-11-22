@@ -193,4 +193,50 @@ login.get('/inbox/id/:id/year/:year',  function(req, res) {
 	    }
 	});
 
+/**
+ * @swagger
+ * /api/v1/user/monthlydetails/id/{id}/year/{year}:
+ *   get:
+ *     tags:
+ *       - User
+ *     summary: Show monthly details
+ *     description: Returns monthly inbox details
+ *     parameters:
+ *       - name: id
+ *         description: user id
+ *         in: path
+ *         required: true
+ *         type: string
+ *       - name: year
+ *         description: year
+ *         in: path
+ *         required: true
+ *         type: string
+ *     produces:
+ *       - application/json
+ *     responses:
+ *       200:
+ *         description: Returns monthly inbox details from database
+ */
+
+login.get('/monthlydetails/id/:id/year/:year',  function(req, res) {
+	const func = '.get';
+	    try {
+            var id = req.params.id;
+			var year = req.params.year;
+	        service.get_monthly_details_data(id, year, function(err,result){
+	            if(!err){
+                    // console.log('result = '+JSON.stringify(result));
+	                res.status(200).json({'status':'ok','message':'success','data':result});
+	            }else{
+	                logger.error(api+file+func+' Internal Server Error in retriving all bills from database :'+err);  
+	                res.status(500).json({'status':500,'message':'API Response Error','data':[]});
+	            }
+	        });
+	     }catch(err){
+	        logger.error(api+file+func+' Internal Server Error in retriving bills from database :'+err);  
+	        res.status(500).json({'status':500,'message':'API Response Error','data':[]});
+	    }
+	});
+
 module.exports = login;

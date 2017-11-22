@@ -12,7 +12,8 @@ const file = 'api.user.service';
 exports = module.exports = {
 		save_data:save_data,
 		get_inbox_data:get_inbox_data,
-		get_inbox_details_data:get_inbox_details_data
+		get_inbox_details_data:get_inbox_details_data,
+		get_monthly_details_data:get_monthly_details_data
 }
 
 
@@ -44,7 +45,7 @@ function get_inbox_data(id, year, cb) {
 				 if(data.rows.length){
 					let inbox  = [];
 					let inboxDetails  = [];
-					for(var i=1; i<53; i++){
+					for(var i=1; i<54; i++){
 						let filteredArr = [];
 						let weekid = "Y"+year+"W"+i;
 						data.rows.filter(function (bill){
@@ -79,23 +80,6 @@ function get_inbox_data(id, year, cb) {
 						}
 					}
 					cb(null,inbox);
-					//  async.map(data.rows,function(inboxData,cb){
-					// 	let json = {};
-					// 	try{
-					// 		json = inboxData.doc;
-					// 	}catch(err){
-					// 		console.log(err);
-					// 	}
-					// 	cb(null,json);
-					// },function(err,data){
-					// 	if(err){
-					// 		err_resp =  c_utils.set_error_response(500,'ERR500','Internal Server Error '+err);
-					// 		logger.error(api+file+func+' Internal Server Error :'+err);  
-					// 		cb(err_resp,null);
-					// 	}else{
-					// 		cb(null,data);
-					// 	}
-					// });
 				 }else{
 					 cb(null,"No bill added yet");
 				 }
@@ -141,6 +125,45 @@ function get_inbox_details_data(id, weekid, cb) {
 					 cb(null,"No bill details found");
 				 }
                 
+            }else{
+                cb(null,[]);
+            }
+            
+        });
+    }catch(err){
+        err_resp =  c_utils.set_error_response(500,'ERR500','Server Error');
+		logger.error(api+file+func+' Server Error in retriving data from database:'+err);  
+		cb(err_resp,null);
+    }
+}
+
+function get_monthly_details_data(id, year, cb) {
+    let func = '.get_monthly_details_data';
+    let err_resp ={};
+    try{
+		let opts ={'include_docs': true,'key': [id,parseInt(year)]};
+        cloudant.readAll('bill_details','inbox','vw_inbox',opts,function(err,data){
+            if(!err){
+				if(data.rows.length){
+					let monthlyDetails = [];
+					var monthOption = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+					for(var i=0; i<monthOption.length; i++){
+						var monthName = monthOption[i];
+						console.log('monthName = '+monthName);
+						var json = {};
+						json[monthName] = 0;
+						data.rows.filter(function(bill){
+							// console.log('bill = '+JSON.stringify(bill));
+							return bill.doc.MONTH === monthName;
+						}, this)
+						.forEach(function(filteredData){
+							// console.log('filteredData = '+JSON.stringify(filteredData));
+							json[monthName] = json[monthName] + filteredData.doc.AMOUNT;
+						});
+						monthlyDetails.push(json);
+					}
+					cb(null,monthlyDetails);
+				}
             }else{
                 cb(null,[]);
             }

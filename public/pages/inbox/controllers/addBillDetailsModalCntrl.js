@@ -110,7 +110,7 @@ billapp.controller('addBillDetailsModalController', function($scope, $http, $uib
     $scope.dateOptions = {
         /*dateDisabled: disabled,*/
         formatYear: 'yy',
-        maxDate: new Date(2020, 5, 22),
+        maxDate: new Date(2020, 11, 31),
         minDate: new Date(),
         startingDay: 1,
         today: false,
