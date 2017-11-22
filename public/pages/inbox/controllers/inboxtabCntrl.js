@@ -32,6 +32,7 @@ billapp.controller('inboxtabController', function($scope,$http, $uibModal) {
 			$('.loader, .overlay').hide();
 			console.log('inbox - Success response recieved. '+ JSON.stringify(response)); /* printing API response on console - unit testing purpose*/
 			$scope.inboxData  = response;
+			$scope.responseType = typeof response.data;
 		});
 	}
 
