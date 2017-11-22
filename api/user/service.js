@@ -150,17 +150,19 @@ function get_monthly_details_data(id, year, cb) {
 					for(var i=0; i<monthOption.length; i++){
 						var monthName = monthOption[i];
 						console.log('monthName = '+monthName);
-						var json = {};
-						json[monthName] = 0;
+						// var json = {};
+						// json[monthName] = 0;
+						var billamount = 0;
 						data.rows.filter(function(bill){
 							// console.log('bill = '+JSON.stringify(bill));
 							return bill.doc.MONTH === monthName;
 						}, this)
 						.forEach(function(filteredData){
+							billamount = billamount + filteredData.doc.AMOUNT;
 							// console.log('filteredData = '+JSON.stringify(filteredData));
-							json[monthName] = json[monthName] + filteredData.doc.AMOUNT;
+							// json[monthName] = json[monthName] + filteredData.doc.AMOUNT;
 						});
-						monthlyDetails.push(json);
+						monthlyDetails.push(billamount);
 					}
 					cb(null,monthlyDetails);
 				}

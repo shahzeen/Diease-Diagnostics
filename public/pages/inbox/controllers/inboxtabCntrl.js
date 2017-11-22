@@ -28,7 +28,7 @@ billapp.controller('inboxtabController', function($scope,$http, $uibModal) {
 			method: "GET"
 		}).success(function(response) {
 			$('.loader, .overlay').hide();
-			console.log('inbox - Success response recieved. '+ JSON.stringify(response));
+			console.log('Inbox data = '+ JSON.stringify(response));
 			$scope.inboxData  = response;
 			$scope.responseType = typeof response.data;
 		});
@@ -60,12 +60,17 @@ billapp.controller('inboxtabController', function($scope,$http, $uibModal) {
 			windowClass: 'registerModalWindow'
 		});
 	}
-	$scope.openMonthlyBillModal = function () {
+	$scope.openMonthlyBillModal = function (billingyear) {
 		var modalInstance = $uibModal.open({
 			backdrop: 'static',
 			keyboard: false,
 			templateUrl: './pages/inbox/templates/monthlyBillDetailsModal.htm',
 			controller: 'monthlyBillDetailsModalController',
+			resolve:{
+				billingyear: function(){
+					return billingyear;
+				}
+			},
 			windowClass: 'registerModalWindow'
 		});
 	}
