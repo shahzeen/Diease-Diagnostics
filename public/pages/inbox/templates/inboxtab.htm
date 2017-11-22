@@ -23,7 +23,7 @@
 				</div>
 				<div class="col-md-4">
 					<button class="btn btn-primary buttonStyle" type="button" ng-click="openAddBillModal()">Add Bill</button>
-					<button class="btn btn-primary buttonStyle" type="button" ng-click="openMonthlyBillModal()">monthly bill</button>
+					<button class="btn btn-primary buttonStyle" type="button" ng-disabled="inboxData.data === 'No bill added yet'" ng-click="openMonthlyBillModal()">monthly bill</button>
 				</div>
 			</div>
 		</div>

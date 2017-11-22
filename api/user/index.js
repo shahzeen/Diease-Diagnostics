@@ -180,7 +180,7 @@ login.get('/inbox/id/:id/year/:year',  function(req, res) {
 			var year = req.params.year;
 	        service.get_inbox_data(id, year, function(err,result){
 	            if(!err){
-                    console.log('result = '+JSON.stringify(result));
+                    // console.log('result = '+JSON.stringify(result));
 	                res.status(200).json({'status':'ok','message':'success','data':result});
 	            }else{
 	                logger.error(api+file+func+' Internal Server Error in retriving all bills from database :'+err);  
