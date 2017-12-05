@@ -52,7 +52,10 @@
 							<td ng-hide="edited === $index" class="text-center">
 								<span class="label label-primary" style="font-size: inherit;">{{data.bill_date | date : "MMM, yyyy"}}</span>
 							</td>
-							<td ng-hide="edited === $index" class="text-center" ng-class="black">₹ {{data.total_amount}}</td>
+							<td ng-hide="edited === $index" class="text-center" ng-class="black">
+								<span ng-class="{'red' : data.total_amount > 0,
+										'green' : data.total_amount < 0}">₹ {{data.total_amount}}</span>
+							</td>
 							<!--<td ng-hide="edited === $index" class="orange">{{data.BILLDESC}}</td>-->
 							<td ng-hide="edited === $index" ng-class="black">
 								<button class="btn btn-primary buttonStyle" type="button" ng-click="openBillDetailsModal(data)">Details</button>

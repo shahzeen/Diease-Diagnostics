@@ -25,8 +25,11 @@
                         <td ng-hide="edited === $index" class="text-center">
 							<span class="label label-primary" style="font-size: inherit;">{{data.BILLDATE | date : "EEE, MMM dd"}}</span>
 						</td>
-                        <td ng-hide="edited === $index" class="text-center" ng-class="black">₹ {{data.AMOUNT}}</td>
-						<td ng-hide="edited === $index" class="orange">{{data.BILLDESC}}</td>
+                        <td ng-hide="edited === $index" class="text-center" ng-class="black">
+                            <span ng-class="{'red' : data.AMOUNT > 0,
+										'green' : data.AMOUNT < 0}">₹ {{data.AMOUNT}}</span>
+                        </td>
+						<td ng-hide="edited === $index" class="bipra">{{data.BILLDESC}}</td>
                         <td ng-hide="edited === $index" ng-class="black">
 							<button class="btn btn-primary buttonStyle" type="button" ng-click="edit($index)">EDIT</button>
 							<button class="btn btn-danger buttonStyle" type="button" ng-click="remove(data,$index)">DELETE</button>
