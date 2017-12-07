@@ -37,7 +37,7 @@
 					<thead class="thead-default" style="font-size: large; font-weight: bold;">
 						<tr>
 							<th class="text-center">Week #</th>
-							<th class="text-center">Date</th>
+							<th class="text-center">Bill Period</th>
 							<th class="text-center">Amount</th>
 							<!--<th>Description</th>-->
 							<th></th>
@@ -50,7 +50,9 @@
 								<span class="orange" style="font-size: inherit;">{{data.week_no}}</span>
 							</td>
 							<td ng-hide="edited === $index" class="text-center">
-								<span class="label label-primary" style="font-size: inherit;">{{data.bill_date | date : "MMM, yyyy"}}</span>
+								<span class="label label-primary" style="font-size: inherit;">
+									{{data.first_day | date : "dd MMM"}} - {{data.last_day | date : "dd MMM"}}
+								</span>
 							</td>
 							<td ng-hide="edited === $index" class="text-center" ng-class="black">
 								<span ng-class="{'red' : data.total_amount > 0,

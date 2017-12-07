@@ -20,7 +20,7 @@
                     </tr>
                 </thead>
                 <tbody  class="black">
-                    <tr ng-repeat="data in inboxDetails | orderBy: 'BILLDATE'">
+                    <tr ng-repeat="data in inboxDetails | orderBy: 'BILLDATE'" ng-class="{'modified':data.MODIFIED_DATE !== null}">
                         <!-- show-->
                         <td ng-hide="edited === $index" class="text-center">
 							<span class="label label-primary" style="font-size: inherit;">{{data.BILLDATE | date : "EEE, MMM dd"}}</span>
