@@ -66,6 +66,7 @@ canvas.absCanvas{
 
 .buttonStyle {
     border: 1px solid #000;
+	/*letter-spacing: .4px;*/
 	border-radius: 4px;
 	color: black;
 	font-weight: bold;

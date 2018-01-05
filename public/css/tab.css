@@ -80,11 +80,11 @@
     font: inherit;
 }
 .navbar-default .navbar-nav{
-    margin-bottom: 5px;
+    margin-bottom: 0px;
 }
 .navbar-default .navbar-nav>.active>a, .navbar-default .navbar-nav>.active>a:hover, .navbar-default .navbar-nav>.active>a:focus{
     background-color: transparent;
-    border-bottom: 2px solid #fff;
+    border-bottom: 5px solid #C70039;
     font-size: x-large;
     font-weight: bold;
 }
@@ -134,4 +134,20 @@
 
 .modified {
     border-left: 5px solid #d9534f;
+}
+
+.primary {
+  background-color: #7659ff;
+}
+.warning {
+  background-color: #ffa100;
+}
+.success {
+  background-color: #00d977;
+}
+.info {
+  background-color: #0088ff;
+}
+.danger {
+  background-color: #ff386a;
 }
