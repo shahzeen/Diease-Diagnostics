@@ -72,6 +72,8 @@ billapp.controller('billentrytabController', function($scope,$http,$filter,$uibM
 				"SAYAN": $scope.sayan1004,
 				"TANMOY": $scope.tanmoy1003,
 				"BILLDESC": $scope.bill_desc,
+				"CREATED_DATE": moment().toISOString(),
+                "MODIFIED_DATE": null,
   				"DELETED_DATE": null
 		}
 		//console.log('billdetailsJSON = '+JSON.stringify(billdetailsJSON));

@@ -242,7 +242,8 @@ billapp.controller('dashboardtabController', function($scope,$http,$uibModal) {
 				"SAURAV": billupdate.saurav,
 				"SAYAN": billupdate.sayan,
 				"TANMOY": billupdate.tanmoy,
-				"BILLDESC": billupdate.billdesc
+				"BILLDESC": billupdate.billdesc,
+            	"MODIFIED_DATE": moment().toISOString()
 			}
 			//console.log('billupdateJSON = '+JSON.stringify(billupdateJSON));
 		var postFunction = $http({
