@@ -36,9 +36,18 @@ billapp.controller('dashboardtabController', function($scope,$http,$uibModal) {
 	}).success(function(response) {
 			$('.loader, .overlay').hide();
 			response.data.sort(function(a,b){
+				/*sort by name */
+				// var nameA = a.PAYER.toLowerCase();
+				// var nameB = b.PAYER.toLowerCase();
+				// if(nameA<nameB)
+				// 	return -1;
+				// if(nameA>nameB)
+				// 	return 1;
+				// return 0;
+
+				/*sort by date */
 				var dateA = moment(a.BILLDATE);
 				var dateB = moment(b.BILLDATE);
-				// console.log('dateA = '+dateA+', dateB = '+dateB+', dateA-dateB = '+(dateA-dateB));
 				return dateB - dateA;
 			});
 			console.log('List of bills - Success response recieved. '+ JSON.stringify(response)); /* printing API response on console - unit testing purpose*/
