@@ -5,18 +5,18 @@ billapp.controller('maintabController', function($scope, $state, $uibModal) {
                    		{ 	"id": "1001",
                    			"name": "Arnab"
                    		},
-                   		{ 	"id": "1002",
-                   			"name": "Saurav"
-                   		},
+                   		// { 	"id": "1002",
+                   		// 	"name": "Saurav"
+                   		// },
                    		{ 	"id": "1003",
                    			"name": "Tanmoy"
                    		},
                    		{ 	"id": "1004",
                    			"name": "Sayan"
                    		},
-                   		{ 	"id": "1005",
-                   			"name": "Bipra"
-                   		}
+                   		// { 	"id": "1005",
+                   		// 	"name": "Bipra"
+                   		// }
                    ];
 
 	$scope.about = function () {
