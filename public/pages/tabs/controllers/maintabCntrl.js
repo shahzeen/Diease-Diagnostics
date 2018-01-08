@@ -1,23 +1,23 @@
 'use strict'
 billapp.controller('maintabController', function($scope, $state, $uibModal) {
 	console.log('Main tab controller called');
-	$scope.billpayer = [
-                   		{ 	"id": "1001",
-                   			"name": "Arnab"
-                   		},
-                   		// { 	"id": "1002",
-                   		// 	"name": "Saurav"
-                   		// },
-                   		{ 	"id": "1003",
-                   			"name": "Tanmoy"
-                   		},
-                   		{ 	"id": "1004",
-                   			"name": "Sayan"
-                   		},
-                   		// { 	"id": "1005",
-                   		// 	"name": "Bipra"
-                   		// }
-                   ];
+	// $scope.billpayer = [
+    //                		{ 	"id": "1001",
+    //                			"name": "Arnab"
+    //                		},
+    //                		// { 	"id": "1002",
+    //                		// 	"name": "Saurav"
+    //                		// },
+    //                		{ 	"id": "1003",
+    //                			"name": "Tanmoy"
+    //                		},
+    //                		{ 	"id": "1004",
+    //                			"name": "Sayan"
+    //                		},
+    //                		// { 	"id": "1005",
+    //                		// 	"name": "Bipra"
+    //                		// }
+    //                ];
 
 	$scope.about = function () {
 		console.log('opening pop up');

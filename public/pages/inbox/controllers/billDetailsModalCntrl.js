@@ -32,10 +32,10 @@ billapp.controller('billDetailsModalController', function($scope, $http, $uibMod
 			$uibModalInstance.dismiss('cancel');
 			$('.loader, .overlay').show();
 			var billdeleteURLPUT = "/api/v1/record/update/"+data._id;
-			$scope.dt = new Date();
+			// $scope.dt = new Date();
 
 			var billdeleteJSON = {
-				"DELETED_DATE": $scope.dt
+				"DELETED_DATE": moment().toISOString()
 			}
 			
 			console.log('url = '+billdeleteURLPUT);

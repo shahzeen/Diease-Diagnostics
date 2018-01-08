@@ -1,5 +1,5 @@
 'use strict'
-billapp.controller('dashboardtabController', function($scope,$http) {
+billapp.controller('dashboardtabController', function($scope,$http,$uibModal) {
 
 	console.log('On dashboardtabController');
 	
@@ -8,7 +8,15 @@ billapp.controller('dashboardtabController', function($scope,$http) {
 	$("#menu_billupdate").attr("class","");
 	
 	$scope.curdt = new Date().getMonth();
-	
+	$scope.openAddBillModal = function () {
+		var modalInstance = $uibModal.open({
+			backdrop: 'static',
+			keyboard: false,
+			templateUrl: './pages/billentry/templates/billEntryModal.htm',
+			controller: 'billentrytabController',
+			windowClass: 'registerModalWindow'
+		});
+	}
 	/* angular clock feature */
 	$scope.format = 'EEEE MMMM d,yyyy';//EEEE MMMM d,yyyy hh:mm:ss a Z, dd-MMM-yyyy hh:mm:ss a, EEEE MMMM d,yyyy hh:mm:ss a
 	$scope.theme = 'blue-light';//also use dark for dark theme
@@ -20,11 +28,19 @@ billapp.controller('dashboardtabController', function($scope,$http) {
     }
 	
 	var billdetailsURLGET = "/api/v1/record/show";
+	$('.loader, .overlay').show();
 	/* http get call */
 	$http({
 		url: billdetailsURLGET,
 		method: "GET"
 	}).success(function(response) {
+			$('.loader, .overlay').hide();
+			response.data.sort(function(a,b){
+				var dateA = moment(a.BILLDATE);
+				var dateB = moment(b.BILLDATE);
+				// console.log('dateA = '+dateA+', dateB = '+dateB+', dateA-dateB = '+(dateA-dateB));
+				return dateB - dateA;
+			});
 			console.log('List of bills - Success response recieved. '+ JSON.stringify(response)); /* printing API response on console - unit testing purpose*/
 			$scope.bills  = response;
 			
@@ -128,10 +144,10 @@ billapp.controller('dashboardtabController', function($scope,$http) {
 
 		 $scope.remove = function (data,index) {
 			var billdeleteURLPUT = "/api/v1/record/update/"+data.doc_id;
-			$scope.dt = new Date();
-
+			// $scope.dt = new Date();
+			$('.loader, .overlay').show();
 			var billdeleteJSON = {
-				"DELETED_DATE": $scope.dt
+				"DELETED_DATE": moment().toISOString()
 			}
 			
 			console.log('url = '+billdeleteURLPUT);
@@ -147,7 +163,7 @@ billapp.controller('dashboardtabController', function($scope,$http) {
 				})
 				.success(function(response) {//success handling
 					console.log('Success response recieved '+ JSON.stringify(response));
-					
+					$('.loader, .overlay').hide();
 					if(response.status == "500"){
 						console.log('success if');
 						swal({
@@ -167,6 +183,11 @@ billapp.controller('dashboardtabController', function($scope,$http) {
 								url: billdetailsURLGET,
 								method: "GET"
 							}).success(function(response) {
+									response.data.sort(function(a,b){
+										var dateA = moment(a.BILLDATE);
+										var dateB = moment(b.BILLDATE);
+										return dateB - dateA;
+									});
 									console.log('List of bills - Success response recieved. '+ JSON.stringify(response)); /* printing API response on console - unit testing purpose*/
 									$scope.bills  = response;
 									
@@ -198,9 +219,9 @@ billapp.controller('dashboardtabController', function($scope,$http) {
 
 		/* Save edited fields */
 		function updateEdit(data,billupdate) {
-
+			$('.loader, .overlay').show();
 			var billupdateURLPUT = "/api/v1/record/update/"+data.doc_id;
-			$scope.dt = billupdate.billdate?new Date(billupdate.billdate):data.BILLDATE;
+			$scope.dt = billupdate.billdate?moment(billupdate.billdate):data.BILLDATE;
 			// $scope.diff = $scope.curdt - Date.parse(data.BILLDATE);
 			// console.log('diff = '+Date.parse(data.BILLDATE));
 			
@@ -226,7 +247,7 @@ billapp.controller('dashboardtabController', function($scope,$http) {
 			 })
 			.success(function(response) {//success handling
 					console.log('Success response recieved '+ JSON.stringify(response));
-					
+					$('.loader, .overlay').hide();
 					if(response.status == "500"){
 						console.log('success if');
 						swal({
@@ -243,7 +264,12 @@ billapp.controller('dashboardtabController', function($scope,$http) {
 							$http({
 								url: billdetailsURLGET,
 								method: "GET"
-								}).success(function(response) {
+							}).success(function(response) {
+									response.data.sort(function(a,b){
+										var dateA = moment(a.BILLDATE);
+										var dateB = moment(b.BILLDATE);
+										return dateB - dateA;
+									});
 									console.log('List of bills - Success response recieved. '+ JSON.stringify(response)); /* printing API response on console - unit testing purpose*/
 									$scope.bills  = response;
 									
@@ -275,7 +301,12 @@ billapp.controller('dashboardtabController', function($scope,$http) {
 			$http({
 				url: billdetailsURLGET,
 				method: "GET"
-				}).success(function(response) {
+			}).success(function(response) {
+					response.data.sort(function(a,b){
+						var dateA = moment(a.BILLDATE);
+						var dateB = moment(b.BILLDATE);
+						return dateB - dateA;
+					});
 					console.log('List of bills - Success response recieved. '+ JSON.stringify(response)); /* printing API response on console - unit testing purpose*/
 					$scope.bills  = response;
 					$scope.billCalculate(response);

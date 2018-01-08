@@ -2,12 +2,12 @@
 	<div class="col-md-12">
 		<div class="card">
 			<div class="card-block" style="font-size: large; font-weight: bold; color: #fff; background-color: #24b755;">
-				<div class="col-md-1">Filter:</div>
+				<div class="col-md-1">Sort By:</div>
 				<div class="col-md-2" style="cursor: pointer;">
 					<a ng-click="sort('PAYER')">
 						<span class="fa fa-sort-alpha-asc" aria-hidden="true" ng-show="!reverseSort"></span>
 						<span class="fa fa-sort-alpha-desc" aria-hidden="true" ng-show="reverseSort"></span>&nbsp;
-						By Bill Payer
+						Payer
 						<span class="fa fa-sort-desc" aria-hidden="true" ng-show="!reverseSort"></span>
 						<span class="fa fa-sort-asc" aria-hidden="true" ng-show="reverseSort"></span>
 					</a>
@@ -16,15 +16,18 @@
 					<a ng-click="sort('BILLDATE')">
 						<span class="fa fa-calendar" aria-hidden="true" ng-show="!reverseSort"></span>
 						<span class="fa fa-calendar" aria-hidden="true" ng-show="reverseSort"></span>&nbsp;
-						By Date
+						Date
 						<span class="fa fa-sort-desc" aria-hidden="true" ng-show="!reverseSort"></span>
 						<span class="fa fa-sort-asc" aria-hidden="true" ng-show="reverseSort"></span>
 					</a>
-				</div>				
-				<div class="col-md-2"></div>
+				</div>
 				<div class="col-md-3" style="color: black;">
 					<span class="search-icon"><img src="images/Search icon.png" class="small-img" ></span>
             		<input type="text" ng-model="search" class="form-control" placeholder="Search..." style="color: black; padding-left: 32px;">
+				</div>
+				<div class="col-md-2"></div>
+				<div class="col-md-2">
+					<button class="btn btn-primary buttonStyle" type="button" ng-click="openAddBillModal()">Add Bill</button>
 				</div>
 			</div>
 		</div>
@@ -68,12 +71,6 @@
 							<td ng-show="edited === $index" class="text-center">{{data.PAYER}}</td>
 							<td ng-show="edited === $index" class="text-center">
 								<span class="label label-primary primary" style="font-size: inherit;">{{data.BILLDATE | date : "dd-MMM-yyyy"}}</span>
-								<!--<div class="input-group" moment-picker="billupdate.billdate" format="YYYY-MM-DD" start-view="day">
-									<span class="input-group-addon">
-										<i class="glyphicon glyphicon-calendar"></i>
-									</span>
-									<input class="form-control" placeholder="{{data.BILLDATE | date : 'dd-MMM-yyyy'}}" ng-model="billupdate.billdate" ng-model-options="{ updateOn: 'blur' }" style="color: #000;">
-								</div>-->
 							</td>
 							<td ng-show="edited === $index" class="text-center"><input type="number" class="form-control" ng-model="billupdate.amount" value="{{data.AMOUNT}}" style="color: #000;"></td>
 							<td ng-show="edited === $index" class="text-center"><input type="number" class="form-control" ng-model="billupdate.arnab" value="{{data.ARNAB}}" style="color: #000;"></td>
@@ -83,7 +80,8 @@
 							<td ng-show="edited === $index" class="text-center"><input type="number" class="form-control" ng-model="billupdate.tanmoy" value="{{data.TANMOY}}" style="color: #000;"></td>
 							<td ng-show="edited === $index"><textarea class="form-control" id="desc" ng-model="billupdate.billdesc" rows="3" ng-init="billupdate.billdesc=data.BILLDESC" style="color: #000;"></textarea></td>
 							<td ng-show="edited === $index">
-								<button class="btn btn-success success buttonStyle" type="button" ng-click="updateEdit(data,billupdate)">Save</button>
+								<button class="btn btn-success success buttonStyle" type="button" ng-click="updateEdit(data,billupdate)"
+								ng-disabled="!billupdate.billdesc">Save</button>
 								<button class="btn btn-warning warning buttonStyle" type="button" ng-click="close()">Cancel</button>
 							</td>
 						</tr>
@@ -211,4 +209,7 @@
 			</div>
 		</div>
 	</div> -->
+</div>
+<div class="overlay">
+	<div class="loader"></div>
 </div>

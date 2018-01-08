@@ -1,20 +1,58 @@
 'use strict'
-billapp.controller('billentrytabController', function($scope,$http,$filter) {
+billapp.controller('billentrytabController', function($scope,$http,$filter,$uibModal, $uibModalInstance) {
 
 	console.log('On billentrytabController');
 	
-	$("#menu_dashboard").attr("class","");
-	$("#menu_billentry").attr("class","active");
-	$("#menu_billupdate").attr("class","");
+	$("#menu_dashboard").attr("class","active");
+	// $("#menu_billentry").attr("class","");
+	// $("#menu_billupdate").attr("class","");
 	
+	$scope.close = function () {
+        $uibModalInstance.dismiss('cancel');
+    }
+	$scope.openModal= function(titleName, message){
+        var modalInstance= $uibModal.open({
+            backdrop: 'static',
+            keyboard: false,
+            templateUrl: './pages/common/templates/commonModalView.htm',
+            controller: 'commonModalViewController',
+            resolve:{
+                titleNameVal: function(){
+                    return titleName;
+                },
+                messageVal: function(){
+                    return message;
+                }
+            },
+            windowClass: 'smallModalWindow'
+        })
+    }
+	$scope.billpayer = [
+        { 	"id": "1001",
+            "name": "Arnab"
+        },
+        // { 	"id": "1002",
+        // 	"name": "Saurav"
+        // },
+        { 	"id": "1003",
+            "name": "Tanmoy"
+        },
+        { 	"id": "1004",
+            "name": "Sayan"
+        },
+        // { 	"id": "1005",
+        // 	"name": "Bipra"
+        // }
+    ];
+
 	var billdetailsURLPOST = "/api/v1/record/add";
 	function recordSubmit(){
-		
+		$('.loader, .overlay').show();
 		console.log('submit button clicked');
 
 		$scope.num = (Math.floor(Math.random() * 1000000));
 		$scope.billid=$scope.bill_payer.id+$scope.num;
-		$scope.dt = new Date($scope.bill_date);
+		// $scope.dt = new Date($scope.bill_date);
 
 		/*console.log('bill-id = '+$scope.billid);
 		console.log('payer = '+$scope.bill_payer.name);
@@ -26,7 +64,7 @@ billapp.controller('billentrytabController', function($scope,$http,$filter) {
 				"TYPE": "USER_GROUP",
 				"BILLID": $scope.billid,
 				"PAYER": $scope.bill_payer.name,
-				"BILLDATE": $scope.dt,
+				"BILLDATE": moment($scope.bill_date),
 				"AMOUNT": $scope.bill_amount,
 				"ARNAB": $scope.arnab1001,
 				"BIPRA": $scope.bipra1005,
@@ -48,35 +86,41 @@ billapp.controller('billentrytabController', function($scope,$http,$filter) {
 			 })
 			.success(function(response) {//success handling
 					console.log('Success response recieved '+ JSON.stringify(response));
-					
+					$uibModalInstance.dismiss('cancel');
+                    $('.loader, .overlay').hide();
 					if(response.status == "500"){
 						console.log('success if');
-						swal({
-							   title: response.message,
-							   type: "error" });					
+						$scope.openModal("Add Bill", response.message);
+						// swal({
+						// 	   title: response.message,
+						// 	   type: "error" });					
 					}else{
 						console.log('success else');
 						
 						if(response.status == "200"){
-							swal({
-								   title: response.message,
-								   type: "success" });	
+							$scope.openModal("Add Bill", response.message);
+							// swal({
+							// 	   title: response.message,
+							// 	   type: "success" });	
 						}	
 						else if(response.status == "422"){
-							swal({
-								   title: response.message,
-								   type: "warning" });
+							$scope.openModal("Add Bill", response.message);
+							// swal({
+							// 	   title: response.message,
+							// 	   type: "warning" });
 						}	
 						
-						$scope.recordReset();
+						// $scope.recordReset();
 					}
 				})
 				.error(function(response) {//err handling
 					console.log('err');
 					console.log('Error response recieved '+ JSON.stringify(response));
-					swal({
-						   title: response.message,
-						   type: "error" });
+					$uibModalInstance.dismiss('cancel');
+					$scope.openModal("Add Bill", response.message);
+					// swal({
+					// 	   title: response.message,
+					// 	   type: "error" });
 				});
 	}
 	$scope.recordSubmit = recordSubmit;
@@ -87,8 +131,8 @@ billapp.controller('billentrytabController', function($scope,$http,$filter) {
 		$scope.bill_date = '';
 		$scope.bill_amount = '';
 		$scope.arnab1001 = '';
-		$scope.bipra1005 = '';
-		$scope.saurav1002 = '';
+		// $scope.bipra1005 = '';
+		// $scope.saurav1002 = '';
 		$scope.sayan1004 = '';
 		$scope.tanmoy1003 = '';
 		$scope.bill_desc = '';
