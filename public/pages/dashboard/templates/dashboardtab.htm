@@ -50,7 +50,7 @@
 						</tr>
 					</thead>
 					<tbody  class="black">
-						<tr dir-paginate="data in bills.data | orderBy:sortKey:reverseSort | filter:search | itemsPerPage:10">
+						<tr dir-paginate="data in bills.data | orderBy:sortKey:reverseSort | filter:search | itemsPerPage:10" ng-class="{'modified':data.MODIFIED_DATE !== null}">
 							<!-- show-->
 							<td ng-hide="edited === $index" class="text-center" ng-class="black">{{data.PAYER}}</td>
 							<td ng-hide="edited === $index" class="text-center">
@@ -65,6 +65,7 @@
 							<td ng-hide="edited === $index" class="orange">{{data.BILLDESC}}</td>
 							<td ng-hide="edited === $index" ng-class="black">
 								<button class="btn btn-primary info buttonStyle" type="button" ng-click="edit($index)">Edit</button>
+								<button class="btn btn-info buttonStyle" type="button" ng-click="openBillDetailsModal(data)">Details</button>
 								<button class="btn btn-danger danger buttonStyle" type="button" ng-click="remove(data,$index)">Delete</button>
 							</td>
 							<!-- edit-->

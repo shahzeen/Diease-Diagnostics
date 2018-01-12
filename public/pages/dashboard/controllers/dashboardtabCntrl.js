@@ -17,6 +17,20 @@ billapp.controller('dashboardtabController', function($scope,$http,$uibModal) {
 			windowClass: 'registerModalWindow'
 		});
 	}
+	$scope.openBillDetailsModal = function (data) {
+		var modalInstance = $uibModal.open({
+			backdrop: 'static',
+			keyboard: false,
+			templateUrl: './pages/dashboard/templates/dashboardBillDetailsModal.htm',
+			controller: 'dashboardBillDetailsModalController',
+			resolve:{
+				rowData: function(){
+					return data;
+				}
+			},
+			windowClass: 'registerModalWindow'
+		});
+	}
 	/* angular clock feature */
 	$scope.format = 'EEEE MMMM d,yyyy';//EEEE MMMM d,yyyy hh:mm:ss a Z, dd-MMM-yyyy hh:mm:ss a, EEEE MMMM d,yyyy hh:mm:ss a
 	$scope.theme = 'blue-light';//also use dark for dark theme
@@ -152,7 +166,7 @@ billapp.controller('dashboardtabController', function($scope,$http,$uibModal) {
         };
 
 		 $scope.remove = function (data,index) {
-			var billdeleteURLPUT = "/api/v1/record/update/"+data.doc_id;
+			var billdeleteURLPUT = "/api/v1/record/update/"+data._id;
 			// $scope.dt = new Date();
 			$('.loader, .overlay').show();
 			var billdeleteJSON = {
@@ -229,7 +243,7 @@ billapp.controller('dashboardtabController', function($scope,$http,$uibModal) {
 		/* Save edited fields */
 		function updateEdit(data,billupdate) {
 			$('.loader, .overlay').show();
-			var billupdateURLPUT = "/api/v1/record/update/"+data.doc_id;
+			var billupdateURLPUT = "/api/v1/record/update/"+data._id;
 			$scope.dt = billupdate.billdate?moment(billupdate.billdate):data.BILLDATE;
 			// $scope.diff = $scope.curdt - Date.parse(data.BILLDATE);
 			// console.log('diff = '+Date.parse(data.BILLDATE));

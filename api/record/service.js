@@ -76,24 +76,24 @@ function show_bill_data(cb) {
         cloudant.readAll('bill_details','bills','vw_all_bills',{'include_docs':true},function(err,data){
              if(!err){
                 async.map(data.rows,function(bill,cb){
-                    let json = {};
-                    //console.log('bill = '+JSON.stringify(bill));
-                    try{
-                        json['doc_id'] = bill.doc._id;
-                        json['BILLID'] = bill.doc.BILLID;
-                        json['PAYER'] = bill.doc.PAYER;
-                        json['BILLDATE'] = bill.doc.BILLDATE;
-                        json['AMOUNT'] = bill.doc.AMOUNT;
-                        json['ARNAB'] = bill.doc.ARNAB;
-                        json['BIPRA'] = bill.doc.BIPRA;
-                        json['SAURAV'] = bill.doc.SAURAV;
-                        json['SAYAN'] = bill.doc.SAYAN;
-                        json['TANMOY'] = bill.doc.TANMOY;
-                        json['BILLDESC'] = bill.doc.BILLDESC;
-                    }catch(err){
-                        console.log(err);
-                    }
-                    cb(null,json);
+                    // let json = {};
+                    // console.log('bill = '+JSON.stringify(bill));
+                    // try{
+                    //     json['doc_id'] = bill.doc._id;
+                    //     json['BILLID'] = bill.doc.BILLID;
+                    //     json['PAYER'] = bill.doc.PAYER;
+                    //     json['BILLDATE'] = bill.doc.BILLDATE;
+                    //     json['AMOUNT'] = bill.doc.AMOUNT;
+                    //     json['ARNAB'] = bill.doc.ARNAB;
+                    //     json['BIPRA'] = bill.doc.BIPRA;
+                    //     json['SAURAV'] = bill.doc.SAURAV;
+                    //     json['SAYAN'] = bill.doc.SAYAN;
+                    //     json['TANMOY'] = bill.doc.TANMOY;
+                    //     json['BILLDESC'] = bill.doc.BILLDESC;
+                    // }catch(err){
+                    //     console.log(err);
+                    // }
+                    cb(null,bill.doc);
                 },function(err,data){
                     if(err){
                         err_resp =  c_utils.set_error_response(500,'ERR500','Internal Server Error '+err);
