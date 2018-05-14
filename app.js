@@ -45,49 +45,49 @@ app.use(bodyParser.json());
 /**
  * swagger definition
  **/
-var swaggerDefinition = {
-  info: {
-    title: 'Bill-Splitter HTTP API',
-    version: '1.0.0',
-    description: 'This is the current version of the Bill-Splitter HTTP API with Swagger',
-    termsOfService: "https://support-pilot.podc.sl.edst.ibm.com/support/home/",
-    contact: {
-      name: 'Bill-Splitter Application Support',
-      url: 'https://support-pilot.podc.sl.edst.ibm.com/support/home/',
-      email: 'tanmchau@in.ibm.com'
-    },
-    license: {
-      name: 'IBM License',
-      url: 'https://www-01.ibm.com/software/passportadvantage/licensing.html'
-    }
-  },
-  host: 'bill-splitter.mybluemix.net',
-  //host: 'localhost:8001',
-  basePath: '/'
-};
+// var swaggerDefinition = {
+//   info: {
+//     title: 'Bill-Splitter HTTP API',
+//     version: '1.0.0',
+//     description: 'This is the current version of the Bill-Splitter HTTP API with Swagger',
+//     termsOfService: "https://support-pilot.podc.sl.edst.ibm.com/support/home/",
+//     contact: {
+//       name: 'Bill-Splitter Application Support',
+//       url: 'https://support-pilot.podc.sl.edst.ibm.com/support/home/',
+//       email: 'tanmchau@in.ibm.com'
+//     },
+//     license: {
+//       name: 'IBM License',
+//       url: 'https://www-01.ibm.com/software/passportadvantage/licensing.html'
+//     }
+//   },
+//   host: 'bill-splitter.mybluemix.net',
+//   //host: 'localhost:8001',
+//   basePath: '/'
+// };
 
-//options for the swagger docs
-var options = {
-  // import swaggerDefinitions
-  swaggerDefinition: swaggerDefinition,
-  // path to the API docs
-  //apis: ['./api/routes/*.js','./api/routes/auth/*.js'],
-  apis: ['./api/record/*.js', './api/user/*.js', './api/appinfo.js']
-};
+// //options for the swagger docs
+// var options = {
+//   // import swaggerDefinitions
+//   swaggerDefinition: swaggerDefinition,
+//   // path to the API docs
+//   //apis: ['./api/routes/*.js','./api/routes/auth/*.js'],
+//   apis: ['./api/record/*.js', './api/user/*.js', './api/appinfo.js']
+// };
 
 
-// initialize swagger-jsdoc
-var swaggerSpec = swaggerJSDoc(options);
+// // initialize swagger-jsdoc
+// var swaggerSpec = swaggerJSDoc(options);
 
 	
 
-app.get('/swagger.json', function(req, res) {
-  res.setHeader('Content-Type', 'application/json');
-  res.setHeader('Access-Control-Allow-Origin', '*'); 
-  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, DELETE, PUT, OPTIONS'); 
-  res.setHeader('Access-Control-Allow-Headers', 'Access-Control-Allow-Origin, Origin, Accept, X-Requested-With, X-Auth-Token, Content-Type');
-  res.json(swaggerSpec);
-});
+// app.get('/swagger.json', function(req, res) {
+//   res.setHeader('Content-Type', 'application/json');
+//   res.setHeader('Access-Control-Allow-Origin', '*'); 
+//   res.setHeader('Access-Control-Allow-Methods', 'GET, POST, DELETE, PUT, OPTIONS'); 
+//   res.setHeader('Access-Control-Allow-Headers', 'Access-Control-Allow-Origin, Origin, Accept, X-Requested-With, X-Auth-Token, Content-Type');
+//   res.json(swaggerSpec);
+// });
 
 
 var app_routes = global.local_require('/approuter')(app);
