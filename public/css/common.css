@@ -63,6 +63,9 @@ canvas.absCanvas{
 .registerModalWindow .modal-dialog {
     margin-top: 159px;
 }
+.billDetailsModalWindow .modal-dialog {
+    margin-top: 50px;
+}
 
 .buttonStyle {
     border: 1px solid #000;

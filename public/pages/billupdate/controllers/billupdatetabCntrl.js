@@ -30,9 +30,9 @@ billapp.controller('billupdatetabController', function($scope,$http) {
 				"BILLDATE": $scope.bill_update_date,
 				"AMOUNT": $scope.bill_update_amount.toString(),
 				"ARNAB": $scope.arnab_update1001.toString(),
-				"BIPRA": $scope.bipra_update1005.toString(),
-				"SAURAV": $scope.saurav_update1002.toString(),
-				"SAYAN": $scope.sayan_update1004.toString(),
+				"ANUPAM": $scope.bipra_update1005.toString(),
+				"SUBHASIS": $scope.saurav_update1002.toString(),
+				"DEBU": $scope.sayan_update1004.toString(),
 				"TANMOY": $scope.tanmoy_update1003.toString(),
 				"BILLDESC": $scope.bill_update_desc
 		}

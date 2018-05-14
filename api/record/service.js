@@ -85,9 +85,9 @@ function show_bill_data(cb) {
                     //     json['BILLDATE'] = bill.doc.BILLDATE;
                     //     json['AMOUNT'] = bill.doc.AMOUNT;
                     //     json['ARNAB'] = bill.doc.ARNAB;
-                    //     json['BIPRA'] = bill.doc.BIPRA;
-                    //     json['SAURAV'] = bill.doc.SAURAV;
-                    //     json['SAYAN'] = bill.doc.SAYAN;
+                    //     json['ANUPAM'] = bill.doc.ANUPAM;
+                    //     json['SUBHASIS'] = bill.doc.SUBHASIS;
+                    //     json['DEBU'] = bill.doc.DEBU;
                     //     json['TANMOY'] = bill.doc.TANMOY;
                     //     json['BILLDESC'] = bill.doc.BILLDESC;
                     // }catch(err){

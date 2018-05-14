@@ -6,9 +6,9 @@ billapp.controller('dashboardBillDetailsModalController', function($scope, $http
     $scope.BILLDATE = rowData.BILLDATE;
     $scope.AMOUNT = rowData.AMOUNT;
     $scope.ARNAB = rowData.ARNAB;
-    $scope.BIPRA = rowData.BIPRA;
-    $scope.SAURAV = rowData.SAURAV;
-    $scope.SAYAN = rowData.SAYAN;
+    $scope.ANUPAM = rowData.ANUPAM;
+    $scope.SUBHASIS = rowData.SUBHASIS;
+    $scope.DEBU = rowData.DEBU;
     $scope.TANMOY = rowData.TANMOY;
     $scope.BILLDESC = rowData.BILLDESC;
     $scope.CREATED_DATE = rowData.CREATED_DATE;
