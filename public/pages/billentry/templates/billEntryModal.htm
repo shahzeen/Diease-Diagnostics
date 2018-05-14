@@ -34,7 +34,7 @@
             <label><span class="requiredField">*</span>Bill Amount:</label>
         </div>
         <div class="col-xs-8">
-            <input type="number" class="form-control" placeholder="Enter bill amount" ng-model="bill_amount" style="color: #000;" ng-required="true">
+            <input type="number" class="form-control" placeholder="Enter bill amount" ng-model="bill_amount" style="color: #000;" min="0" oninput="validity.valid||(value='');" ng-required="true">
         </div>
     </div>
     <div class="row colMarginBotton">
@@ -42,27 +42,27 @@
             <label><span class="requiredField">*</span>Arnab:</label>
         </div>
         <div class="col-xs-3">
-            <input type="number" class="form-control" ng-model="arnab1001" ng-init="arnab1001=0" style="color: #000;" ng-required="true">
+            <input type="number" class="form-control" ng-model="arnab1001" ng-init="arnab1001=0" style="color: #000;" min="0" oninput="validity.valid||(value='');" ng-required="true">
         </div>
         <div class="col-xs-2">
-            <label><span class="requiredField">*</span>Bipra:</label>
+            <label><span class="requiredField">*</span>Anupam:</label>
         </div>
         <div class="col-xs-3">
-            <input type="number" class="form-control" ng-model="bipra1005" ng-init="bipra1005=0" style="color: #000;" ng-required="true" disabled>
+            <input type="number" class="form-control" ng-model="bipra1005" ng-init="bipra1005=0" style="color: #000;" min="0" oninput="validity.valid||(value='');" ng-required="true">
         </div>
     </div>
     <div class="row colMarginBotton">
         <div class="col-xs-3">
-            <label><span class="requiredField">*</span>Sayan:</label>
+            <label><span class="requiredField">*</span>Debu:</label>
         </div>
         <div class="col-xs-3">
-            <input type="number" class="form-control" ng-model="sayan1004" ng-init="sayan1004=0" style="color: #000;" ng-required="true">
+            <input type="number" class="form-control" ng-model="sayan1004" ng-init="sayan1004=0" style="color: #000;" min="0" oninput="validity.valid||(value='');" ng-required="true">
         </div>
         <div class="col-xs-2">
-            <label><span class="requiredField">*</span>Saurav:</label>
+            <label><span class="requiredField">*</span>Subhasis:</label>
         </div>
         <div class="col-xs-3">
-            <input type="number" class="form-control" ng-model="saurav1002" ng-init="saurav1002=0" style="color: #000;" ng-required="true" disabled>
+            <input type="number" class="form-control" ng-model="saurav1002" ng-init="saurav1002=0" style="color: #000;" min="0" oninput="validity.valid||(value='');" ng-required="true">
         </div>
     </div>
     <div class="row colMarginBotton">
@@ -70,7 +70,7 @@
             <label><span class="requiredField">*</span>Tanmoy:</label>
         </div>
         <div class="col-xs-3">
-            <input type="number" class="form-control" ng-model="tanmoy1003" ng-init="tanmoy1003=0" style="color: #000;" ng-required="true">
+            <input type="number" class="form-control" ng-model="tanmoy1003" ng-init="tanmoy1003=0" style="color: #000;" min="0" oninput="validity.valid||(value='');" ng-required="true">
         </div>
     </div>
     <div class="row colMarginBotton">

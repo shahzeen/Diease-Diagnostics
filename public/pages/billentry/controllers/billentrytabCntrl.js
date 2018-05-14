@@ -31,18 +31,18 @@ billapp.controller('billentrytabController', function($scope,$http,$filter,$uibM
         { 	"id": "1001",
             "name": "Arnab"
         },
-        // { 	"id": "1002",
-        // 	"name": "Saurav"
-        // },
+        { 	"id": "1002",
+        	"name": "Subhasis"
+        },
         { 	"id": "1003",
             "name": "Tanmoy"
         },
         { 	"id": "1004",
-            "name": "Sayan"
+            "name": "Debu"
         },
-        // { 	"id": "1005",
-        // 	"name": "Bipra"
-        // }
+        { 	"id": "1005",
+        	"name": "Anupam"
+        }
     ];
 
 	var billdetailsURLPOST = "/api/v1/record/add";
@@ -131,12 +131,12 @@ billapp.controller('billentrytabController', function($scope,$http,$filter,$uibM
 		console.log('reset button clicked');
 		$scope.bill_payer = '';
 		$scope.bill_date = '';
-		$scope.bill_amount = '';
-		$scope.arnab1001 = '';
-		// $scope.bipra1005 = '';
-		// $scope.saurav1002 = '';
-		$scope.sayan1004 = '';
-		$scope.tanmoy1003 = '';
+		$scope.bill_amount = 0;
+		$scope.arnab1001 = 0;
+		$scope.bipra1005 = 0;
+		$scope.saurav1002 = 0;
+		$scope.sayan1004 = 0;
+		$scope.tanmoy1003 = 0;
 		$scope.bill_desc = '';
 	}
 	$scope.recordReset = recordReset;

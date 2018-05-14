@@ -17,6 +17,15 @@ billapp.controller('dashboardtabController', function($scope,$http,$uibModal) {
 			windowClass: 'registerModalWindow'
 		});
 	}
+	$scope.openNotelModal = function () {
+		var modalInstance = $uibModal.open({
+			backdrop: 'static',
+			keyboard: false,
+			templateUrl: './pages/note/templates/noteModal.htm',
+			controller: 'noteModalController',
+			windowClass: 'registerModalWindow'
+		});
+	}
 	$scope.openBillDetailsModal = function (data) {
 		var modalInstance = $uibModal.open({
 			backdrop: 'static',
@@ -64,7 +73,7 @@ billapp.controller('dashboardtabController', function($scope,$http,$uibModal) {
 				var dateB = moment(b.BILLDATE);
 				return dateB - dateA;
 			});
-			console.log('List of bills - Success response recieved. '+ JSON.stringify(response)); /* printing API response on console - unit testing purpose*/
+			// console.log('List of bills - Success response recieved. '+ JSON.stringify(response)); /* printing API response on console - unit testing purpose*/
 			$scope.bills  = response;
 			
 			$scope.billCalculate(response);
@@ -211,7 +220,7 @@ billapp.controller('dashboardtabController', function($scope,$http,$uibModal) {
 										var dateB = moment(b.BILLDATE);
 										return dateB - dateA;
 									});
-									console.log('List of bills - Success response recieved. '+ JSON.stringify(response)); /* printing API response on console - unit testing purpose*/
+									// console.log('List of bills - Success response recieved. '+ JSON.stringify(response)); /* printing API response on console - unit testing purpose*/
 									$scope.bills  = response;
 									
 									$scope.billCalculate(response);
@@ -294,7 +303,7 @@ billapp.controller('dashboardtabController', function($scope,$http,$uibModal) {
 										var dateB = moment(b.BILLDATE);
 										return dateB - dateA;
 									});
-									console.log('List of bills - Success response recieved. '+ JSON.stringify(response)); /* printing API response on console - unit testing purpose*/
+									// console.log('List of bills - Success response recieved. '+ JSON.stringify(response)); /* printing API response on console - unit testing purpose*/
 									$scope.bills  = response;
 									
 									$scope.billCalculate(response);
@@ -331,7 +340,7 @@ billapp.controller('dashboardtabController', function($scope,$http,$uibModal) {
 						var dateB = moment(b.BILLDATE);
 						return dateB - dateA;
 					});
-					console.log('List of bills - Success response recieved. '+ JSON.stringify(response)); /* printing API response on console - unit testing purpose*/
+					// console.log('List of bills - Success response recieved. '+ JSON.stringify(response)); /* printing API response on console - unit testing purpose*/
 					$scope.bills  = response;
 					$scope.billCalculate(response);
 			});
