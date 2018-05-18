@@ -109,7 +109,7 @@ billapp.controller('dashboardtabController', function($scope,$http,$uibModal) {
 					}*/
 				}
 				if(response.data[i].ANUPAM != undefined){
-					if(response.data[i].PAYER == 'Bipra'){
+					if(response.data[i].PAYER == 'Anupam'){
 						//$scope.bipra =  parseFloat(response.data[i].AMOUNT) + parseFloat($scope.bipra) - parseFloat(response.data[i].ANUPAM);
 						$scope.arnabDUE2 = parseFloat($scope.arnabDUE2) + parseFloat(response.data[i].ARNAB);
 						$scope.bipraDUE2 = 0;
@@ -123,7 +123,7 @@ billapp.controller('dashboardtabController', function($scope,$http,$uibModal) {
 					}*/
 				}
 				if(response.data[i].SUBHASIS != undefined){
-					if(response.data[i].PAYER == 'Saurav'){
+					if(response.data[i].PAYER == 'Subhasis'){
 						//$scope.saurav =  parseFloat(response.data[i].AMOUNT) + parseFloat($scope.saurav) - parseFloat(response.data[i].SUBHASIS);
 						$scope.arnabDUE3 = parseFloat($scope.arnabDUE3) + parseFloat(response.data[i].ARNAB);
 						$scope.bipraDUE3 = parseFloat($scope.bipraDUE3) + parseFloat(response.data[i].ANUPAM);
@@ -137,7 +137,7 @@ billapp.controller('dashboardtabController', function($scope,$http,$uibModal) {
 					}*/
 				}
 				if(response.data[i].DEBU != undefined){
-					if(response.data[i].PAYER == 'Sayan'){
+					if(response.data[i].PAYER == 'Debu'){
 						//$scope.sayan =  parseFloat(response.data[i].AMOUNT) + parseFloat($scope.sayan) - parseFloat(response.data[i].DEBU);
 						$scope.arnabDUE4 = parseFloat($scope.arnabDUE4) + parseFloat(response.data[i].ARNAB);
 						$scope.bipraDUE4 = parseFloat($scope.bipraDUE4) + parseFloat(response.data[i].ANUPAM);
