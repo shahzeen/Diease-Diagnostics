@@ -55,7 +55,7 @@
 							<!-- show-->
 							<td ng-hide="edited === $index" class="text-center" ng-class="black">{{data.PAYER}}</td>
 							<td ng-hide="edited === $index" class="text-center">
-								<span class="label label-primary primary" style="font-size: inherit;">{{data.BILLDATE | date : "dd-MMM-yyyy"}}</span>
+								<span class="label label-primary primary" style="font-size: inherit;">{{data.BILLDATE | date : "dd-MMM-yy"}}</span>
 							</td>
 							<td ng-hide="edited === $index" class="text-center" ng-class="black">₹ {{data.AMOUNT}}</td>
 							<td ng-hide="edited === $index" class="text-center" ng-class="black">₹ {{data.ARNAB}}</td>
@@ -65,14 +65,14 @@
 							<td ng-hide="edited === $index" class="text-center" ng-class="black">₹ {{data.TANMOY}}</td>
 							<td ng-hide="edited === $index" class="orange">{{data.BILLDESC}}</td>
 							<td ng-hide="edited === $index" ng-class="black">
-								<button class="btn btn-primary info buttonStyle" type="button" ng-click="edit($index)">Edit</button>
-								<button class="btn btn-info buttonStyle" type="button" ng-click="openBillDetailsModal(data)">Details</button>
-								<button class="btn btn-danger danger buttonStyle" type="button" ng-click="remove(data,$index)">Delete</button>
+								<button class="btn btn-primary info buttonStyle" type="button" ng-click="edit($index)" uib-tooltip="Edit"><span class="glyphicon glyphicon-pencil"></span></button>
+								<button class="btn btn-info buttonStyle" type="button" ng-click="openBillDetailsModal(data)" uib-tooltip="Details"><i class="fa fa-info-circle fa-lg" aria-hidden="true"></i></button>
+								<button class="btn btn-danger danger buttonStyle" type="button" ng-click="remove(data,$index)" uib-tooltip="Delete"><i class="fa fa-trash-o fa-lg" aria-hidden="true"></i></button>
 							</td>
 							<!-- edit-->
 							<td ng-show="edited === $index" class="text-center">{{data.PAYER}}</td>
 							<td ng-show="edited === $index" class="text-center">
-								<span class="label label-primary primary" style="font-size: inherit;">{{data.BILLDATE | date : "dd-MMM-yyyy"}}</span>
+								<span class="label label-primary primary" style="font-size: inherit;">{{data.BILLDATE | date : "dd-MMM-yy"}}</span>
 							</td>
 							<td ng-show="edited === $index" class="text-center"><input type="number" class="form-control" ng-model="billupdate.amount" value="{{data.AMOUNT}}" style="color: #000;"></td>
 							<td ng-show="edited === $index" class="text-center"><input type="number" class="form-control" ng-model="billupdate.arnab" value="{{data.ARNAB}}" style="color: #000;"></td>
@@ -82,8 +82,8 @@
 							<td ng-show="edited === $index" class="text-center"><input type="number" class="form-control" ng-model="billupdate.tanmoy" value="{{data.TANMOY}}" style="color: #000;"></td>
 							<td ng-show="edited === $index"><textarea class="form-control" id="desc" ng-model="billupdate.billdesc" rows="3" ng-init="billupdate.billdesc=data.BILLDESC" style="color: #000;"></textarea></td>
 							<td ng-show="edited === $index">
-								<button class="btn btn-success success buttonStyle" type="button" ng-click="updateEdit(data,billupdate)">Save</button>
-								<button class="btn btn-warning warning buttonStyle" type="button" ng-click="close()">Cancel</button>
+								<button class="btn btn-success success buttonStyle" type="button" ng-click="updateEdit(data,billupdate)" uib-tooltip="Save"><i class="fa fa-floppy-o fa-lg" aria-hidden="true"></i></button>
+								<button class="btn btn-warning warning buttonStyle" type="button" ng-click="close()" uib-tooltip="Cancel"><i class="fa fa-times fa-lg" aria-hidden="true"></i></button>
 							</td>
 						</tr>
 					</tbody>
