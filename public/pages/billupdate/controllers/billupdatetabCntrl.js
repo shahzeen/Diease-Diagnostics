@@ -34,6 +34,7 @@ billapp.controller('billupdatetabController', function($scope,$http) {
 				"SUBHASIS": $scope.saurav_update1002.toString(),
 				"DEBU": $scope.sayan_update1004.toString(),
 				"TANMOY": $scope.tanmoy_update1003.toString(),
+				"SURAJIT": $scope.surajit_update1006.toString(),
 				"BILLDESC": $scope.bill_update_desc
 		}
 		

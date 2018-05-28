@@ -42,6 +42,9 @@ billapp.controller('billentrytabController', function($scope,$http,$filter,$uibM
         },
         { 	"id": "1005",
         	"name": "Anupam"
+		},
+		{ 	"id": "1006",
+        	"name": "Surajit"
         }
     ];
 
@@ -71,6 +74,7 @@ billapp.controller('billentrytabController', function($scope,$http,$filter,$uibM
 				"SUBHASIS": $scope.saurav1002,
 				"DEBU": $scope.sayan1004,
 				"TANMOY": $scope.tanmoy1003,
+				"SURAJIT": $scope.surajit1006,
 				"BILLDESC": $scope.bill_desc,
 				"CREATED_DATE": moment().toISOString(),
                 "MODIFIED_DATE": null,

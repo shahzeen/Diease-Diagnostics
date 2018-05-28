@@ -10,6 +10,7 @@ billapp.controller('dashboardBillDetailsModalController', function($scope, $http
     $scope.SUBHASIS = rowData.SUBHASIS;
     $scope.DEBU = rowData.DEBU;
     $scope.TANMOY = rowData.TANMOY;
+    $scope.SURAJIT = rowData.SURAJIT;
     $scope.BILLDESC = rowData.BILLDESC;
     $scope.CREATED_DATE = rowData.CREATED_DATE;
     $scope.MODIFIED_DATE = rowData.MODIFIED_DATE;

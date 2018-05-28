@@ -46,6 +46,7 @@
 							<th class="text-center">Subhasis</th>
 							<th class="text-center">Debu</th>
 							<th class="text-center">Tanmoy</th>
+							<th class="text-center">Surajit</th>
 							<th>Description</th>
 							<th></th>
 						</tr>
@@ -63,6 +64,7 @@
 							<td ng-hide="edited === $index" class="text-center" ng-class="black">₹ {{data.SUBHASIS}}</td>
 							<td ng-hide="edited === $index" class="text-center" ng-class="black">₹ {{data.DEBU}}</td>
 							<td ng-hide="edited === $index" class="text-center" ng-class="black">₹ {{data.TANMOY}}</td>
+							<td ng-hide="edited === $index" class="text-center" ng-class="black">₹ {{data.SURAJIT}}</td>
 							<td ng-hide="edited === $index" class="orange">{{data.BILLDESC}}</td>
 							<td ng-hide="edited === $index" ng-class="black">
 								<button class="btn btn-primary info buttonStyle" type="button" ng-click="edit($index)" uib-tooltip="Edit"><span class="glyphicon glyphicon-pencil"></span></button>
@@ -80,6 +82,7 @@
 							<td ng-show="edited === $index" class="text-center"><input type="number" class="form-control" ng-model="billupdate.saurav" value="{{data.SUBHASIS}}" style="color: #000;"></td>
 							<td ng-show="edited === $index" class="text-center"><input type="number" class="form-control" ng-model="billupdate.sayan" value="{{data.DEBU}}" style="color: #000;"></td>
 							<td ng-show="edited === $index" class="text-center"><input type="number" class="form-control" ng-model="billupdate.tanmoy" value="{{data.TANMOY}}" style="color: #000;"></td>
+							<td ng-show="edited === $index" class="text-center"><input type="number" class="form-control" ng-model="billupdate.surajit" value="{{data.SURAJIT}}" style="color: #000;"></td>
 							<td ng-show="edited === $index"><textarea class="form-control" id="desc" ng-model="billupdate.billdesc" rows="3" ng-init="billupdate.billdesc=data.BILLDESC" style="color: #000;"></textarea></td>
 							<td ng-show="edited === $index">
 								<button class="btn btn-success success buttonStyle" type="button" ng-click="updateEdit(data,billupdate)" uib-tooltip="Save"><i class="fa fa-floppy-o fa-lg" aria-hidden="true"></i></button>
@@ -136,6 +139,11 @@
 								<td class="text-center" style="color: rgb(71, 233, 75);">₹ {{tanmoyRECEIVE}}</td>
 								<td class="text-center" style="color: red">₹ {{tanmoyPAY}}</td>
 							</tr>
+							<tr>
+								<td class="text-center">Surajit</td>
+								<td class="text-center" style="color: rgb(71, 233, 75);">₹ {{surajitRECEIVE}}</td>
+								<td class="text-center" style="color: red">₹ {{surajitPAY}}</td>
+							</tr>
 						</tbody>
 					</table>
 				</div>
@@ -149,6 +157,7 @@
 								<th class="text-center">Subhasis</th>
 								<th class="text-center">Debu</th>
 								<th class="text-center">Tanmoy</th>
+								<th class="text-center">Surajit</th>
 							</tr>
 						</thead>
 						<tbody class="black">
@@ -159,6 +168,7 @@
 								<td class="text-center">₹ {{sauravDUE1}}</td>
 								<td class="text-center">₹ {{sayanDUE1}}</td>
 								<td class="text-center">₹ {{tanmoyDUE1}}</td>
+								<td class="text-center">₹ {{surajitDUE1}}</td>
 							</tr>
 							<tr>
 								<td class="text-center">Anupam</td>
@@ -167,6 +177,7 @@
 								<td class="text-center">₹ {{sauravDUE2}}</td>
 								<td class="text-center">₹ {{sayanDUE2}}</td>
 								<td class="text-center">₹ {{tanmoyDUE2}}</td>
+								<td class="text-center">₹ {{surajitDUE2}}</td>
 							</tr>
 							<tr>
 								<td class="text-center">Subhasis</td>
@@ -175,6 +186,7 @@
 								<td class="text-center">₹ {{sauravDUE3}}</td>
 								<td class="text-center">₹ {{sayanDUE3}}</td>
 								<td class="text-center">₹ {{tanmoyDUE3}}</td>
+								<td class="text-center">₹ {{surajitDUE3}}</td>
 							</tr>
 							<tr>
 								<td class="text-center">Debu</td>
@@ -183,6 +195,7 @@
 								<td class="text-center">₹ {{sauravDUE4}}</td>
 								<td class="text-center">₹ {{sayanDUE4}}</td>
 								<td class="text-center">₹ {{tanmoyDUE4}}</td>
+								<td class="text-center">₹ {{surajitDUE4}}</td>
 							</tr>
 							<tr>
 								<td class="text-center">Tanmoy</td>
@@ -191,6 +204,16 @@
 								<td class="text-center">₹ {{sauravDUE5}}</td>
 								<td class="text-center">₹ {{sayanDUE5}}</td>
 								<td class="text-center">₹ {{tanmoyDUE5}}</td>
+								<td class="text-center">₹ {{surajitDUE5}}</td>
+							</tr>
+							<tr>
+								<td class="text-center">Surajit</td>
+								<td class="text-center">₹ {{arnabDUE6}}</td>
+								<td class="text-center">₹ {{bipraDUE6}}</td>
+								<td class="text-center">₹ {{sauravDUE6}}</td>
+								<td class="text-center">₹ {{sayanDUE6}}</td>
+								<td class="text-center">₹ {{tanmoyDUE6}}</td>
+								<td class="text-center">₹ {{surajitDUE6}}</td>
 							</tr>
 						</tbody>
 					</table>
