@@ -1,10 +1,10 @@
 <div class="card" style="border-bottom-width: 0px;" ng-cloak>
 	<div class="modal-header" style="background-color: black; font-weight:bold; color: whitesmoke;">
-    	<h4 class="modal-title" style="text-align: center;">Important Note</h4>
+    	<h4 class="modal-title" style="text-align: center;">Bill Cycle Info</h4>
     </div>
 	<div class="card-block">
 		<div class="modal-body">
-			<div class="row">
+			<!-- <div class="row">
 				<div class="col-md-12">
 					<p style="font-weight: bold;">Bipra's Due note</p>
 					<p>Arnab = 148, Sayan = 102, Tanmoy = 89</p>
@@ -15,10 +15,29 @@
 					<p style="font-weight: bold;">Field Name Change note (format: old = new)</p>
 					<p>Saurav = Subhasis, Bipra = Anupam, Sayan = Debu</p>
 				</div>
+			</div> -->
+			<div class="row">
+				<div class="col-md-6">
+					<p style="font-weight: bold;">Last Clearance Date</p>
+				</div>
+				<div class="col-md-6">
+					<p>14-Jul-2018</p>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-6">
+					<p style="font-weight: bold;">Current Bill Cycle</p>
+				</div>
+				<div class="col-md-6">
+					<p>14-Jul-2018 - Present</p>
+				</div>
 			</div>		
 		</div>
 	</div>
 	<div class="row colMarginBotton" style="margin-top: 20px;">
+		<span>
+			<button class="btn btn-success buttonStyle" type="submit" disabled>update</button>
+		</span>
         <span>
             <button class="btn btn-warning buttonStyle" type="reset" ng-click="close()">close</button>
         </span>
