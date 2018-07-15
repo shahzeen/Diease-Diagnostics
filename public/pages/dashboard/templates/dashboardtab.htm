@@ -33,70 +33,73 @@
 			</div>
 		</div>
 		<div class="card">
-			<div class="card-block">
-			<div class="table-responsive">
-				<table class="table table-hover table-outline m-b-0 hidden-sm-down">
-					<thead class="thead-default" style="font-size: large; font-weight: bold;">
-						<tr>
-							<th class="text-center">Bill Payer</th>
-							<th class="text-center">Date</th>
-							<th class="text-center">Paid</th>
-							<th class="text-center">Arnab</th>
-							<th class="text-center">Anupam</th>
-							<th class="text-center">Subhasis</th>
-							<th class="text-center">Debu</th>
-							<th class="text-center">Tanmoy</th>
-							<th class="text-center">Surajit</th>
-							<th>Description</th>
-							<th></th>
-						</tr>
-					</thead>
-					<tbody  class="black">
-						<tr dir-paginate="data in bills.data | orderBy:sortKey:reverseSort | filter:search | itemsPerPage:10" ng-class="{'modified':data.MODIFIED_DATE !== null}">
-							<!-- show-->
-							<td ng-hide="edited === $index" class="text-center" ng-class="black">{{data.PAYER}}</td>
-							<td ng-hide="edited === $index" class="text-center">
-								<span class="label label-primary primary" style="font-size: inherit;">{{data.BILLDATE | date : "dd-MMM-yy"}}</span>
-							</td>
-							<td ng-hide="edited === $index" class="text-center" ng-class="black">₹ {{data.AMOUNT}}</td>
-							<td ng-hide="edited === $index" class="text-center" ng-class="black">₹ {{data.ARNAB}}</td>
-							<td ng-hide="edited === $index" class="text-center" ng-class="black">₹ {{data.ANUPAM}}</td>
-							<td ng-hide="edited === $index" class="text-center" ng-class="black">₹ {{data.SUBHASIS}}</td>
-							<td ng-hide="edited === $index" class="text-center" ng-class="black">₹ {{data.DEBU}}</td>
-							<td ng-hide="edited === $index" class="text-center" ng-class="black">₹ {{data.TANMOY}}</td>
-							<td ng-hide="edited === $index" class="text-center" ng-class="black">₹ {{data.SURAJIT}}</td>
-							<td ng-hide="edited === $index" class="orange">{{data.BILLDESC}}</td>
-							<td ng-hide="edited === $index" ng-class="black">
-								<button class="btn btn-primary info buttonStyle" type="button" ng-click="edit($index)" uib-tooltip="Edit"><span class="glyphicon glyphicon-pencil"></span></button>
-								<button class="btn btn-info buttonStyle" type="button" ng-click="openBillDetailsModal(data)" uib-tooltip="Details"><i class="fa fa-info-circle fa-lg" aria-hidden="true"></i></button>
-								<button class="btn btn-danger danger buttonStyle" type="button" ng-click="remove(data,$index)" uib-tooltip="Delete"><i class="fa fa-trash-o fa-lg" aria-hidden="true"></i></button>
-							</td>
-							<!-- edit-->
-							<td ng-show="edited === $index" class="text-center">{{data.PAYER}}</td>
-							<td ng-show="edited === $index" class="text-center">
-								<span class="label label-primary primary" style="font-size: inherit;">{{data.BILLDATE | date : "dd-MMM-yy"}}</span>
-							</td>
-							<td ng-show="edited === $index" class="text-center"><input type="number" class="form-control" ng-model="billupdate.amount" value="{{data.AMOUNT}}" style="color: #000;"></td>
-							<td ng-show="edited === $index" class="text-center"><input type="number" class="form-control" ng-model="billupdate.arnab" value="{{data.ARNAB}}" style="color: #000;"></td>
-							<td ng-show="edited === $index" class="text-center"><input type="number" class="form-control" ng-model="billupdate.bipra" value="{{data.ANUPAM}}" style="color: #000;"></td>
-							<td ng-show="edited === $index" class="text-center"><input type="number" class="form-control" ng-model="billupdate.saurav" value="{{data.SUBHASIS}}" style="color: #000;"></td>
-							<td ng-show="edited === $index" class="text-center"><input type="number" class="form-control" ng-model="billupdate.sayan" value="{{data.DEBU}}" style="color: #000;"></td>
-							<td ng-show="edited === $index" class="text-center"><input type="number" class="form-control" ng-model="billupdate.tanmoy" value="{{data.TANMOY}}" style="color: #000;"></td>
-							<td ng-show="edited === $index" class="text-center"><input type="number" class="form-control" ng-model="billupdate.surajit" value="{{data.SURAJIT}}" style="color: #000;"></td>
-							<td ng-show="edited === $index"><textarea class="form-control" id="desc" ng-model="billupdate.billdesc" rows="3" ng-init="billupdate.billdesc=data.BILLDESC" style="color: #000;"></textarea></td>
-							<td ng-show="edited === $index">
-								<button class="btn btn-success success buttonStyle" type="button" ng-click="updateEdit(data,billupdate)" uib-tooltip="Save"><i class="fa fa-floppy-o fa-lg" aria-hidden="true"></i></button>
-								<button class="btn btn-warning warning buttonStyle" type="button" ng-click="close()" uib-tooltip="Cancel"><i class="fa fa-times fa-lg" aria-hidden="true"></i></button>
-							</td>
-						</tr>
-					</tbody>
-				</table>
-				<dir-pagination-controls
-			       max-size="10"
-			       direction-links="true"
-			       boundary-links="true" >
-			    </dir-pagination-controls>
+			<div class="card-block" ng-if="responseDataLength === 0">
+				<div class="red" style="text-align: center;">No bill added yet. Please add bills using ADD BILL button.</div>
 			</div>
+			<div class="card-block" ng-if="responseDataLength>0">
+				<div class="table-responsive">
+					<table class="table table-hover table-outline m-b-0 hidden-sm-down">
+						<thead class="thead-default" style="font-size: large; font-weight: bold;">
+							<tr>
+								<th class="text-center">Bill Payer</th>
+								<th class="text-center">Date</th>
+								<th class="text-center">Paid</th>
+								<th class="text-center">Arnab</th>
+								<th class="text-center">Anupam</th>
+								<th class="text-center">Subhasis</th>
+								<th class="text-center">Debu</th>
+								<th class="text-center">Tanmoy</th>
+								<th class="text-center">Surajit</th>
+								<th>Description</th>
+								<th></th>
+							</tr>
+						</thead>
+						<tbody  class="black">
+							<tr dir-paginate="data in bills.data | orderBy:sortKey:reverseSort | filter:search | itemsPerPage:10" ng-class="{'modified':data.MODIFIED_DATE !== null}">
+								<!-- show-->
+								<td ng-hide="edited === $index" class="text-center" ng-class="black">{{data.PAYER}}</td>
+								<td ng-hide="edited === $index" class="text-center">
+									<span class="label label-primary primary" style="font-size: inherit;">{{data.BILLDATE | date : "dd-MMM-yy"}}</span>
+								</td>
+								<td ng-hide="edited === $index" class="text-center" ng-class="black">₹ {{data.AMOUNT}}</td>
+								<td ng-hide="edited === $index" class="text-center" ng-class="black">₹ {{data.ARNAB}}</td>
+								<td ng-hide="edited === $index" class="text-center" ng-class="black">₹ {{data.ANUPAM}}</td>
+								<td ng-hide="edited === $index" class="text-center" ng-class="black">₹ {{data.SUBHASIS}}</td>
+								<td ng-hide="edited === $index" class="text-center" ng-class="black">₹ {{data.DEBU}}</td>
+								<td ng-hide="edited === $index" class="text-center" ng-class="black">₹ {{data.TANMOY}}</td>
+								<td ng-hide="edited === $index" class="text-center" ng-class="black">₹ {{data.SURAJIT}}</td>
+								<td ng-hide="edited === $index" class="orange">{{data.BILLDESC}}</td>
+								<td ng-hide="edited === $index" ng-class="black">
+									<button class="btn btn-primary info buttonStyle" type="button" ng-click="edit($index)" uib-tooltip="Edit"><span class="glyphicon glyphicon-pencil"></span></button>
+									<button class="btn btn-info buttonStyle" type="button" ng-click="openBillDetailsModal(data)" uib-tooltip="Details"><i class="fa fa-info-circle fa-lg" aria-hidden="true"></i></button>
+									<button class="btn btn-danger danger buttonStyle" type="button" ng-click="remove(data,$index)" uib-tooltip="Delete"><i class="fa fa-trash-o fa-lg" aria-hidden="true"></i></button>
+								</td>
+								<!-- edit-->
+								<td ng-show="edited === $index" class="text-center">{{data.PAYER}}</td>
+								<td ng-show="edited === $index" class="text-center">
+									<span class="label label-primary primary" style="font-size: inherit;">{{data.BILLDATE | date : "dd-MMM-yy"}}</span>
+								</td>
+								<td ng-show="edited === $index" class="text-center"><input type="number" class="form-control" ng-model="billupdate.amount" value="{{data.AMOUNT}}" style="color: #000;"></td>
+								<td ng-show="edited === $index" class="text-center"><input type="number" class="form-control" ng-model="billupdate.arnab" value="{{data.ARNAB}}" style="color: #000;"></td>
+								<td ng-show="edited === $index" class="text-center"><input type="number" class="form-control" ng-model="billupdate.bipra" value="{{data.ANUPAM}}" style="color: #000;"></td>
+								<td ng-show="edited === $index" class="text-center"><input type="number" class="form-control" ng-model="billupdate.saurav" value="{{data.SUBHASIS}}" style="color: #000;"></td>
+								<td ng-show="edited === $index" class="text-center"><input type="number" class="form-control" ng-model="billupdate.sayan" value="{{data.DEBU}}" style="color: #000;"></td>
+								<td ng-show="edited === $index" class="text-center"><input type="number" class="form-control" ng-model="billupdate.tanmoy" value="{{data.TANMOY}}" style="color: #000;"></td>
+								<td ng-show="edited === $index" class="text-center"><input type="number" class="form-control" ng-model="billupdate.surajit" value="{{data.SURAJIT}}" style="color: #000;"></td>
+								<td ng-show="edited === $index"><textarea class="form-control" id="desc" ng-model="billupdate.billdesc" rows="3" ng-init="billupdate.billdesc=data.BILLDESC" style="color: #000;"></textarea></td>
+								<td ng-show="edited === $index">
+									<button class="btn btn-success success buttonStyle" type="button" ng-click="updateEdit(data,billupdate)" uib-tooltip="Save"><i class="fa fa-floppy-o fa-lg" aria-hidden="true"></i></button>
+									<button class="btn btn-warning warning buttonStyle" type="button" ng-click="close()" uib-tooltip="Cancel"><i class="fa fa-times fa-lg" aria-hidden="true"></i></button>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+					<dir-pagination-controls
+					max-size="10"
+					direction-links="true"
+					boundary-links="true" >
+					</dir-pagination-controls>
+				</div>
 			</div>
 		</div>
 		<div class="card">

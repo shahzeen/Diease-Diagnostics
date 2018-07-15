@@ -75,7 +75,7 @@ billapp.controller('dashboardtabController', function($scope,$http,$uibModal) {
 			});
 			// console.log('List of bills - Success response recieved. '+ JSON.stringify(response)); /* printing API response on console - unit testing purpose*/
 			$scope.bills  = response;
-			
+			$scope.responseDataLength = response.data.length;
 			$scope.billCalculate(response);
 		});
 
@@ -245,7 +245,7 @@ billapp.controller('dashboardtabController', function($scope,$http,$uibModal) {
 									});
 									// console.log('List of bills - Success response recieved. '+ JSON.stringify(response)); /* printing API response on console - unit testing purpose*/
 									$scope.bills  = response;
-									
+									$scope.responseDataLength = response.data.length;
 									$scope.billCalculate(response);
 								});	
 						}	
@@ -328,7 +328,7 @@ billapp.controller('dashboardtabController', function($scope,$http,$uibModal) {
 									});
 									// console.log('List of bills - Success response recieved. '+ JSON.stringify(response)); /* printing API response on console - unit testing purpose*/
 									$scope.bills  = response;
-									
+									$scope.responseDataLength = response.data.length;
 									$scope.billCalculate(response);
 							});	
 						}	
@@ -365,6 +365,7 @@ billapp.controller('dashboardtabController', function($scope,$http,$uibModal) {
 					});
 					// console.log('List of bills - Success response recieved. '+ JSON.stringify(response)); /* printing API response on console - unit testing purpose*/
 					$scope.bills  = response;
+					$scope.responseDataLength = response.data.length;
 					$scope.billCalculate(response);
 			});
 		};
