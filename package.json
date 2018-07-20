@@ -15,10 +15,12 @@
     "hashmap": "2.0.x",
     "http": "*",
     "ibmiotf": "*",
+    "jwt-simple": "*",
     "lodash.isempty": "4.4.0",
     "log4js": "0.6.x",
     "moment": "*",
     "nano": "*",
+    "node-cache": "*",
     "node-rest-client": "*",
     "swagger-jsdoc": "1.8.3"
   },
