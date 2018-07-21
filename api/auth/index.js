@@ -75,13 +75,11 @@ security.post('/login',function(req,res){
 						break;
 					}
 					errorResponse.message = result;
-					console.log(file+func +'User login failed for Username : ' + req.body.username + ' Error :'+err+ ' Details :'+errorResponse);
+					console.log(file+func +'User login failed for Username : ' + req.body.username + ' Error :'+err+ ' Details :'+JSON.stringify(errorResponse));
 					res.status(errorResponse.status);
                     res.send(errorResponse);
 				}else{
                     var gentoken = gen.getJwtToken(req.body.username);
-                    console.log('==============user info============');
-                    console.log(result);
 					
 					userinfo = {
 							userid: result.User_Id,

@@ -3,9 +3,10 @@ const async =require('async');
 const logger = global.local_require('/utils/logger');
 const c_utils = global.local_require('/utils/commonutils');
 const cloudant = global.local_require('/utils/cloudantutils');
+var gen = global.local_require('/utils/generator');
 
-const api = 'BILL RECORD API :';
-const file = 'api.record.index';
+const api = 'BILL RECORD API :: ';
+const file = 'api.record.index :: ';
 
 
 exports = module.exports = {
@@ -69,49 +70,61 @@ function update_bill(doc_id,request_data,cb){
 //});
 //}
 
-function show_bill_data(cb) {
-    let func = '.show_bill_data';
+function show_bill_data(token,cb) {
+    let func = 'show_bill_data :: ';
     let err_resp ={};
     try{
-        cloudant.readAll('bill_details','bills','vw_all_bills',{'include_docs':true},function(err,data){
-             if(!err){
-                async.map(data.rows,function(bill,cb){
-                    // let json = {};
-                    // console.log('bill = '+JSON.stringify(bill));
-                    // try{
-                    //     json['doc_id'] = bill.doc._id;
-                    //     json['BILLID'] = bill.doc.BILLID;
-                    //     json['PAYER'] = bill.doc.PAYER;
-                    //     json['BILLDATE'] = bill.doc.BILLDATE;
-                    //     json['AMOUNT'] = bill.doc.AMOUNT;
-                    //     json['ARNAB'] = bill.doc.ARNAB;
-                    //     json['ANUPAM'] = bill.doc.ANUPAM;
-                    //     json['SUBHASIS'] = bill.doc.SUBHASIS;
-                    //     json['DEBU'] = bill.doc.DEBU;
-                    //     json['TANMOY'] = bill.doc.TANMOY;
-                    //     json['BILLDESC'] = bill.doc.BILLDESC;
-                    // }catch(err){
-                    //     console.log(err);
-                    // }
-                    cb(null,bill.doc);
-                },function(err,data){
-                    if(err){
-                        err_resp =  c_utils.set_error_response(500,'ERR500','Internal Server Error '+err);
-                        logger.error(api+file+func+' Internal Server Error :'+err);  
-                        cb(err_resp,null);
-                    }else{
-                        cb(null,data);
-                        //console.log(JSON.stringify(data));
-                    }
-                });
-            }else{
-                cb(null,[]);
-            }
-            
+        async.auto({
+            user:async.apply(get_user,token),
+            inbox:['user', async.apply(load_inbox)]
+        },function(err,ok){
+            if(!err)
+                cb(null, ok.inbox);
+            else
+                cb(err, null);
         });
     }catch(err){
         err_resp =  c_utils.set_error_response(500,'ERR500','Server Error');
 		logger.error(api+file+func+' Server Error in retriving data from database:'+err);  
 		cb(err_resp,null);
     }
+}
+function get_user(token,cb){
+    gen.userInfoCache.get(token,function(err,val){
+        if(err){
+            let err_resp =  c_utils.set_http_error_response(500,'ERR-CACHE','Error retrieving user info from cache '+JSON.stringify(err));
+            cb(err_resp, null);
+        }else{
+            if(val === undefined)
+                cb('ERR-AUTH','Unauthorized user');
+            else
+                cb(null, val);
+        }
+    });
+}
+function load_inbox(params,cb){
+    let func = 'load_inbox :: ';
+    if(typeof(params.user)==='object'){
+        cloudant.readAll('bill_details','bills','vw_all_bills',{'include_docs':true},function(err,data){
+            if(!err){
+               async.map(data.rows,function(bill,cb){
+                   cb(null,bill.doc);
+               },function(err,data){
+                   if(err){
+                       err_resp =  c_utils.set_error_response(500,'ERR500','Internal Server Error '+err);
+                       console.log(api+file+func+' Internal Server Error :'+err);  
+                       cb(err_resp,null);
+                   }else{
+                       cb(null,data);
+                       //console.log(JSON.stringify(data));
+                   }
+               });
+           }else{
+               cb(null,[]);
+           }
+       });
+    }else{
+        cb('ERR-AUTH','Unauthorized user');
+    }
+    
 }

@@ -1,5 +1,5 @@
 'use strict'
-billapp.controller('billentrytabController', function($scope,$http,$filter,$uibModal, $uibModalInstance) {
+billapp.controller('billentrytabController', function($scope,$http,$filter,$uibModal, $uibModalInstance, authService) {
 
 	console.log('On billentrytabController');
 	
@@ -76,7 +76,9 @@ billapp.controller('billentrytabController', function($scope,$http,$filter,$uibM
 				"TANMOY": $scope.tanmoy1003,
 				"SURAJIT": $scope.surajit1006,
 				"BILLDESC": $scope.bill_desc,
+				"CREATED_BY": authService.firstname.toLowerCase(),
 				"CREATED_DATE": moment().toISOString(),
+				"MODIFIED_BY": null,
                 "MODIFIED_DATE": null,
   				"DELETED_DATE": null
 		}

@@ -1,5 +1,5 @@
 'use strict'
-billapp.controller('dashboardtabController', function($scope,$http,$uibModal) {
+billapp.controller('dashboardtabController', function($scope,$http,$uibModal,authService) {
 
 	console.log('On dashboardtabController');
 	
@@ -55,7 +55,8 @@ billapp.controller('dashboardtabController', function($scope,$http,$uibModal) {
 	/* http get call */
 	$http({
 		url: billdetailsURLGET,
-		method: "GET"
+		method: "GET",
+		headers: {'authtoken': authService.apiKey}
 	}).success(function(response) {
 			$('.loader, .overlay').hide();
 			response.data.sort(function(a,b){
@@ -236,7 +237,8 @@ billapp.controller('dashboardtabController', function($scope,$http,$uibModal) {
 							/* http get call */
 							$http({
 								url: billdetailsURLGET,
-								method: "GET"
+								method: "GET",
+								headers: {'authtoken': authService.apiKey}
 							}).success(function(response) {
 									response.data.sort(function(a,b){
 										var dateA = moment(a.BILLDATE);
@@ -289,7 +291,8 @@ billapp.controller('dashboardtabController', function($scope,$http,$uibModal) {
 				"DEBU": billupdate.sayan,
 				"TANMOY": billupdate.tanmoy,
 				"BILLDESC": billupdate.billdesc,
-            	"MODIFIED_DATE": moment().toISOString()
+				"MODIFIED_DATE": moment().toISOString(),
+				"MODIFIED_BY": authService.firstname.toLowerCase()
 			}
 			//console.log('billupdateJSON = '+JSON.stringify(billupdateJSON));
 		var postFunction = $http({
@@ -319,7 +322,8 @@ billapp.controller('dashboardtabController', function($scope,$http,$uibModal) {
 							/* http get call */
 							$http({
 								url: billdetailsURLGET,
-								method: "GET"
+								method: "GET",
+								headers: {'authtoken': authService.apiKey}
 							}).success(function(response) {
 									response.data.sort(function(a,b){
 										var dateA = moment(a.BILLDATE);
@@ -356,7 +360,8 @@ billapp.controller('dashboardtabController', function($scope,$http,$uibModal) {
 			/* http get call */
 			$http({
 				url: billdetailsURLGET,
-				method: "GET"
+				method: "GET",
+				headers: {'authtoken': authService.apiKey}
 			}).success(function(response) {
 					response.data.sort(function(a,b){
 						var dateA = moment(a.BILLDATE);

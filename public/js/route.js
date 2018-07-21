@@ -93,6 +93,65 @@ var billapp = angular.module('billapp', ['ionic', 'ui.bootstrap', 'moment-picker
     controller: 'inboxtabController'
   })
 
+  $httpProvider.interceptors.push('HttpInterceptor');
   $urlRouterProvider.otherwise('/login');
 
-});
+})
+.factory('HttpInterceptor', ['$q', '$window', '$rootScope', '$injector', HttpInterceptor]);
+
+function HttpInterceptor($q, $window, $rootScope, $injector) {
+  return {
+      // optional method
+      'request': function (config) {
+          // do something on success, do not add api_key on login endpoint
+          if (config.url.indexOf("login") == -1) {
+            // var authService = $injector.get("authService");
+            // // add to header api_key for JWT
+            // if (authService.apiKey) {
+            //   config.headers['apiKey'] = authService.apiKey;
+            // }
+
+          }
+          $rootScope.loading = true;
+          return config;
+      },
+
+      // optional method
+      'requestError': function (rejection) {
+          $rootScope.loading = false;
+          return $q.reject(rejection);
+      },
+
+
+      // optional method
+      'response': function (response) {
+          // do something on success
+          $rootScope.loading = false;
+          return response;
+      },
+
+      // optional method
+      'responseError': function (rejection) {
+          // var authService = $injector.get("authService");
+          if (rejection.status == 0 || rejection.status == -1) {
+              //toastr.error( "Server is not responding. Check your connection and server status", "Communication failed" );
+              //authService.apiKey = undefined;
+              // not responding no network connection
+          } else if (rejection.status == 403) {
+              //   authService.apiKey = undefined;
+              $window.location.href = "#/login"
+          } else if (rejection.status == 401) {
+              // this will display logn overlay
+              //    authService.apiKey = undefined;
+              $window.location.href = "#/login";
+          } else if (rejection.status == 500) {
+              //    authService.apiKey = undefined;
+              $window.location.href = "#/login"
+          } else if (rejection.status.toString().indexOf("40") == 0 || rejection.status.toString().indexOf("50") == 0) {
+              // TODO some kind of error 400 or 500 type
+          }
+          $rootScope.loading = false;
+          return $q.reject(rejection);
+      }
+  };
+};

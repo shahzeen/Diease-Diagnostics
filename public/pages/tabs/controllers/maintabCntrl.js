@@ -1,5 +1,5 @@
 'use strict'
-billapp.controller('maintabController', function($scope, $state, $uibModal) {
+billapp.controller('maintabController', function($scope, $state, $uibModal, loginHttpService, authService) {
 	console.log('Main tab controller called');
 	// $scope.billpayer = [
     //                		{ 	"id": "1001",
@@ -27,8 +27,17 @@ billapp.controller('maintabController', function($scope, $state, $uibModal) {
 		});
 	}
 
-	$scope.logoutBtnClick = function(){
-		console.log('Logout button clicked');
-		$state.go('login');
-	}
+	// $scope.logoutBtnClick = function(){
+	// 	console.log('Logout button clicked');
+	// 	$state.go('login');
+    // }
+    $scope.logoutBtnClick = function(){
+		$('.loader, .overlay').show();
+		loginHttpService.logoutAPI()
+		.then(function() {
+			$('.loader, .overlay').hide();
+			authService.clear();
+			$state.go('login');
+		});
+	};
 });

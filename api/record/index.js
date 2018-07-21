@@ -6,8 +6,8 @@ const express = require('express');
 const service = global.local_require('api/record/service');
 const logger = global.local_require('/utils/logger');
 
-const api = 'BILL RECORD API :';
-const file = 'api.record.index';
+const api = 'BILL RECORD API :: ';
+const file = 'api.record.index :: ';
 
 const record= express();
 
@@ -177,18 +177,25 @@ record.put('/update/:id', function(req, res) {
  */
 
 record.get('/show',  function(req, res) {
-	const func = '.get';
+	const func = 'get/show :: ';
 	    try {
-	        service.show_bill_data(function(err,result){
+            var token = req.headers.authtoken;
+            console.log('auth token = '+token);
+	        service.show_bill_data(token,function(err,result){
 	            if(!err){
 	                res.status(200).json({'status':'ok','message':'success','data':result});
 	            }else{
-	                logger.error(api+file+func+' Internal Server Error in retriving all bills from database :'+err);  
-	                res.status(500).json({'status':500,'message':'API Response Error','data':[]});
+                    if(err === 'ERR-AUTH'){
+						console.log('ERROR', api+file+func+'Unauthorized user');  
+	                	res.status(401).json({'status':401,'message':'Unauthorized user','data':[]});
+					}else{
+                        console.log(api+file+func+' Internal Server Error in retriving all bills from database :'+JSON.stringify(err));  
+                        res.status(500).json({'status':500,'message':'Authentication failed','data':[]});
+                    }
 	            }
 	        });
 	     }catch(err){
-	        logger.error(api+file+func+' Internal Server Error in retriving bills from database :'+err);  
+	        console.log(api+file+func+' Internal Server Error in retriving bills from database :'+err);  
 	        res.status(500).json({'status':500,'message':'API Response Error','data':[]});
 	    }
 	});
