@@ -45,7 +45,7 @@ billapp.controller('loginPageController', function($scope, $http, $state, $uibMo
 				try {
 					switch(errResp.status){
                         case 404:
-                            $scope.openModal('Login', 'Username does not exist.');
+                            $scope.openModal('Login', 'Username does not exist. Please create an account');
                         	break;
 
                         case 422:

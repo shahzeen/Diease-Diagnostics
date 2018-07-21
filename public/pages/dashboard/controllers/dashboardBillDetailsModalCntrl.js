@@ -12,7 +12,9 @@ billapp.controller('dashboardBillDetailsModalController', function($scope, $http
     $scope.TANMOY = rowData.TANMOY;
     $scope.SURAJIT = rowData.SURAJIT;
     $scope.BILLDESC = rowData.BILLDESC;
+    $scope.CREATED_BY = rowData.CREATED_BY;
     $scope.CREATED_DATE = rowData.CREATED_DATE;
+    $scope.MODIFIED_BY = rowData.MODIFIED_BY;
     $scope.MODIFIED_DATE = rowData.MODIFIED_DATE;
 	/*close modal view */
     $scope.close = function () {
