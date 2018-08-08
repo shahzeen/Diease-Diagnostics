@@ -1,23 +1,7 @@
 'use strict'
 billapp.controller('maintabController', function($scope, $state, $uibModal, loginHttpService, authService) {
 	console.log('Main tab controller called');
-	// $scope.billpayer = [
-    //                		{ 	"id": "1001",
-    //                			"name": "Arnab"
-    //                		},
-    //                		// { 	"id": "1002",
-    //                		// 	"name": "Saurav"
-    //                		// },
-    //                		{ 	"id": "1003",
-    //                			"name": "Tanmoy"
-    //                		},
-    //                		{ 	"id": "1004",
-    //                			"name": "Sayan"
-    //                		},
-    //                		// { 	"id": "1005",
-    //                		// 	"name": "Bipra"
-    //                		// }
-    //                ];
+	$scope.username = authService.firstname+' '+authService.lastname;
 
 	$scope.about = function () {
 		console.log('opening pop up');
@@ -30,7 +14,11 @@ billapp.controller('maintabController', function($scope, $state, $uibModal, logi
 	// $scope.logoutBtnClick = function(){
 	// 	console.log('Logout button clicked');
 	// 	$state.go('login');
-    // }
+	// }
+	$scope.click = function($event){
+		console.log($event.target.clientWidth);
+		$scope.logoutBtnWidth = $event.target.clientWidth;//$event.target.offsetWidth
+	}
     $scope.logoutBtnClick = function(){
 		$('.loader, .overlay').show();
 		loginHttpService.logoutAPI()

@@ -77,6 +77,14 @@ canvas.absCanvas{
 	text-transform: uppercase;
 }
 
+.usernameBtn {
+    background-color: #2d0de2;
+	font-weight: bold;
+	font-size: 14px;
+	color: white;
+	text-transform: uppercase;
+}
+
 /*.btn {
     border-radius: 0;
     font-size: 16px;
