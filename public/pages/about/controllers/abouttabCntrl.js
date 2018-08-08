@@ -1,5 +1,5 @@
 'use strict'; 
-billapp.controller('abouttabController', ['$scope','$uibModalInstance', function ($scope, $uibModalInstance) {
+billapp.controller('abouttabController', ['$scope','$uibModalInstance', function ($scope, $uibModalInstance){
 	
 	console.log('On abouttabController');
 	
