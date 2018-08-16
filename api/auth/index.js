@@ -46,9 +46,11 @@ security.post('/login',function(req,res){
 	try{
 		var ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress || 
 		req.socket.remoteAddress || req.connection.socket.remoteAddress;
+		// var con = req.headers["REMOTE_ADDR"];
 		var userinfo; 
 
-        console.log(file+func +'Client IP Address :: '+ip);
+		console.log(file+func +'Client IP Address :: '+ip);
+		// console.log(file+func +'connection :: '+con);
         // req.body = JSON.parse(req.body);
         console.log(JSON.stringify(req.body));
 
@@ -84,7 +86,8 @@ security.post('/login',function(req,res){
 					userinfo = {
 							userid: result.User_Id,
 							firstname: result.First_Name,
-							lastname: result.Last_Name
+							lastname: result.Last_Name,
+							clientIP: ip
 					};
 					// logger.info(file+func +'User is now logged in, Generated tokenData is: ' + userinfo.userid + " User role: " + userinfo.role +' Emp Id = '+userinfo.empid);
 					// logger.info(file+func +'Res data = '+JSON.stringify(userinfo));

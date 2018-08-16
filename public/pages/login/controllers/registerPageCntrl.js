@@ -1,6 +1,10 @@
 'use strict'
 billapp.controller('registerPageController', function($scope, $http, $uibModal, $uibModalInstance, loginHttpService) {
-	console.log('on Register button click');
+    console.log('on Register button click');
+    console.log(navigator);
+    console.log(window);
+    console.log(screen);
+
 	/*close modal view */
     $scope.close = function () {
         $uibModalInstance.dismiss('cancel');
