@@ -12,6 +12,7 @@
     "bower-json": "^0.8.1",
     "cfenv": "1.0.x",
     "express": "4.13.x",
+    "express-fileupload": "0.1.4",
     "hashmap": "2.0.x",
     "http": "*",
     "ibmiotf": "*",

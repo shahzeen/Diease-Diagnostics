@@ -10,7 +10,10 @@ const api = 'SAMPLE API :: ';
 const file = 'api.sample.index :: ';
 
 const sample= express();
+var upload = require('express-fileupload');
+sample.use(upload())
 
+//create doc API
 sample.post('/create',  function(req, res) {
 	const func = '.post';
 	//console.log('req = '+JSON.stringify(req.body));
@@ -43,12 +46,13 @@ sample.post('/create',  function(req, res) {
  }
 });
 
+//show all doc API
 sample.get('/show/all',  function(req, res) {
 	const func = 'get/show/all :: ';
 	    try {
 	        service.show_all_sample(function(err,result){
 	            if(!err){
-	                res.status(200).json({'status':'ok','message':'success','data':result});
+	                res.status(200).json({'status':200,'message':'success','data':result});
 	            }else{
                     if(err === 'ERR-AUTH'){
 						console.log('ERROR', api+file+func+'Unauthorized user');  
@@ -65,6 +69,7 @@ sample.get('/show/all',  function(req, res) {
 	    }
 });
 
+//delete doc by id API
 sample.delete('/remove/:id', function(req, res){
     const func = '/remove/{id} :: ';
     try{
@@ -84,5 +89,33 @@ sample.delete('/remove/:id', function(req, res){
     }
 });
     
+//file upload api
+sample.post('/fileupload', function (req, res) {
+    console.log('INFO:', 'File upload API is called');
+	try {
+	 	
+		if (!req.files){
+			return res.status(400).send('No files were uploaded.');
+        }else{
+            let file = req.files.file;
+            var filename = file.name;
+            var path=__dirname + '/uploaded_files/' + filename;
+            console.log(path);
+            // res.send('File uploaded in the respective directory!'+path);
+            file.mv(path, function (err) {
+                if (err) {
+                    console.log("err :: "+JSON.stringify(err));
+                    return res.status(500).send(err);
+                } else {
+                    console.log("File Uploaded Sucessfully");
+                }
+                res.status(200).json({'status':200,'message':'File Uploaded Sucessfully','data':'File uploaded in the respective directory :: '+path});
+            });
+        }
+
+	} catch (excep) {
+		console.log('ERROR:', 'Exception in File Upload API :: ' + excep)
+	}
+});
 
 module.exports = sample;
