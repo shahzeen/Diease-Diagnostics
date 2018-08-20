@@ -20,7 +20,8 @@ const file = 'utils.cloudantutils';
 exports = module.exports = {
     readAll:readAll,
     insert_document:insert_document,
-	merge_document:merge_document
+	merge_document:merge_document,
+	delete_doc_by_id:delete_doc_by_id
 };
 
 //read all documents
@@ -175,3 +176,36 @@ var record_merge = function(olddoc,newdoc,callback){
 		}
 		callback(null,is_changed,olddoc);
 } 
+
+//delete document
+function delete_doc_by_id(dbname,doc_id,cb){
+	let func = '.merge_document';
+	let err_resp={};
+	try{
+		let db = nano.db.use(dbname);
+		db.get(doc_id,function(err,http_body,http_headers){
+			if(err){
+				err_resp =  set_error_response(err,'ERR500','Error in get operation, please try after some time ');
+				logger.error(api+file+func+'Error in get operation '+err);
+				logger.error(api+file+func+'database :: '+dbname+', record :: '+JSON.stringify(http_body));
+				cb(err_resp,null);
+			}else{
+				db.destroy(doc_id, http_body._rev, function(err, body, header) {
+					if(err) {
+						err_resp =  set_error_response(err,'ERR500','Error in delete operation, please try after some time ');
+						logger.error(api+file+func+'Error in delete operation '+err);
+						logger.error(api+file+func+'database :: '+dbname+', record :: '+JSON.stringify(body));
+						cb(err_resp,null);
+					}else{
+						cb(null,"deleted "+doc_id);
+					}
+					// return res.send(200, { message: "deleted " + req.params.bear_id});
+				});
+			}
+		});
+	}catch(error){
+		err_resp =  set_error_response(error,'ERR500','Error in delete operation, please try after some time');
+		logger.error(api+file+func+'Error in delete operation :: '+error);
+		cb(err_resp,null);
+	}
+}

@@ -2,7 +2,7 @@ applications:
 - path: .
   memory: 640M
   instances: 1
-  domain: mybluemix.net
-  name: bill-splitter
-  host: bill-splitter
+  # domain: mybluemix.net
+  # name: bill-splitter
+  # host: bill-splitter
   disk_quota: 640M
