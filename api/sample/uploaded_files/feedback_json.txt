@@ -1,0 +1,9 @@
+{
+	"type": "FEEDBACK",
+	"easy_to_use": "Y/N",
+	"feedback": "Tobacco needs to be added to crop selection",
+	"feedback_pertains_to": "Crop selection",
+	"department": "",
+	"lab_loc": "Woodland, USA",
+	"service_received": "Diagnosis of Tobacco"
+}

@@ -1,0 +1,34 @@
+{
+	"type": "SAMPLE",
+	"sample_origin": "Field",
+	"customer_type": "Internal Monsanto Customer",
+	"contact_info": {
+		"primary_contact": "fname lanme",
+		"primary_contact_phn": 1234567890,
+		"secondary_contact": "fname lanme or email"
+	},
+	"lab_loc": {
+		"country": "USA",
+		"state": "California",
+		"city": "Woodland",
+		"department": "Field Quality Plant Diagnostics"
+	},
+	"us_shipping_from_outside_us": "Y/N",
+	"crop_type": "Broccoli",
+	"sample_origin_info": {
+		"collected_date": "08/03/2018",
+		"no_of_sample": 2,
+		"country": "South Africa",
+		"state": "Free Statte",
+		"nearest_city": "Parys"
+	},
+	"symptom_info": {
+		"variety": "",
+		"notice_date": "",
+		"field_percentage": "",
+		"affected_parts": [],
+		"symptoms": [],
+		"distribution_of_symptom": []
+	},
+	"deleted_date": null
+}
