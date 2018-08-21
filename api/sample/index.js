@@ -27,12 +27,8 @@ sample.post('/create',  function(req, res) {
                             res.status(200).json(data);     
                         }else{
                         	//console.log('err = '+JSON.stringify(err));
-               				let status = err.status;
-                            let error = err.error;
-                            let message = err.message;
-                            let response_message = {'status':status,'message':message};
-                            logger.error(api+file+func+' Internal Server Error in saving sample record :: '+err);  
-                            res.status(status).json(response_message);
+                            console.log(api+file+func+' Internal Server Error in inserting sample into database :'+JSON.stringify(err));  
+                            res.status(500).json({'status':500,'message':'Internal Server Error in inserting sample into database','data':[]});
                         }
                     });
              
@@ -54,13 +50,8 @@ sample.get('/show/all',  function(req, res) {
 	            if(!err){
 	                res.status(200).json({'status':200,'message':'success','data':result});
 	            }else{
-                    if(err === 'ERR-AUTH'){
-						console.log('ERROR', api+file+func+'Unauthorized user');  
-	                	res.status(401).json({'status':401,'message':'Unauthorized user','data':[]});
-					}else{
-                        console.log(api+file+func+' Internal Server Error in retriving all bills from database :'+JSON.stringify(err));  
-                        res.status(500).json({'status':500,'message':'Authentication failed','data':[]});
-                    }
+                    console.log(api+file+func+' Internal Server Error in retriving samples from database :'+JSON.stringify(err));  
+                    res.status(500).json({'status':500,'message':'Internal Server Error in retriving samples from database','data':[]});
 	            }
 	        });
 	     }catch(err){
